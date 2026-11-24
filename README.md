@@ -6,6 +6,8 @@ The public files of https://tariff-impact.com/, copied from the live site on 202
 
 ## What is here
 
+The sizes and checksums below describe the files as they were fetched (commit `0dd9ace`). `index.html`, `contact.html` and `sitemap.xml` have been changed since: see the commit history.
+
 | File | Live address | Size | SHA-256 |
 |---|---|---|---|
 | index.html | `/` | 129,881 bytes | `ed94145163246ea9afd96df69f6e41b243c1a238b085915882095220854389fc` |
