@@ -469,16 +469,16 @@
     <div class="kpi-grid">
       <div class="kpi">
         <div class="kpi-accent warn"></div>
-        <div class="kpi-label">Landed cost / unit</div>
+        <div class="kpi-label">Total cost / unit</div>
         <div class="kpi-value" id="kpi_landed">$13.00</div>
-        <div class="kpi-sub">Was $11.50 pre-tariff</div>
+        <div class="kpi-sub" id="kpi_landed_sub">Was $13.50 pre-tariff</div>
         <div class="kpi-delta bad" id="kpi_landed_delta">+$1.50 (+13%)</div>
       </div>
       <div class="kpi">
         <div class="kpi-accent good"></div>
         <div class="kpi-label">Margin / unit (new)</div>
         <div class="kpi-value" id="kpi_margin">$11.75</div>
-        <div class="kpi-sub">Was $13.50 pre-tariff</div>
+        <div class="kpi-sub" id="kpi_margin_sub">Was $11.50 pre-tariff</div>
         <div class="kpi-delta bad" id="kpi_margin_delta">−$1.75 / unit</div>
       </div>
       <div class="kpi">
@@ -615,16 +615,29 @@ function calc(passPct, priceOverride = null) {
 }
 
 // Find break-even price (the price where post-tariff profit equals pre-tariff profit)
+// Returns { price } when such a price exists, or { price: null, bestPrice, bestProfit }
+// when even the most profitable price stays below pre-tariff profit.
 function findBreakevenPrice() {
-  const target = calc(0).preProfit;
-  // bisection between basePrice and basePrice * 3
-  let lo = state.price * 0.5, hi = state.price * 4;
+  const base = calc(0);
+  const target = base.preProfit;
+  if (base.tariffPerUnit === 0) return { price: state.price };
+  // Profit rises with price up to a ceiling. With elasticity below -1 the ceiling is the
+  // profit-maximising price; otherwise there is none, so widen the range until the target is met.
+  let hi = state.price * 4;
+  if (state.elast < -1) {
+    hi = base.landedCostPost * state.elast / (state.elast + 1);
+  } else {
+    for (let i = 0; i < 40 && calc(0, hi).postProfit < target; i++) hi *= 2;
+  }
+  const best = calc(0, hi).postProfit;
+  if (!(hi > 0) || best < target) return { price: null, bestPrice: hi, bestProfit: best };
+  let lo = Math.min(state.price * 0.5, hi * 0.5);
   for (let i = 0; i < 80; i++) {
     const mid = (lo + hi) / 2;
     const r = calc(0, mid);
     if (r.postProfit < target) lo = mid; else hi = mid;
   }
-  return (lo + hi) / 2;
+  return { price: (lo + hi) / 2 };
 }
 
 // ---------------------- CHARTS ----------------------
@@ -855,15 +868,18 @@ function initCharts() {
 function update() {
   const r = calc(state.pass);
   const pre = calc(0); // for pre-tariff comparison fields
-  const breakeven = findBreakevenPrice();
+  const be = findBreakevenPrice();
+  const breakeven = be.price;
 
   // KPIs
   document.getElementById('kpi_landed').textContent = fmt$(r.landedCostPost);
+  document.getElementById('kpi_landed_sub').textContent = 'Was ' + fmt$(r.landedCostPre) + ' pre-tariff';
   const landedDeltaPct = ((r.landedCostPost - r.landedCostPre) / r.landedCostPre) * 100;
   document.getElementById('kpi_landed_delta').textContent = '+' + fmt$(r.landedCostPost - r.landedCostPre) + ' (+' + landedDeltaPct.toFixed(1) + '%)';
   document.getElementById('kpi_landed_delta').className = 'kpi-delta ' + (r.tariffPerUnit > 0 ? 'bad' : 'neutral');
 
   document.getElementById('kpi_margin').textContent = fmt$(r.postMarginUnit);
+  document.getElementById('kpi_margin_sub').textContent = 'Was ' + fmt$(r.preMarginUnit) + ' pre-tariff';
   const marginDelta = r.postMarginUnit - r.preMarginUnit;
   const marginEl = document.getElementById('kpi_margin_delta');
   marginEl.textContent = (marginDelta >= 0 ? '+' : '−') + '$' + Math.abs(marginDelta).toFixed(2) + ' / unit';
@@ -875,11 +891,20 @@ function update() {
   ppEl.className = 'kpi-delta ' + (r.profitDelta >= 0 ? 'good' : 'bad');
   document.getElementById('kpi_profitSub').textContent = 'pre: ' + fmt$0(r.preProfit) + ' → now: ' + fmt$0(r.postProfit);
 
-  document.getElementById('kpi_breakeven').textContent = fmt$(breakeven);
-  const beDelta = breakeven - state.price;
   const beEl = document.getElementById('kpi_breakevenDelta');
+  if (breakeven === null) {
+    // No price restores pre-tariff profit: say so, and show the best that price alone can do.
+    document.getElementById('kpi_breakeven').textContent = 'None';
+    document.getElementById('kpi_breakevenSub').textContent = 'no price restores pre-tariff profit';
+    beEl.textContent = 'Best: ' + fmt$0(be.bestProfit) + '/mo at ' + fmt$(be.bestPrice);
+    beEl.className = 'kpi-delta bad';
+  } else {
+  document.getElementById('kpi_breakeven').textContent = fmt$(breakeven);
+  document.getElementById('kpi_breakevenSub').textContent = 'to maintain pre-tariff profit';
+  const beDelta = breakeven - state.price;
   beEl.textContent = (beDelta >= 0 ? '+' : '−') + '$' + Math.abs(beDelta).toFixed(2) + ' vs current';
   beEl.className = 'kpi-delta ' + (Math.abs(beDelta) < 0.01 ? 'neutral' : (beDelta > 0 ? 'bad' : 'good'));
+  }
 
   // Cost composition chart
   const preStack = [state.cost, 0, state.ship, state.var, r.preMarginUnit > 0 ? r.preMarginUnit : 0];
@@ -1007,13 +1032,14 @@ function update() {
 
   // Insight text
   let insight = '';
+  const beNone = `No price alone restores pre-tariff profit: the most that price can earn is ${fmt$0(be.bestProfit)}/mo, at ${fmt$(be.bestPrice)}.`;
   const bestStrategy = enriched[0];
   if (r.profitDelta >= 0) {
     insight = `<strong>Good news:</strong> at ${state.pass}% pass-through, you're projected to <strong>preserve or grow profit</strong>. The best of the five canned strategies is <strong>${bestStrategy.name}</strong> (${fmt$0(bestStrategy.calc.postProfit)}/mo).`;
   } else if (r.postProfit < 0) {
-    insight = `<strong>Warning:</strong> at this scenario you'd be unprofitable (${fmt$0(r.postProfit)}/mo). Best canned option: <strong>${bestStrategy.name}</strong> at ${fmt$0(bestStrategy.calc.postProfit)}/mo. To match pre-tariff profit on price alone, you'd need to charge ${fmt$(breakeven)}.`;
+    insight = `<strong>Warning:</strong> at this scenario you'd be unprofitable (${fmt$0(r.postProfit)}/mo). Best canned option: <strong>${bestStrategy.name}</strong> at ${fmt$0(bestStrategy.calc.postProfit)}/mo. ${breakeven === null ? beNone : `To match pre-tariff profit on price alone, you'd need to charge ${fmt$(breakeven)}.`}`;
   } else {
-    insight = `Profit drops <strong>${fmtPct(r.profitPct)}</strong> (${fmt$0(r.profitDelta)}/mo). Best of the canned strategies: <strong>${bestStrategy.name}</strong> (${fmt$0(bestStrategy.calc.postProfit)}/mo). Break-even price to hold pre-tariff profit: <strong>${fmt$(breakeven)}</strong>.`;
+    insight = `Profit drops <strong>${fmtPct(r.profitPct)}</strong> (${fmt$0(r.profitDelta)}/mo). Best of the canned strategies: <strong>${bestStrategy.name}</strong> (${fmt$0(bestStrategy.calc.postProfit)}/mo). ${breakeven === null ? beNone : `Break-even price to hold pre-tariff profit: <strong>${fmt$(breakeven)}</strong>.`}`;
   }
   document.getElementById('insightBox').innerHTML = insight;
 }
