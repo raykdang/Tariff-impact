@@ -7,7 +7,9 @@
 #   address in sitemap.xml once, so merging this file submits the whole site.
 # - Any other change to main sends only the sitemap pages whose .html changed.
 # - "Run workflow" by hand (Actions tab) sends every address.
-# The script first waits until the live site serves the commit's sitemap.
+# The script first waits until this commit is live: Cloudflare's Workers Builds
+# check on the commit has passed, and the live site serves the commit's
+# version of each changed file (see the script's top comment).
 name: IndexNow
 
 on:
@@ -22,6 +24,7 @@ on:
 
 permissions:
   contents: read
+  checks: read # read Cloudflare's "Workers Builds" check on this commit
 
 concurrency:
   group: indexnow
@@ -33,13 +36,14 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 20
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
         with:
           fetch-depth: 0
       - name: Send the changed (or all) addresses
         env:
           EVENT: ${{ github.event_name }}
           BEFORE: ${{ github.event.before }}
+          GITHUB_TOKEN: ${{ github.token }}
         run: |
           if [ "$EVENT" != "push" ] || ! git cat-file -e "$BEFORE^{commit}" 2>/dev/null; then
             python3 .github/scripts/indexnow.py all
@@ -48,7 +52,7 @@ jobs:
           git diff --name-only "$BEFORE" "$GITHUB_SHA" > changed.txt
           cat changed.txt
           if grep -qE '^\.github/(workflows/indexnow\.yml|scripts/indexnow\.py)$' changed.txt; then
-            python3 .github/scripts/indexnow.py all
+            python3 .github/scripts/indexnow.py all changed.txt
           else
             python3 .github/scripts/indexnow.py changed changed.txt
           fi
