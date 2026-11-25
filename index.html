@@ -1343,6 +1343,22 @@ function showExampleRate() {
   update();
 }
 
+// A rate given in the link wins over the example or the country row, so the
+// note says so. The rate is a number already checked by readScenarioFromAddress.
+function showLinkRate(linked) {
+  if (!('tariff' in linked)) return;
+  const note = document.getElementById('autoFillNote');
+  const head = '<strong>Rate from the link: ' + linked.tariff + '%.</strong> ';
+  if (!(linked.countryFrom || linked.countryTo)) {
+    note.innerHTML = head + 'Enter your product\'s own rate, or pick a country pair to fill in its country-wide duty.';
+    return;
+  }
+  const row = tariffData.rates[`${state.countryFrom}->${state.countryTo}`];
+  if (!row || row.rate !== linked.tariff) {
+    note.innerHTML = head + 'For comparison: ' + note.innerHTML;
+  }
+}
+
 function rateCheckedText(data) {
   return data.checked ? 'checked ' + data.checked : 'from ' + tariffData.otherRowsAsOf + ', not re-checked';
 }
@@ -2125,6 +2141,7 @@ if (linked.countryFrom) state.countryFrom = linked.countryFrom;
 if (linked.countryTo) state.countryTo = linked.countryTo;
 populateCountries(Boolean(linked.countryFrom || linked.countryTo));
 linkParams.forEach(p => { if (p.key in linked) state[p.key] = linked[p.key]; });
+showLinkRate(linked);
 syncFromState();
 update();
 
