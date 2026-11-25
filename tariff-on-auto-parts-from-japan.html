@@ -261,6 +261,23 @@
     .section { padding: 20px 18px; }
     footer.site-footer { padding: 28px 16px 20px 16px; }
   }
+
+  /* Ad and paid-link places (see README, "Ads and paid links").
+     An empty place carries the attribute hidden: it takes no space and loads nothing.
+     A filled ad place reserves its height before the ad loads, so the page does not jump. */
+  .ad-slot[hidden], .paid-link[hidden], .paid-disclosure[hidden] { display: none !important; }
+  .ad-slot {
+    display: block; box-sizing: border-box; width: 100%; max-width: 980px;
+    min-height: 300px; margin: 22px auto; padding: 0 16px;
+    text-align: center; overflow: hidden; contain: layout paint;
+  }
+  .ad-slot .ad-label {
+    display: block; font-size: 11px; color: var(--text-muted);
+    text-transform: uppercase; letter-spacing: 0.6px; margin: 0 0 6px 0;
+  }
+  .paid-link { font-size: 13px; color: var(--text-dim); margin: 10px 0 0 0; line-height: 1.6; }
+  .paid-link .paid-label { font-size: 12px; color: var(--text-muted); }
+  .paid-disclosure { font-size: 12px; color: var(--text-muted); margin: 8px 0 0 0; line-height: 1.6; }
 </style>
 </head>
 <body>
@@ -285,6 +302,8 @@
   <h1>Tariff on auto parts from Japan: what it does to your margin</h1>
   <p class="lede">Passenger vehicle parts from Japan that are covered by the Section 232 action pay <strong>15% in total</strong> on entry to the United States, ordinary duty included. Most other countries pay their ordinary duty <strong>plus 25%</strong>. Below: how the 15% works, one part worked through, and how Japan compares.</p>
   <p class="reviewed">Rates last checked: 25 November 2026. Estimates only, not legal, customs or financial advice.</p>
+  <!-- PAID LINK DISCLOSURE. Delete hidden once any paid link on this page is shown. -->
+  <p class="paid-disclosure" hidden>Some links on this page are paid links: we earn a commission if you sign up through them. Each one is marked “Paid link”. Who pays us never changes a rate or a result.</p>
 </div>
 
 <div class="container">
@@ -350,6 +369,14 @@
       <li><strong>Show it on the invoice</strong> if your trade customers prefer a visible line. See the <a href="/tariff-surcharge-calculator">tariff surcharge calculator</a>.</li>
     </ul>
   </div>
+  <!-- PAID LINK PLACE "page-1": Easyship (shipping and duties) or Alibaba.com (sourcing), one per page.
+       To fill: put the programme's link in front of the label, as <a href="..." rel="sponsored noopener" target="_blank">..</a>,
+       delete hidden here, and delete hidden on this page's paid-disclosure line. -->
+  <p class="paid-link" data-paid-link="page-1" hidden><span class="paid-label">Paid link: we earn a commission if you sign up through it.</span></p>
+  <!-- AD PLACE "page-mid". Empty: hidden, no space, nothing loads.
+       To fill: paste the ad unit code from the ad network after the label, then delete the word hidden.
+       The place then keeps 300px of height before the ad loads (set by .ad-slot). -->
+  <aside class="ad-slot" data-ad-place="page-mid" aria-label="Advertisement" hidden><span class="ad-label">Advertisement</span></aside>
   <div class="section">
     <h2>Questions</h2>
     <h3>What is the tariff on auto parts from Japan?</h3>
@@ -380,6 +407,10 @@
       <li><a href="/">Tariff Impact Calculator</a></li>
     </ul>
   </div>
+  <!-- AD PLACE "page-end". Empty: hidden, no space, nothing loads.
+       To fill: paste the ad unit code from the ad network after the label, then delete the word hidden.
+       The place then keeps 300px of height before the ad loads (set by .ad-slot). -->
+  <aside class="ad-slot" data-ad-place="page-end" aria-label="Advertisement" hidden><span class="ad-label">Advertisement</span></aside>
   <p class="disclaimer">Estimates only, not legal, customs or financial advice. The alternator's prices are an example.</p>
 </div>
 </main>

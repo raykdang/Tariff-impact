@@ -81,7 +81,7 @@
           "name": "Is it cheaper to import toys from Vietnam than from China?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Not on duty. Toys under heading 9503.00.00 pay 12.5% in total from both. Indonesia, Malaysia, India and Mexico pay 10% (Mexico's does not apply to goods that enter free under USMCA)."
+            "text": "Not on duty. Toys under heading 9503.00.00 pay 12.5% in total from both. Indonesia, Malaysia, India and Mexico pay 10% (Mexico's does not apply to goods that enter free under USMCA). Indonesia and Malaysia each have their own list of goods exempt from that duty, which we have not read, so check that your toy is not on it."
           }
         }
       ]
@@ -269,6 +269,23 @@
     .section { padding: 20px 18px; }
     footer.site-footer { padding: 28px 16px 20px 16px; }
   }
+
+  /* Ad and paid-link places (see README, "Ads and paid links").
+     An empty place carries the attribute hidden: it takes no space and loads nothing.
+     A filled ad place reserves its height before the ad loads, so the page does not jump. */
+  .ad-slot[hidden], .paid-link[hidden], .paid-disclosure[hidden] { display: none !important; }
+  .ad-slot {
+    display: block; box-sizing: border-box; width: 100%; max-width: 980px;
+    min-height: 300px; margin: 22px auto; padding: 0 16px;
+    text-align: center; overflow: hidden; contain: layout paint;
+  }
+  .ad-slot .ad-label {
+    display: block; font-size: 11px; color: var(--text-muted);
+    text-transform: uppercase; letter-spacing: 0.6px; margin: 0 0 6px 0;
+  }
+  .paid-link { font-size: 13px; color: var(--text-dim); margin: 10px 0 0 0; line-height: 1.6; }
+  .paid-link .paid-label { font-size: 12px; color: var(--text-muted); }
+  .paid-disclosure { font-size: 12px; color: var(--text-muted); margin: 8px 0 0 0; line-height: 1.6; }
 </style>
 </head>
 <body>
@@ -293,6 +310,8 @@
   <h1>Tariff on toys from China: what it does to your margin</h1>
   <p class="lede">Toys from China pay <strong>12.5%</strong> in total on entry to the United States since <strong>24 July 2026</strong>. The ordinary duty on toys is Free, the older China duties don't reach toys today, and the 10% China duty of 2025 has ended. Below: each layer, one building-block set worked through, and what it means for a small shipment.</p>
   <p class="reviewed">Rates last checked: 25 November 2026. Estimates only, not legal, customs or financial advice.</p>
+  <!-- PAID LINK DISCLOSURE. Delete hidden once any paid link on this page is shown. -->
+  <p class="paid-disclosure" hidden>Some links on this page are paid links: we earn a commission if you sign up through them. Each one is marked “Paid link”. Who pays us never changes a rate or a result.</p>
 </div>
 
 <div class="container">
@@ -344,7 +363,7 @@
   </div>
   <div class="section">
     <h2>China against other toy sources</h2>
-    <p>The 2026 country-wide rate on toys is 12.5% from China, Vietnam, Thailand and the Philippines, and 10% from Indonesia, Malaysia, India and Mexico (Mexico's 10% does not apply to goods that enter free under USMCA). The ordinary duty on heading 9503.00.00 is Free from all of them, and China's only older list for toys is suspended.</p>
+    <p>The 2026 country-wide rate on toys is 12.5% from China, Vietnam, Thailand and the Philippines, and 10% from Indonesia, Malaysia, India and Mexico (Mexico's 10% does not apply to goods that enter free under USMCA). Indonesia and Malaysia each have their own list of goods exempt from that duty, which we have not read, so check that your toy is not on it. The ordinary duty on heading 9503.00.00 is Free from all of them, and China's only older list for toys is suspended.</p>
     <p>So a move from China to Vietnam saves no duty on toys today, and a move to a 10% country saves 2.5 points: on the set above, 15 cents. See <a href="/tariff-on-toys-from-vietnam">toys from Vietnam</a> and <a href="/china-vs-vietnam-vs-mexico-vs-india-landed-cost">China vs Vietnam vs Mexico vs India</a>.</p>
     <p>List 4B is suspended, not ended. If USTR ever lifted the suspension, its +15% (heading 9903.88.16) would come on top. Nothing we read says that is planned.</p>
   </div>
@@ -357,6 +376,14 @@
       <li><strong>Tell your shops early.</strong> The <a href="/tariff-price-increase-letter">price increase letter templates</a> are a start.</li>
     </ul>
   </div>
+  <!-- PAID LINK PLACE "page-1": Easyship (shipping and duties) or Alibaba.com (sourcing), one per page.
+       To fill: put the programme's link in front of the label, as <a href="..." rel="sponsored noopener" target="_blank">..</a>,
+       delete hidden here, and delete hidden on this page's paid-disclosure line. -->
+  <p class="paid-link" data-paid-link="page-1" hidden><span class="paid-label">Paid link: we earn a commission if you sign up through it.</span></p>
+  <!-- AD PLACE "page-mid". Empty: hidden, no space, nothing loads.
+       To fill: paste the ad unit code from the ad network after the label, then delete the word hidden.
+       The place then keeps 300px of height before the ad loads (set by .ad-slot). -->
+  <aside class="ad-slot" data-ad-place="page-mid" aria-label="Advertisement" hidden><span class="ad-label">Advertisement</span></aside>
   <div class="section">
     <h2>Questions</h2>
     <h3>What is the tariff on toys from China?</h3>
@@ -366,7 +393,7 @@
     <h3>Does the 10% China tariff apply to toys?</h3>
     <p>No. The 10% China duty of November 2025 (heading 9903.01.24) ended on 20 February 2026 under Executive Order 14389, and the temporary 10% surcharge of 2026 ended on 24 July 2026. Neither comes on top of the 12.5%.</p>
     <h3>Is it cheaper to import toys from Vietnam than from China?</h3>
-    <p>Not on duty. Toys under heading 9503.00.00 pay 12.5% in total from both. Indonesia, Malaysia, India and Mexico pay 10% (Mexico's does not apply to goods that enter free under USMCA).</p>
+    <p>Not on duty. Toys under heading 9503.00.00 pay 12.5% in total from both. Indonesia, Malaysia, India and Mexico pay 10% (Mexico's does not apply to goods that enter free under USMCA). Indonesia and Malaysia each have their own list of goods exempt from that duty, which we have not read, so check that your toy is not on it.</p>
   </div>
   <div class="section">
     <h2>Sources</h2>
@@ -389,6 +416,10 @@
       <li><a href="/">Tariff Impact Calculator</a></li>
     </ul>
   </div>
+  <!-- AD PLACE "page-end". Empty: hidden, no space, nothing loads.
+       To fill: paste the ad unit code from the ad network after the label, then delete the word hidden.
+       The place then keeps 300px of height before the ad loads (set by .ad-slot). -->
+  <aside class="ad-slot" data-ad-place="page-end" aria-label="Advertisement" hidden><span class="ad-label">Advertisement</span></aside>
   <p class="disclaimer">Estimates only, not legal, customs or financial advice. The toy's prices and shipment sizes are an example.</p>
 </div>
 </main>

@@ -42,3 +42,13 @@ The `id` differs on every request, so it is not part of the site's own files. It
 - Chart.js 4.4.1 from `cdnjs.cloudflare.com`, on the home page.
 
 Nothing else: no ad code, no affiliate code, no fonts or images from other sites.
+
+## Ads and paid links
+
+The pages hold empty places for ads and for paid (affiliate) links. No ad network or affiliate code, ID or link is in the site yet.
+
+- **Ad places**: `<aside class="ad-slot" data-ad-place="..." hidden>`. Home page: `home-1` (after the calculator, before the rates table), `home-2` (between the guide and the FAQ), `home-3` (after the FAQ). Guide and product pages: `page-mid` (before "Questions") and `page-end` (before the closing disclaimer). None is above or inside the calculator.
+- **Paid link places**: `<p class="paid-link" data-paid-link="..." hidden>`, each already holding the label "Paid link: we earn a commission if you sign up through it." Home page: `home-alibaba`, `home-quickbooks`, `home-easyship`, `home-wise`, `home-shopify`, `home-faq-easyship`, `home-faq-shopify`. Guide and product pages: `page-1`, before "Questions"; the comment beside it names the programme that fits the page.
+- **Disclosure line**: `<p class="paid-disclosure" hidden>` near the top of every page that has a paid link place.
+
+While a place carries `hidden` it takes no space and loads nothing. To fill one, follow the comment beside it: paste the code or link, then delete `hidden`. A filled ad place keeps 300px of height before its ad loads, so the page doesn't jump. When a paid link is shown, also delete `hidden` on that page's disclosure line. Mark paid links `rel="sponsored noopener"`. Load an ad network's main script with `async`, after the page's own script, so the calculator never waits on it.

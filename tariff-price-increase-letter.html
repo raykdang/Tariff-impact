@@ -255,6 +255,23 @@
     .section { padding: 20px 18px; }
     footer.site-footer { padding: 28px 16px 20px 16px; }
   }
+
+  /* Ad and paid-link places (see README, "Ads and paid links").
+     An empty place carries the attribute hidden: it takes no space and loads nothing.
+     A filled ad place reserves its height before the ad loads, so the page does not jump. */
+  .ad-slot[hidden], .paid-link[hidden], .paid-disclosure[hidden] { display: none !important; }
+  .ad-slot {
+    display: block; box-sizing: border-box; width: 100%; max-width: 980px;
+    min-height: 300px; margin: 22px auto; padding: 0 16px;
+    text-align: center; overflow: hidden; contain: layout paint;
+  }
+  .ad-slot .ad-label {
+    display: block; font-size: 11px; color: var(--text-muted);
+    text-transform: uppercase; letter-spacing: 0.6px; margin: 0 0 6px 0;
+  }
+  .paid-link { font-size: 13px; color: var(--text-dim); margin: 10px 0 0 0; line-height: 1.6; }
+  .paid-link .paid-label { font-size: 12px; color: var(--text-muted); }
+  .paid-disclosure { font-size: 12px; color: var(--text-muted); margin: 8px 0 0 0; line-height: 1.6; }
 </style>
 </head>
 <body>
@@ -279,6 +296,8 @@
   <h1>Tariff price increase letter: three templates, with the number worked out</h1>
   <p class="lede">Three short letters you can copy today: one for wholesale and business customers, one for retail customers, and a notice for a shop counter or website. Below them: how to work out the percentage that goes in the gap.</p>
   <p class="reviewed">Last reviewed: 25 November 2026. Templates and estimates only, not legal advice.</p>
+  <!-- PAID LINK DISCLOSURE. Delete hidden once any paid link on this page is shown. -->
+  <p class="paid-disclosure" hidden>Some links on this page are paid links: we earn a commission if you sign up through them. Each one is marked “Paid link”. Who pays us never changes a rate or a result.</p>
 </div>
 
 <div class="container">
@@ -347,6 +366,14 @@
       <li><strong>Consider a surcharge line instead</strong> if you expect the tariff to be short-lived. It is easier to remove one line than to reprice a catalogue. See <a href="/tariff-surcharge-calculator">surcharge line or price rise</a>.</li>
     </ul>
   </div>
+  <!-- PAID LINK PLACE "page-1": QuickBooks or Airwallex (invoicing customers).
+       To fill: put the programme's link in front of the label, as <a href="..." rel="sponsored noopener" target="_blank">..</a>,
+       delete hidden here, and delete hidden on this page's paid-disclosure line. -->
+  <p class="paid-link" data-paid-link="page-1" hidden><span class="paid-label">Paid link: we earn a commission if you sign up through it.</span></p>
+  <!-- AD PLACE "page-mid". Empty: hidden, no space, nothing loads.
+       To fill: paste the ad unit code from the ad network after the label, then delete the word hidden.
+       The place then keeps 300px of height before the ad loads (set by .ad-slot). -->
+  <aside class="ad-slot" data-ad-place="page-mid" aria-label="Advertisement" hidden><span class="ad-label">Advertisement</span></aside>
   <div class="section">
     <h2>Questions</h2>
     <h3>How do I tell customers about a price increase due to tariffs?</h3>
@@ -373,6 +400,10 @@
       <li>Office of the U.S. Trade Representative, "Notice of Actions in Section 301 Investigations of Acts, Policies, and Practices of Various Economies Related to the Failure of Each Economy to Impose and Effectively Enforce a Prohibition on the Importation of Goods Produced with Forced Labor", Federal Register, 28 July 2026, 91 FR 47318: additional duties on goods entered on or after 24 July 2026. Read 25 November 2026.</li>
     </ul>
   </div>
+  <!-- AD PLACE "page-end". Empty: hidden, no space, nothing loads.
+       To fill: paste the ad unit code from the ad network after the label, then delete the word hidden.
+       The place then keeps 300px of height before the ad loads (set by .ad-slot). -->
+  <aside class="ad-slot" data-ad-place="page-end" aria-label="Advertisement" hidden><span class="ad-label">Advertisement</span></aside>
   <p class="disclaimer">Templates and estimates only, not legal or financial advice. The 20% in the example is an illustration.</p>
 </div>
 </main>

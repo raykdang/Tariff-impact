@@ -259,6 +259,23 @@
     .section { padding: 20px 18px; }
     footer.site-footer { padding: 28px 16px 20px 16px; }
   }
+
+  /* Ad and paid-link places (see README, "Ads and paid links").
+     An empty place carries the attribute hidden: it takes no space and loads nothing.
+     A filled ad place reserves its height before the ad loads, so the page does not jump. */
+  .ad-slot[hidden], .paid-link[hidden], .paid-disclosure[hidden] { display: none !important; }
+  .ad-slot {
+    display: block; box-sizing: border-box; width: 100%; max-width: 980px;
+    min-height: 300px; margin: 22px auto; padding: 0 16px;
+    text-align: center; overflow: hidden; contain: layout paint;
+  }
+  .ad-slot .ad-label {
+    display: block; font-size: 11px; color: var(--text-muted);
+    text-transform: uppercase; letter-spacing: 0.6px; margin: 0 0 6px 0;
+  }
+  .paid-link { font-size: 13px; color: var(--text-dim); margin: 10px 0 0 0; line-height: 1.6; }
+  .paid-link .paid-label { font-size: 12px; color: var(--text-muted); }
+  .paid-disclosure { font-size: 12px; color: var(--text-muted); margin: 8px 0 0 0; line-height: 1.6; }
 </style>
 </head>
 <body>
@@ -283,6 +300,8 @@
   <h1>Tariff surcharge calculator: what percentage to add to an invoice</h1>
   <p class="lede">Enter what the goods cost you, the tariff rate you pay and your selling price. You get the surcharge in dollars per unit, and the same amount as a percentage of your price to put on the invoice.</p>
   <p class="reviewed">Last reviewed: 25 November 2026. Estimates only, not legal, tax or financial advice.</p>
+  <!-- PAID LINK DISCLOSURE. Delete hidden once any paid link on this page is shown. -->
+  <p class="paid-disclosure" hidden>Some links on this page are paid links: we earn a commission if you sign up through them. Each one is marked “Paid link”. Who pays us never changes a rate or a result.</p>
 </div>
 
 <div class="container">
@@ -377,6 +396,14 @@
     <h2>Where to find the rate you pay</h2>
     <p>Use the rate on your own paperwork, not a headline. Your customs broker's entry summary shows the duty paid on each shipment. For a product you haven't imported yet, look up its code in the official <a href="https://hts.usitc.gov/" target="_blank" rel="noopener">Harmonized Tariff Schedule</a> and ask a broker which extra duties sit on top. U.S. duties changed several times in 2026, so check the date on anything you read, this page included.</p>
   </div>
+  <!-- PAID LINK PLACE "page-1": QuickBooks or Airwallex (invoicing the surcharge).
+       To fill: put the programme's link in front of the label, as <a href="..." rel="sponsored noopener" target="_blank">..</a>,
+       delete hidden here, and delete hidden on this page's paid-disclosure line. -->
+  <p class="paid-link" data-paid-link="page-1" hidden><span class="paid-label">Paid link: we earn a commission if you sign up through it.</span></p>
+  <!-- AD PLACE "page-mid". Empty: hidden, no space, nothing loads.
+       To fill: paste the ad unit code from the ad network after the label, then delete the word hidden.
+       The place then keeps 300px of height before the ad loads (set by .ad-slot). -->
+  <aside class="ad-slot" data-ad-place="page-mid" aria-label="Advertisement" hidden><span class="ad-label">Advertisement</span></aside>
   <div class="section">
     <h2>Questions</h2>
     <h3>How do I calculate a tariff surcharge?</h3>
@@ -406,6 +433,10 @@
       <li>U.S. International Trade Commission, Harmonized Tariff Schedule, hts.usitc.gov, for looking up a product's rate. No rate from it is quoted on this page.</li>
     </ul>
   </div>
+  <!-- AD PLACE "page-end". Empty: hidden, no space, nothing loads.
+       To fill: paste the ad unit code from the ad network after the label, then delete the word hidden.
+       The place then keeps 300px of height before the ad loads (set by .ad-slot). -->
+  <aside class="ad-slot" data-ad-place="page-end" aria-label="Advertisement" hidden><span class="ad-label">Advertisement</span></aside>
   <p class="disclaimer">Estimates only, not legal, tax or financial advice. The example rates on this page are illustrations.</p>
 </div>
 </main>
