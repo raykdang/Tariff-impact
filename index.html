@@ -1295,9 +1295,14 @@ const palette = {
   accent: '#4f8cff', good: '#34d399', bad: '#f87171', warn: '#fbbf24',
   purple: '#a78bfa', pink: '#f472b6', cyan: '#7dd3fc',
 };
-Chart.defaults.color = palette.dim;
-Chart.defaults.font.family = '-apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Roboto, sans-serif';
-Chart.defaults.font.size = 11;
+// Chart.js comes from cdnjs. If it fails to load (blocked, offline), skip the
+// charts only, so the KPIs, scenario table and rates table still fill in.
+const hasChart = typeof window.Chart === 'function';
+if (hasChart) {
+  Chart.defaults.color = palette.dim;
+  Chart.defaults.font.family = '-apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Roboto, sans-serif';
+  Chart.defaults.font.size = 11;
+}
 const baseTooltip = {
   backgroundColor: '#1a2233', borderColor: '#2b3650', borderWidth: 1,
   titleColor: '#e6ecf5', bodyColor: '#e6ecf5',
@@ -1307,6 +1312,7 @@ const baseTooltip = {
 let chartCost, chartPass, chartWaterfall, chartMargin, chartCountries, chartSensitivity, chartAnnual;
 
 function initCharts() {
+  if (!hasChart) return;
   chartCost = new Chart(document.getElementById('chartCost'), {
     type: 'bar',
     data: {
@@ -1494,46 +1500,8 @@ function initCharts() {
   });
 }
 
-// ---------------------- UPDATE ----------------------
-function update() {
-  const r = calc(state.pass);
-  const be = findBreakevenPrice();
-  const breakeven = be.price;
-
-  document.getElementById('kpi_landed').textContent = fmt$(r.landedCostPost);
-  document.getElementById('kpi_landed_sub').textContent = 'Was ' + fmt$(r.landedCostPre) + ' pre-tariff';
-  const landedDeltaPct = r.landedCostPre > 0 ? ((r.landedCostPost - r.landedCostPre) / r.landedCostPre) * 100 : 0;
-  document.getElementById('kpi_landed_delta').textContent = '+' + fmt$(r.landedCostPost - r.landedCostPre) + ' (+' + landedDeltaPct.toFixed(1) + '%)';
-  document.getElementById('kpi_landed_delta').className = 'kpi-delta ' + (r.tariffPerUnit > 0 ? 'bad' : 'neutral');
-
-  document.getElementById('kpi_margin').textContent = fmt$(r.postMarginUnit);
-  document.getElementById('kpi_margin_sub').textContent = 'Was ' + fmt$(r.preMarginUnit) + ' pre-tariff';
-  const marginDelta = r.postMarginUnit - r.preMarginUnit;
-  const marginEl = document.getElementById('kpi_margin_delta');
-  marginEl.textContent = (marginDelta >= 0 ? '+' : '−') + '$' + Math.abs(marginDelta).toFixed(2) + ' / unit';
-  marginEl.className = 'kpi-delta ' + (marginDelta >= 0 ? 'good' : 'bad');
-
-  document.getElementById('kpi_profitDelta').textContent = fmt$0(r.profitDelta);
-  const ppEl = document.getElementById('kpi_profitPct');
-  ppEl.textContent = fmtPct(r.profitPct);
-  ppEl.className = 'kpi-delta ' + (r.profitDelta >= 0 ? 'good' : 'bad');
-  document.getElementById('kpi_profitSub').textContent = 'pre: ' + fmt$0(r.preProfit) + ' → now: ' + fmt$0(r.postProfit);
-
-  const beEl = document.getElementById('kpi_breakevenDelta');
-  if (breakeven === null) {
-    // No price restores pre-tariff profit: say so, and show the best that price alone can do.
-    document.getElementById('kpi_breakeven').textContent = 'None';
-    document.getElementById('kpi_breakevenSub').textContent = 'no price restores pre-tariff profit';
-    beEl.textContent = 'Best: ' + fmt$0(be.bestProfit) + '/mo at ' + fmt$(be.bestPrice);
-    beEl.className = 'kpi-delta bad';
-  } else {
-  document.getElementById('kpi_breakeven').textContent = fmt$(breakeven);
-  document.getElementById('kpi_breakevenSub').textContent = 'to maintain pre-tariff profit';
-  const beDelta = breakeven - state.price;
-  beEl.textContent = (beDelta >= 0 ? '+' : '−') + '$' + Math.abs(beDelta).toFixed(2) + ' vs current';
-  beEl.className = 'kpi-delta ' + (Math.abs(beDelta) < 0.01 ? 'neutral' : (beDelta > 0 ? 'bad' : 'good'));
-  }
-
+// Draws every chart for one result of calc(). Called only when Chart.js loaded.
+function updateCharts(r) {
   const preStack = [state.cost, 0, state.ship, state.var, r.preMarginUnit > 0 ? r.preMarginUnit : 0];
   const postStack = [state.cost, r.tariffPerUnit, state.ship, state.var, r.postMarginUnit > 0 ? r.postMarginUnit : 0];
   for (let i = 0; i < 5; i++) chartCost.data.datasets[i].data = [preStack[i], postStack[i]];
@@ -1640,6 +1608,52 @@ function update() {
   chartAnnual.data.datasets[0].data = preCum;
   chartAnnual.data.datasets[1].data = postCum;
   chartAnnual.update('none');
+}
+
+// ---------------------- UPDATE ----------------------
+function update() {
+  const r = calc(state.pass);
+  const be = findBreakevenPrice();
+  const breakeven = be.price;
+
+  document.getElementById('kpi_landed').textContent = fmt$(r.landedCostPost);
+  document.getElementById('kpi_landed_sub').textContent = 'Was ' + fmt$(r.landedCostPre) + ' pre-tariff';
+  const landedDeltaPct = r.landedCostPre > 0 ? ((r.landedCostPost - r.landedCostPre) / r.landedCostPre) * 100 : 0;
+  document.getElementById('kpi_landed_delta').textContent = '+' + fmt$(r.landedCostPost - r.landedCostPre) + ' (+' + landedDeltaPct.toFixed(1) + '%)';
+  document.getElementById('kpi_landed_delta').className = 'kpi-delta ' + (r.tariffPerUnit > 0 ? 'bad' : 'neutral');
+
+  document.getElementById('kpi_margin').textContent = fmt$(r.postMarginUnit);
+  document.getElementById('kpi_margin_sub').textContent = 'Was ' + fmt$(r.preMarginUnit) + ' pre-tariff';
+  const marginDelta = r.postMarginUnit - r.preMarginUnit;
+  const marginEl = document.getElementById('kpi_margin_delta');
+  marginEl.textContent = (marginDelta >= 0 ? '+' : '−') + '$' + Math.abs(marginDelta).toFixed(2) + ' / unit';
+  marginEl.className = 'kpi-delta ' + (marginDelta >= 0 ? 'good' : 'bad');
+
+  document.getElementById('kpi_profitDelta').textContent = fmt$0(r.profitDelta);
+  const ppEl = document.getElementById('kpi_profitPct');
+  ppEl.textContent = fmtPct(r.profitPct);
+  ppEl.className = 'kpi-delta ' + (r.profitDelta >= 0 ? 'good' : 'bad');
+  document.getElementById('kpi_profitSub').textContent = 'pre: ' + fmt$0(r.preProfit) + ' → now: ' + fmt$0(r.postProfit);
+
+  const beEl = document.getElementById('kpi_breakevenDelta');
+  if (breakeven === null) {
+    // No price restores pre-tariff profit: say so, and show the best that price alone can do.
+    document.getElementById('kpi_breakeven').textContent = 'None';
+    document.getElementById('kpi_breakevenSub').textContent = 'no price restores pre-tariff profit';
+    beEl.textContent = 'Best: ' + fmt$0(be.bestProfit) + '/mo at ' + fmt$(be.bestPrice);
+    beEl.className = 'kpi-delta bad';
+  } else {
+  document.getElementById('kpi_breakeven').textContent = fmt$(breakeven);
+  document.getElementById('kpi_breakevenSub').textContent = 'to maintain pre-tariff profit';
+  const beDelta = breakeven - state.price;
+  beEl.textContent = (beDelta >= 0 ? '+' : '−') + '$' + Math.abs(beDelta).toFixed(2) + ' vs current';
+  beEl.className = 'kpi-delta ' + (Math.abs(beDelta) < 0.01 ? 'neutral' : (beDelta > 0 ? 'bad' : 'good'));
+  }
+
+  // The charts need Chart.js from the CDN. Without it, the numbers and tables
+  // above and below still fill in; only the charts are skipped.
+  if (hasChart) updateCharts(r);
+
 
   const scenarios = [
     { name: 'Absorb 100%', pass: 0 },
