@@ -1084,12 +1084,14 @@
     <div>
       <h4>Tariff-Impact.com</h4>
       <p>Free tools and educational content for small business owners navigating import tariffs and trade policy.</p>
+      <p><a href="/about">About</a> · <a href="/contact">Contact &amp; Advertise</a> · <a href="/privacy">Privacy</a> · <a href="/terms">Terms</a></p>
     </div>
     <div>
       <h4>Tools</h4>
       <ul>
         <li><a href="/">Tariff Calculator</a></li>
         <li><a href="#live-tariff-rates">Tariff Rates</a></li>
+        <li><a href="/tariff-surcharge-calculator">Tariff Surcharge Calculator</a></li>
       </ul>
     </div>
     <div>
@@ -1097,7 +1099,10 @@
       <ul>
         <li><a href="#understanding-tariffs">Understanding Tariffs</a></li>
         <li><a href="#faq">FAQ</a></li>
-        <li><a href="/contact">Contact &amp; Advertise</a></li>
+        <li><a href="/absorb-tariff-or-raise-prices">Absorb a Tariff or Raise Prices?</a></li>
+        <li><a href="/tariff-price-increase-letter">Price Increase Letter Templates</a></li>
+        <li><a href="/china-vs-vietnam-vs-mexico-vs-india-landed-cost">China vs Vietnam vs Mexico vs India</a></li>
+        <li><a href="/tariff-on-upholstered-furniture-from-vietnam">Furniture from Vietnam</a></li>
       </ul>
     </div>
     <div>
@@ -1348,6 +1353,22 @@ function showExampleRate() {
     '<strong>Example rate: ' + state.tariff + '%.</strong> A made-up starting value, not the rate for any country. ' +
     'Enter your product\'s own rate, or pick a country pair to fill in its country-wide duty.';
   update();
+}
+
+// A rate given in the link wins over the example or the country row, so the
+// note says so. The rate is a number already checked by readScenarioFromAddress.
+function showLinkRate(linked) {
+  if (!('tariff' in linked)) return;
+  const note = document.getElementById('autoFillNote');
+  const head = '<strong>Rate from the link: ' + linked.tariff + '%.</strong> ';
+  if (!(linked.countryFrom || linked.countryTo)) {
+    note.innerHTML = head + 'Enter your product\'s own rate, or pick a country pair to fill in its country-wide duty.';
+    return;
+  }
+  const row = tariffData.rates[`${state.countryFrom}->${state.countryTo}`];
+  if (!row || row.rate !== linked.tariff) {
+    note.innerHTML = head + 'For comparison: ' + note.innerHTML;
+  }
 }
 
 function rateCheckedText(data) {
@@ -2132,6 +2153,7 @@ if (linked.countryFrom) state.countryFrom = linked.countryFrom;
 if (linked.countryTo) state.countryTo = linked.countryTo;
 populateCountries(Boolean(linked.countryFrom || linked.countryTo));
 linkParams.forEach(p => { if (p.key in linked) state[p.key] = linked[p.key]; });
+showLinkRate(linked);
 syncFromState();
 update();
 
