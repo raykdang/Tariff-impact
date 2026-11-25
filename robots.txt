@@ -1,0 +1,10 @@
+# robots.txt for tariff-impact.com
+# Allow all crawlers full access
+User-agent: *
+Allow: /
+
+# Disallow nothing — this is a public information site
+Disallow:
+
+# Sitemap location
+Sitemap: https://tariff-impact.com/sitemap.xml

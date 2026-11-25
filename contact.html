@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3FXPSLFG9X"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-3FXPSLFG9X');
+</script>
+
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Contact &amp; Advertise | Tariff-Impact.com</title>
+<meta name="description" content="Get in touch with Tariff-Impact.com. Advertisers and partners welcome — reach small business owners, importers, and e-commerce sellers researching tariff impact.">
+<link rel="canonical" href="https://tariff-impact.com/contact.html">
+
+<!-- Favicon -->
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="apple-touch-icon" href="/favicon.svg">
+<meta name="theme-color" content="#4f8cff">
+
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://tariff-impact.com/contact.html">
+<meta property="og:title" content="Contact &amp; Advertise | Tariff-Impact.com">
+<meta property="og:description" content="Reach small business owners researching tariff impact. Email contact@tariff-impact.com.">
+
+<style>
+  :root {
+    --bg-0: #0b0f17; --bg-1: #111826; --bg-2: #1a2233; --bg-3: #232c40;
+    --border: #2b3650; --text: #e6ecf5; --text-dim: #97a3b8; --text-muted: #6b7791;
+    --accent: #4f8cff; --accent-2: #7dd3fc;
+    --good: #34d399; --warn: #fbbf24; --bad: #f87171;
+    --purple: #a78bfa;
+    --shadow: 0 6px 24px rgba(0,0,0,0.35);
+  }
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0; padding: 0;
+    background: radial-gradient(1200px 600px at 10% -10%, #182238 0%, var(--bg-0) 60%) fixed;
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Roboto, "Helvetica Neue", Arial, sans-serif;
+    font-size: 14px; min-height: 100vh; line-height: 1.55;
+  }
+  a { color: var(--accent-2); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+
+  nav.top-nav {
+    background: rgba(11,15,23,0.85); backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    padding: 12px 28px;
+    display: flex; align-items: center; justify-content: space-between;
+    position: sticky; top: 0; z-index: 90;
+    flex-wrap: wrap; gap: 12px;
+  }
+  nav.top-nav .nav-brand { display: flex; align-items: center; gap: 10px; font-weight: 700; }
+  nav.top-nav .nav-brand .nav-mark {
+    width: 28px; height: 28px; border-radius: 7px;
+    background: linear-gradient(135deg, var(--accent), var(--purple));
+    display: grid; place-items: center; font-size: 13px;
+  }
+  nav.top-nav .nav-links { display: flex; gap: 4px; flex-wrap: wrap; }
+  nav.top-nav .nav-links a {
+    color: var(--text-dim); padding: 6px 12px; border-radius: 6px;
+    font-size: 13px; text-decoration: none; transition: all 0.15s;
+  }
+  nav.top-nav .nav-links a:hover, nav.top-nav .nav-links a.active {
+    color: var(--text); background: var(--bg-2);
+  }
+
+  .hero {
+    max-width: 880px; margin: 50px auto 30px auto; padding: 0 28px; text-align: center;
+  }
+  .hero h1 {
+    font-size: 38px; margin: 0 0 14px 0; letter-spacing: -0.5px;
+    background: linear-gradient(135deg, var(--text), var(--accent-2));
+    -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+    color: var(--text); /* fallback */
+  }
+  .hero .lede {
+    font-size: 16px; color: var(--text-dim); line-height: 1.7; max-width: 660px; margin: 0 auto;
+  }
+
+  .container {
+    max-width: 880px; margin: 0 auto; padding: 0 28px 30px 28px;
+  }
+
+  .contact-card {
+    background: linear-gradient(135deg, rgba(79,140,255,0.10), rgba(167,139,250,0.06));
+    border: 1px solid rgba(79,140,255,0.3);
+    border-radius: 16px;
+    padding: 36px 32px;
+    text-align: center;
+    margin-bottom: 30px;
+    box-shadow: var(--shadow);
+  }
+  .contact-card .label {
+    color: var(--accent-2); font-size: 12px; text-transform: uppercase;
+    letter-spacing: 1.2px; margin-bottom: 10px;
+  }
+  .contact-card .email {
+    font-size: 28px; font-weight: 700; color: var(--text);
+    letter-spacing: -0.3px;
+    word-break: break-all;
+  }
+  .contact-card .email a { color: var(--text); text-decoration: none; }
+  .contact-card .email a:hover { color: var(--accent-2); }
+  .contact-card .cta-row {
+    margin-top: 24px; display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;
+  }
+  .btn-primary {
+    background: linear-gradient(135deg, var(--accent), #6f7bff);
+    color: white; padding: 12px 24px; border-radius: 10px;
+    text-decoration: none; font-size: 14px; font-weight: 600;
+    border: none; cursor: pointer; display: inline-block;
+    transition: filter 0.15s;
+  }
+  .btn-primary:hover { filter: brightness(1.1); text-decoration: none; }
+  .btn-secondary {
+    background: var(--bg-2); border: 1px solid var(--border);
+    color: var(--text); padding: 12px 22px; border-radius: 10px;
+    text-decoration: none; font-size: 14px; font-weight: 500;
+    cursor: pointer; display: inline-block;
+    transition: all 0.15s;
+  }
+  .btn-secondary:hover { background: var(--bg-3); border-color: var(--accent); }
+
+  .section {
+    background: var(--bg-1); border: 1px solid var(--border);
+    border-radius: 12px; padding: 26px 30px;
+    margin-bottom: 22px;
+  }
+  .section h2 { font-size: 20px; margin: 0 0 12px 0; color: var(--text); }
+  .section p { font-size: 14px; color: var(--text-dim); line-height: 1.75; margin: 0 0 12px 0; }
+  .section ul { color: var(--text-dim); line-height: 1.75; padding-left: 22px; }
+  .section ul li { margin-bottom: 6px; }
+  .section strong { color: var(--text); }
+
+  .audience-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px;
+    margin-top: 18px;
+  }
+  @media (max-width: 700px) { .audience-grid { grid-template-columns: 1fr; } }
+  .audience-card {
+    background: var(--bg-2); border: 1px solid var(--border);
+    border-radius: 10px; padding: 16px;
+  }
+  .audience-card h4 {
+    font-size: 13px; margin: 0 0 6px 0; color: var(--text);
+    display: flex; align-items: center; gap: 6px;
+  }
+  .audience-card h4::before {
+    content: ""; width: 8px; height: 8px; border-radius: 2px; background: var(--accent);
+  }
+  .audience-card p { font-size: 12px; margin: 0; color: var(--text-dim); }
+
+  .stats-row {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px;
+    margin-top: 18px;
+  }
+  @media (max-width: 700px) { .stats-row { grid-template-columns: 1fr; } }
+  .stat-card {
+    background: var(--bg-2); border: 1px solid var(--border);
+    border-radius: 10px; padding: 16px; text-align: center;
+  }
+  .stat-card .stat-value {
+    font-size: 22px; font-weight: 700; color: var(--accent-2);
+    margin-bottom: 4px;
+  }
+  .stat-card .stat-label {
+    font-size: 11px; color: var(--text-muted);
+    text-transform: uppercase; letter-spacing: 0.6px;
+  }
+
+  details.faq-item {
+    background: var(--bg-2); border: 1px solid var(--border);
+    border-radius: 8px; margin-bottom: 10px; overflow: hidden;
+  }
+  details.faq-item summary {
+    padding: 12px 16px; cursor: pointer; font-weight: 600; font-size: 13px;
+    color: var(--text); list-style: none; position: relative;
+  }
+  details.faq-item summary::-webkit-details-marker { display: none; }
+  details.faq-item summary::after {
+    content: "+"; position: absolute; right: 16px; top: 10px;
+    color: var(--text-dim); font-size: 16px;
+  }
+  details.faq-item[open] summary::after { content: "−"; }
+  details.faq-item summary:hover { color: var(--accent-2); }
+  details.faq-item .faq-body {
+    padding: 0 16px 14px 16px; color: var(--text-dim); font-size: 12px; line-height: 1.7;
+  }
+
+  footer.site-footer {
+    border-top: 1px solid var(--border);
+    margin-top: 50px; padding: 32px 28px 24px 28px;
+    color: var(--text-muted); font-size: 12px; line-height: 1.7;
+  }
+  footer.site-footer .footer-grid {
+    max-width: 1100px; margin: 0 auto;
+    display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 30px;
+  }
+  @media (max-width: 800px) { footer.site-footer .footer-grid { grid-template-columns: 1fr 1fr; } }
+  footer.site-footer h4 { color: var(--text); font-size: 12px; text-transform: uppercase; letter-spacing: 1px; margin: 0 0 10px 0; }
+  footer.site-footer ul { list-style: none; padding: 0; margin: 0; }
+  footer.site-footer li { margin-bottom: 6px; }
+  footer.site-footer a { color: var(--text-dim); }
+  footer.site-footer .copy { text-align: center; margin-top: 24px; padding-top: 18px; border-top: 1px solid var(--border); }
+</style>
+</head>
+<body>
+
+<nav class="top-nav">
+  <a href="/" class="nav-brand" style="color: var(--text); text-decoration: none;">
+    <span class="nav-mark">T</span>
+    <span>Tariff-Impact.com</span>
+  </a>
+  <div class="nav-links">
+    <a href="/">Calculator</a>
+    <a href="/#live-tariff-rates">Live Tariff Rates</a>
+    <a href="/#understanding-tariffs">Guide</a>
+    <a href="/#faq">FAQ</a>
+    <a href="/contact.html" class="active">Contact</a>
+  </div>
+</nav>
+
+<div class="hero">
+  <h1>Get in touch</h1>
+  <p class="lede">
+    Whether you're an advertiser looking to reach small business importers and e-commerce sellers, a journalist covering trade policy, or a small business owner with feedback — we want to hear from you.
+  </p>
+</div>
+
+<div class="container">
+
+  <div class="contact-card">
+    <div class="label">Email us at</div>
+    <div class="email">
+      <a href="mailto:contact@tariff-impact.com">contact@tariff-impact.com</a>
+    </div>
+    <div class="cta-row">
+      <a class="btn-primary" href="mailto:contact@tariff-impact.com?subject=Advertising%20inquiry%20—%20Tariff-Impact.com">Email about advertising</a>
+      <a class="btn-secondary" href="mailto:contact@tariff-impact.com?subject=General%20inquiry">General inquiry</a>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>Advertise with us</h2>
+    <p>
+      Tariff-Impact.com reaches a focused, high-intent audience of <strong>small business owners, importers, e-commerce sellers, freight forwarders, and customs brokers</strong> actively researching the impact of tariffs on their business. If your product or service helps small businesses navigate trade, our readers are exactly your target market.
+    </p>
+
+    <h3 style="font-size: 14px; color: var(--text); margin: 18px 0 10px 0;">Who reads this site</h3>
+    <div class="audience-grid">
+      <div class="audience-card">
+        <h4>Small business owners</h4>
+        <p>Importing physical goods and trying to model the cost impact of tariffs on margin and pricing.</p>
+      </div>
+      <div class="audience-card">
+        <h4>E-commerce sellers</h4>
+        <p>Amazon, Shopify, eBay sellers sourcing from China, Vietnam, Mexico, and elsewhere.</p>
+      </div>
+      <div class="audience-card">
+        <h4>Trade professionals</h4>
+        <p>Customs brokers, freight forwarders, and trade attorneys advising clients on tariff strategy.</p>
+      </div>
+    </div>
+
+    <h3 style="font-size: 14px; color: var(--text); margin: 22px 0 10px 0;">What we offer</h3>
+    <ul>
+      <li><strong>Display advertising</strong> — banner placements on the calculator page, tariff rates table, and educational content.</li>
+      <li><strong>Sponsored content</strong> — articles or guides written for our audience, clearly disclosed.</li>
+      <li><strong>Newsletter sponsorship</strong> — placement in our email digest of tariff news and updates.</li>
+      <li><strong>Tool integrations</strong> — referral partnerships if your tool helps small businesses with trade compliance, sourcing, or freight.</li>
+    </ul>
+
+    <p style="margin-top: 18px;">
+      <a class="btn-primary" href="mailto:contact@tariff-impact.com?subject=Advertising%20inquiry%20—%20Tariff-Impact.com&body=Hi%2C%0A%0AI'd%20like%20to%20learn%20more%20about%20advertising%20opportunities.%20A%20bit%20about%20us%3A%0A%0A-%20Company%3A%20%0A-%20Product%2Fservice%3A%20%0A-%20Target%20customer%3A%20%0A-%20Budget%20range%3A%20%0A-%20Timing%3A%20%0A%0AThanks%21">Start an advertising conversation</a>
+    </p>
+  </div>
+
+  <div class="section">
+    <h2>Other ways we can help</h2>
+
+    <details class="faq-item">
+      <summary>I'm a small business owner — can you help me with my specific tariff situation?</summary>
+      <div class="faq-body">
+        We're a free educational resource, not a customs brokerage. For your specific HTS code and product, you'll need to consult a licensed customs broker or trade attorney. That said, if you have feedback about our calculator, the data we publish, or topics we should cover, we'd love to hear it. Email us anytime.
+      </div>
+    </details>
+
+    <details class="faq-item">
+      <summary>I'm a journalist — can I cite your data or interview you?</summary>
+      <div class="faq-body">
+        Yes. Our tariff rate dataset is freely usable with attribution to Tariff-Impact.com. For interviews, comments, or background on small business tariff impact, email us with your deadline and we'll do our best to respond promptly.
+      </div>
+    </details>
+
+    <details class="faq-item">
+      <summary>I found a bug or wrong tariff rate — how do I report it?</summary>
+      <div class="faq-body">
+        Email us with the corridor and HTS code, plus your source for the corrected rate. We update the dataset regularly and your feedback genuinely helps. We credit corrections in our update notes.
+      </div>
+    </details>
+
+    <details class="faq-item">
+      <summary>Do you accept guest posts?</summary>
+      <div class="faq-body">
+        We're selective but open to high-quality guest contributions on small business trade strategy, sourcing case studies, or technical tariff topics. Pitches must include a topic outline and a writing sample. Generic SEO link-building requests will be ignored.
+      </div>
+    </details>
+  </div>
+
+  <div class="section">
+    <h2>Response time</h2>
+    <p>
+      We aim to respond to all email within 2 business days. Advertising inquiries are usually answered within one business day. If your request is time-sensitive (e.g., a journalist deadline), please note it in the subject line.
+    </p>
+  </div>
+
+</div>
+
+<footer class="site-footer">
+  <div class="footer-grid">
+    <div>
+      <h4>Tariff-Impact.com</h4>
+      <p>Free tools and educational content for small business owners navigating import tariffs and trade policy.</p>
+    </div>
+    <div>
+      <h4>Tools</h4>
+      <ul>
+        <li><a href="/">Tariff Calculator</a></li>
+        <li><a href="/#live-tariff-rates">Live Tariff Rates</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Learn</h4>
+      <ul>
+        <li><a href="/#understanding-tariffs">Understanding Tariffs</a></li>
+        <li><a href="/#faq">FAQ</a></li>
+        <li><a href="/contact.html">Contact &amp; Advertise</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>External</h4>
+      <ul>
+        <li><a href="https://hts.usitc.gov/" target="_blank" rel="noopener">USITC HTS Lookup</a></li>
+        <li><a href="https://ustr.gov/" target="_blank" rel="noopener">USTR</a></li>
+        <li><a href="https://www.cbp.gov/trade" target="_blank" rel="noopener">CBP</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="copy">
+    © <span id="footerYear"></span> Tariff-Impact.com — Estimates only. Not legal or financial advice.
+  </div>
+</footer>
+
+<script>
+  document.getElementById('footerYear').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
