@@ -90,6 +90,13 @@ await page.evaluate(async () => {
   for (const c of COUNTIES) if (c !== 'San Francisco') await quiet(lineQ('k', c, y));
   for (const c of ['San Francisco', 'San Jose', 'Oakland', 'Berkeley', 'Fremont', 'Palo Alto']) await quiet(lineQ('c', c, y));
 });
+// A plain table for viewers that do not run JavaScript.
+const plain = await page.evaluate(() => {
+  if (!AGG) return '';
+  const y = LY();
+  return `<h3>Local spending by county, ${fy(y)}</h3><div class="tblw"><table><thead><tr><th>County</th><th class="n">Total</th><th class="n">Per resident</th><th class="n">From ${fy(y - 1)}</th></tr></thead><tbody>${[null, ...COUNTIES].map(c => `<tr><td>${c || '<b>All nine counties</b>'}</td><td class="n">${money(SP(c, y))}</td><td class="n">$${int(SP(c, y) / POP(c, y))}</td><td class="n">${spct(SP(c, y) / SP(c, y - 1) - 1)}</td></tr>`).join('')}</tbody></table></div><p class="tiny">California State Controller, saved ${dt(T0)}.</p>`;
+});
+if (plain) html = html.replace(/<!--static-->[\s\S]*?<!--\/static-->/, () => '<!--static-->' + plain + '<!--/static-->');
 const { fresh, missed } = await page.evaluate(async () => {
   const fresh = {}, missed = [];
   for (const l of LOG) {
