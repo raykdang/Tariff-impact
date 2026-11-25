@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Tariff Calculator Widget | Tariff-Impact.com</title>
+<meta name="description" content="A compact tariff impact calculator for other sites to embed: cost per unit, margin, monthly profit and break-even price after an import tariff.">
+<!-- This page is shown inside other sites' pages. It is kept out of search so it
+     does not compete with the full calculator on the home page. -->
+<meta name="robots" content="noindex, follow">
+<link rel="canonical" href="https://tariff-impact.com/widget">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<!-- No analytics, no cookies, no outside scripts: sites that embed this page
+     add nothing to their own privacy notice by doing so. -->
+<style>
+  :root {
+    --bg-0: #0b0f17; --bg-1: #111826; --bg-2: #1a2233; --bg-3: #232c40;
+    --border: #2b3650; --text: #e6ecf5; --text-dim: #97a3b8; --text-muted: #6b7791;
+    --accent: #4f8cff; --accent-2: #7dd3fc;
+    --good: #34d399; --warn: #fbbf24; --bad: #f87171; --purple: #a78bfa;
+  }
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0; padding: 0;
+    background: var(--bg-0); color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Roboto, "Helvetica Neue", Arial, sans-serif;
+    font-size: 14px; line-height: 1.45;
+  }
+  a { color: var(--accent-2); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  .w { padding: 14px; min-width: 0; }
+  .w-head { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin: 0 0 10px 0; flex-wrap: wrap; }
+  .w-head h1 { font-size: 16px; margin: 0; line-height: 1.25; }
+  .w-brand { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; color: var(--text-dim); }
+  .w-mark {
+    width: 20px; height: 20px; border-radius: 5px; color: #fff; font-size: 11px; font-weight: 700;
+    background: linear-gradient(135deg, var(--accent), var(--purple));
+    display: inline-grid; place-items: center;
+  }
+  .grid { display: grid; grid-template-columns: 1fr; gap: 8px 10px; }
+  @media (min-width: 420px) { .grid { grid-template-columns: 1fr 1fr; } }
+  .grid > * { min-width: 0; }
+  label { display: block; font-size: 12px; color: var(--text-dim); margin: 0 0 3px 0; }
+  input, select {
+    width: 100%; background: var(--bg-2); border: 1px solid var(--border); border-radius: 7px;
+    color: var(--text); font-size: 16px; padding: 7px 9px; font-family: inherit;
+  }
+  input:focus, select:focus { outline: none; border-color: var(--accent); }
+  .rate-note {
+    font-size: 12px; color: var(--text-dim); background: var(--bg-1);
+    border: 1px solid var(--border); border-radius: 8px; padding: 8px 10px; margin: 10px 0;
+  }
+  .rate-note strong { color: var(--text); }
+  .rate-note details { margin-top: 4px; }
+  .rate-note summary { cursor: pointer; color: var(--accent-2); }
+  details.more { margin: 10px 0 0 0; }
+  details.more > summary { cursor: pointer; font-size: 12px; color: var(--accent-2); margin-bottom: 8px; }
+  .out { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin: 12px 0 10px 0; }
+  .out > div { background: var(--bg-1); border: 1px solid var(--border); border-radius: 9px; padding: 9px 10px; min-width: 0; }
+  .out .k { font-size: 11px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.4px; }
+  .out .v { font-size: 19px; font-weight: 700; margin: 2px 0 1px 0; overflow-wrap: anywhere; }
+  .out .s { font-size: 11px; color: var(--text-dim); overflow-wrap: anywhere; }
+  .bad { color: var(--bad); } .good { color: var(--good); }
+  .w-foot { display: flex; justify-content: space-between; align-items: center; gap: 8px; flex-wrap: wrap; font-size: 11px; color: var(--text-muted); }
+  .w-foot a.full { font-size: 13px; font-weight: 600; }
+</style>
+</head>
+<body>
+<main class="w" id="w">
+  <div class="w-head">
+    <h1>Tariff impact calculator</h1>
+    <a class="w-brand" href="https://tariff-impact.com/" target="_blank" rel="noopener"><span class="w-mark">T</span>Tariff-Impact.com</a>
+  </div>
+
+  <div class="grid">
+    <div><label for="countryFrom">Made in</label><select id="countryFrom"></select></div>
+    <div><label for="countryTo">Imported into</label><select id="countryTo"></select></div>
+    <div><label for="n_cost">Unit cost before tariff ($)</label><input type="number" id="n_cost" min="0" step="0.01" inputmode="decimal"></div>
+    <div><label for="n_tariff">Tariff rate (%)</label><input type="number" id="n_tariff" min="0" step="0.5" inputmode="decimal"></div>
+    <div><label for="n_ship">Shipping &amp; duties per unit ($)</label><input type="number" id="n_ship" min="0" step="0.01" inputmode="decimal"></div>
+    <div><label for="n_price">Selling price ($)</label><input type="number" id="n_price" min="0" step="0.01" inputmode="decimal"></div>
+    <div><label for="n_pass">Tariff passed to customer (%)</label><input type="number" id="n_pass" min="0" max="100" step="1" inputmode="numeric"></div>
+    <div><label for="n_units">Units sold per month</label><input type="number" id="n_units" min="0" step="1" inputmode="numeric"></div>
+  </div>
+
+  <details class="more">
+    <summary>More inputs</summary>
+    <div class="grid">
+      <div><label for="n_var">Other variable cost per unit ($)</label><input type="number" id="n_var" min="0" step="0.01" inputmode="decimal"></div>
+      <div><label for="n_fixed">Fixed monthly costs ($)</label><input type="number" id="n_fixed" min="0" step="50" inputmode="decimal"></div>
+      <div><label for="n_elast">Price sensitivity (elasticity, 0 to −5)</label><input type="number" id="n_elast" min="-5" max="0" step="0.05" inputmode="decimal"></div>
+    </div>
+  </details>
+
+  <div class="rate-note" id="rateNote" aria-live="polite"></div>
+
+  <div class="out" aria-live="polite">
+    <div><div class="k">Cost per unit</div><div class="v" id="o_landed"></div><div class="s" id="o_landed_s"></div></div>
+    <div><div class="k">Margin per unit</div><div class="v" id="o_margin"></div><div class="s" id="o_margin_s"></div></div>
+    <div><div class="k">Monthly profit change</div><div class="v" id="o_profit"></div><div class="s" id="o_profit_s"></div></div>
+    <div><div class="k">Break-even price</div><div class="v" id="o_be"></div><div class="s" id="o_be_s"></div></div>
+  </div>
+
+  <div class="w-foot">
+    <a class="full" id="fullLink" href="https://tariff-impact.com/" target="_blank" rel="noopener">Open in the full calculator →</a>
+    <span>Estimates only. Check your product's rate.</span>
+  </div>
+</main>
+
+<script src="/tariff-core.js"></script>
+<script>
+// The embeddable calculator. Rates, opening values and sums come from
+// /tariff-core.js, the same file the home page calculator uses.
+const state = { ...defaults };
+
+const fields = [
+  { key: 'cost',   id: 'n_cost' },
+  { key: 'tariff', id: 'n_tariff' },
+  { key: 'ship',   id: 'n_ship' },
+  { key: 'price',  id: 'n_price' },
+  { key: 'pass',   id: 'n_pass' },
+  { key: 'units',  id: 'n_units' },
+  { key: 'var',    id: 'n_var' },
+  { key: 'fixed',  id: 'n_fixed' },
+  { key: 'elast',  id: 'n_elast' },
+];
+const $ = id => document.getElementById(id);
+const setText = (id, text, cls) => { const el = $(id); el.textContent = text; if (cls !== undefined) el.className = cls; };
+
+function countryName(list, code) { return (list.find(x => x.code === code) || {}).name || code; }
+
+// The note under the inputs says where the tariff rate came from, in the same
+// words as the home page calculator. All of it is set as text, never markup.
+function showNote(mode) {
+  const note = $('rateNote');
+  note.textContent = '';
+  const head = document.createElement('strong');
+  const body = document.createElement('span');
+  note.append(head, body);
+  if (mode === 'example') {
+    head.textContent = 'Example rate: ' + state.tariff + '%. ';
+    body.textContent = 'A made-up starting value, not the rate for any country. Enter your product\'s own rate, or pick a country pair.';
+    return;
+  }
+  if (mode === 'manual') {
+    head.textContent = 'Your rate: ' + state.tariff + '%. ';
+    body.textContent = 'Pick a country pair to fill in its country-wide duty instead.';
+    return;
+  }
+  const from = countryName(tariffData.origins, state.countryFrom);
+  const to = countryName(tariffData.destinations, state.countryTo);
+  const data = tariffData.rates[state.countryFrom + '->' + state.countryTo];
+  head.textContent = from + ' → ' + to + ': ';
+  if (!data) {
+    body.textContent = 'Not in our snapshot. Enter the rate yourself, from your customs paperwork or the official tariff schedule.';
+    return;
+  }
+  const when = data.checked ? 'Checked ' + data.checked + '.' : '~' + data.rate + '% average (from ' + tariffData.otherRowsAsOf + ', not re-checked).';
+  const tail = data.basis === 'added' ? ' Add your product\'s ordinary duty to the rate.' : (data.basis === 'floor' ? ' A minimum total rate for covered goods.' : '');
+  body.textContent = data.rate + '%. ' + when + tail;
+  if (data.note) {
+    const d = document.createElement('details');
+    const s = document.createElement('summary');
+    s.textContent = 'About this rate';
+    const p = document.createElement('div');
+    p.textContent = data.note;
+    d.append(s, p);
+    note.append(d);
+  }
+}
+
+function applyCountryRate() {
+  const data = tariffData.rates[state.countryFrom + '->' + state.countryTo];
+  if (data) { state.tariff = data.rate; $('n_tariff').value = data.rate; }
+  showNote('country');
+  update();
+}
+
+function fullLink() {
+  const params = new URLSearchParams();
+  params.set('from', state.countryFrom);
+  params.set('to', state.countryTo);
+  linkParams.forEach(p => {
+    const num = Math.round(state[p.key] * 10000) / 10000;
+    if (linkValueOk(p, num)) params.set(p.name, String(num));
+  });
+  return window.location.origin + '/?' + params.toString();
+}
+
+function update() {
+  const r = calc(state.pass);
+  const be = findBreakevenPrice();
+
+  setText('o_landed', fmt$(r.landedCostPost));
+  setText('o_landed_s', 'was ' + fmt$(r.landedCostPre));
+
+  const md = r.postMarginUnit - r.preMarginUnit;
+  setText('o_margin', fmt$(r.postMarginUnit), 'v ' + (r.postMarginUnit < 0 ? 'bad' : ''));
+  setText('o_margin_s', 'was ' + fmt$(r.preMarginUnit) + ' (' + (md >= 0 ? '+' : '−') + '$' + Math.abs(md).toFixed(2) + ')');
+
+  setText('o_profit', fmt$0(r.profitDelta) + '/mo', 'v ' + (r.profitDelta >= 0 ? 'good' : 'bad'));
+  setText('o_profit_s', fmt$0(r.preProfit) + ' → ' + fmt$0(r.postProfit) + ' (' + fmtPct(r.profitPct) + ')');
+
+  if (be.price === null) {
+    setText('o_be', 'None', 'v bad');
+    setText('o_be_s', 'no price restores profit; best ' + fmt$0(be.bestProfit) + '/mo at ' + fmt$(be.bestPrice));
+  } else {
+    const d = be.price - state.price;
+    setText('o_be', fmt$(be.price), 'v');
+    setText('o_be_s', 'keeps pre-tariff profit (' + (d >= 0 ? '+' : '−') + '$' + Math.abs(d).toFixed(2) + ')');
+  }
+  $('fullLink').href = fullLink();
+  sendHeight();
+}
+
+// Tell the page around the iframe how tall the calculator is, so its optional
+// resize script can fit the frame. Only a number is sent.
+let lastHeight = 0;
+function sendHeight() {
+  if (window.parent === window) return;
+  const h = Math.ceil(document.documentElement.scrollHeight);
+  if (h === lastHeight) return;
+  lastHeight = h;
+  window.parent.postMessage({ type: 'tariff-impact-height', height: h }, '*');
+}
+
+// ---------------------- INIT ----------------------
+const fromSel = $('countryFrom'), toSel = $('countryTo');
+tariffData.origins.forEach(o => fromSel.add(new Option(o.name, o.code)));
+tariffData.destinations.forEach(d => toSel.add(new Option(d.name, d.code)));
+
+// The embedding site may preset the inputs in the frame's address, with the same
+// names and limits as the home page: /widget?from=VN&to=US&cost=40&price=90
+const linked = readScenarioFromAddress();
+if (linked.countryFrom) state.countryFrom = linked.countryFrom;
+if (linked.countryTo) state.countryTo = linked.countryTo;
+fromSel.value = state.countryFrom;
+toSel.value = state.countryTo;
+const useRow = Boolean(linked.countryFrom || linked.countryTo);
+if (useRow) { const row = tariffData.rates[state.countryFrom + '->' + state.countryTo]; if (row) state.tariff = row.rate; }
+linkParams.forEach(p => { if (p.key in linked) state[p.key] = linked[p.key]; });
+fields.forEach(f => { $(f.id).value = state[f.key]; });
+showNote('tariff' in linked ? 'manual' : (useRow ? 'country' : 'example'));
+
+fields.forEach(f => {
+  $(f.id).addEventListener('input', e => {
+    const num = parseFloat(e.target.value);
+    if (isNaN(num)) return;
+    state[f.key] = num;
+    if (f.key === 'tariff') showNote('manual');
+    update();
+  });
+});
+fromSel.addEventListener('change', e => { state.countryFrom = e.target.value; applyCountryRate(); });
+toSel.addEventListener('change', e => { state.countryTo = e.target.value; applyCountryRate(); });
+document.querySelector('details.more').addEventListener('toggle', sendHeight);
+if (window.ResizeObserver) new ResizeObserver(sendHeight).observe(document.body);
+window.addEventListener('load', sendHeight);
+update();
+</script>
+</body>
+</html>

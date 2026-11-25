@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3FXPSLFG9X"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-3FXPSLFG9X');
+</script>
+
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Absorb a Tariff or Raise Prices? Run the Numbers</title>
+<meta name="description" content="Absorb the tariff, pass it on or split it? See how each choice changes monthly profit, how price sensitivity flips the answer, and test your own numbers.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://tariff-impact.com/absorb-tariff-or-raise-prices">
+
+<!-- Favicon -->
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="apple-touch-icon" href="/favicon.svg">
+<meta name="theme-color" content="#4f8cff">
+
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://tariff-impact.com/absorb-tariff-or-raise-prices">
+<meta property="og:title" content="Absorb a Tariff or Raise Prices? Run the Numbers">
+<meta property="og:description" content="Absorb the tariff, pass it on or split it? See how each choice changes monthly profit, how price sensitivity flips the answer, and test your own numbers.">
+<meta property="og:site_name" content="Tariff-Impact.com">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "Should you absorb a tariff or raise prices?",
+      "description": "How absorbing, passing on or splitting a tariff changes monthly profit, and how price sensitivity changes the answer.",
+      "mainEntityOfPage": "https://tariff-impact.com/absorb-tariff-or-raise-prices",
+      "dateModified": "2026-11-25",
+      "author": {
+        "@type": "Organization",
+        "name": "Tariff-Impact.com",
+        "url": "https://tariff-impact.com/"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Tariff-Impact.com",
+        "url": "https://tariff-impact.com/"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Should I absorb a tariff or raise my prices?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "It depends on how many sales you lose when the price goes up. If customers barely react to price, passing the tariff on protects more profit. If they react strongly, absorbing some or all of it can leave you better off. Work out profit under each choice with your own price, cost and volume."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How much should I raise prices because of a tariff?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "To keep the same profit per unit in dollars, raise the price by the tariff you pay per unit. To keep the same percentage margin, divide your new unit cost by one minus your margin; that gives a higher price. Then check how many sales the higher price is likely to cost you."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does a 25% tariff mean a 25% price rise?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. The tariff applies to the imported cost of the goods, not to the selling price. On an item that costs $16 to import and sells for $40, a 25% tariff is $4, which is 10% of the price."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Tariff Calculator",
+          "item": "https://tariff-impact.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Absorb a tariff or raise prices?",
+          "item": "https://tariff-impact.com/absorb-tariff-or-raise-prices"
+        }
+      ]
+    }
+  ]
+}
+</script>
+
+<style>
+  :root {
+    --bg-0: #0b0f17; --bg-1: #111826; --bg-2: #1a2233; --bg-3: #232c40;
+    --border: #2b3650; --text: #e6ecf5; --text-dim: #97a3b8; --text-muted: #6b7791;
+    --accent: #4f8cff; --accent-2: #7dd3fc;
+    --good: #34d399; --warn: #fbbf24; --bad: #f87171;
+    --purple: #a78bfa;
+    --shadow: 0 6px 24px rgba(0,0,0,0.35);
+  }
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0; padding: 0;
+    background: radial-gradient(1200px 600px at 10% -10%, #182238 0%, var(--bg-0) 60%) fixed;
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Roboto, "Helvetica Neue", Arial, sans-serif;
+    font-size: 14px; min-height: 100vh; line-height: 1.55;
+  }
+  a { color: var(--accent-2); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+
+  nav.top-nav {
+    background: rgba(11,15,23,0.85); backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    padding: 12px 28px;
+    display: flex; align-items: center; justify-content: space-between;
+    position: sticky; top: 0; z-index: 90;
+    flex-wrap: wrap; gap: 12px;
+  }
+  nav.top-nav .nav-brand { display: flex; align-items: center; gap: 10px; font-weight: 700; }
+  nav.top-nav .nav-brand .nav-mark {
+    width: 28px; height: 28px; border-radius: 7px;
+    background: linear-gradient(135deg, var(--accent), var(--purple));
+    display: grid; place-items: center; font-size: 13px;
+  }
+  nav.top-nav .nav-links { display: flex; gap: 4px; flex-wrap: wrap; }
+  nav.top-nav .nav-links a {
+    color: var(--text-dim); padding: 6px 12px; border-radius: 6px;
+    font-size: 13px; text-decoration: none; transition: all 0.15s;
+  }
+  nav.top-nav .nav-links a:hover, nav.top-nav .nav-links a.active {
+    color: var(--text); background: var(--bg-2);
+  }
+
+  .hero {
+    max-width: 880px; margin: 36px auto 22px auto; padding: 0 28px;
+  }
+  .crumbs { font-size: 12px; color: var(--text-muted); margin: 0 0 14px 0; }
+  .crumbs a { color: var(--text-dim); }
+  .hero h1 {
+    font-size: 34px; line-height: 1.2; margin: 0 0 14px 0; letter-spacing: -0.5px;
+    background: linear-gradient(135deg, var(--text), var(--accent-2));
+    -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+    color: var(--text); /* fallback */
+  }
+  .hero .lede { font-size: 16px; color: var(--text-dim); line-height: 1.7; margin: 0 0 10px 0; }
+  .hero .lede strong { color: var(--text); }
+  .hero .reviewed { font-size: 12px; color: var(--text-muted); margin: 0; }
+
+  .container { max-width: 880px; margin: 0 auto; padding: 0 28px 30px 28px; }
+
+  .btn-primary {
+    background: linear-gradient(135deg, var(--accent), #6f7bff);
+    color: white; padding: 12px 24px; border-radius: 10px;
+    text-decoration: none; font-size: 14px; font-weight: 600;
+    border: none; cursor: pointer; display: inline-block;
+    transition: filter 0.15s;
+  }
+  .btn-primary:hover { filter: brightness(1.1); text-decoration: none; }
+  .cta { margin: 0 0 22px 0; }
+  .cta .cta-note { display: block; margin-top: 8px; font-size: 12px; color: var(--text-muted); }
+
+  .section {
+    background: var(--bg-1); border: 1px solid var(--border);
+    border-radius: 12px; padding: 26px 30px;
+    margin-bottom: 22px;
+  }
+  .section h2 { font-size: 20px; margin: 0 0 12px 0; color: var(--text); }
+  .section h3 { font-size: 15px; margin: 20px 0 8px 0; color: var(--text); }
+  .section p { font-size: 14px; color: var(--text-dim); line-height: 1.75; margin: 0 0 12px 0; }
+  .section ul, .section ol { color: var(--text-dim); line-height: 1.75; padding-left: 22px; margin: 0 0 12px 0; }
+  .section li { margin-bottom: 6px; }
+  .section strong { color: var(--text); }
+  .section > :last-child { margin-bottom: 0; }
+
+  .table-wrap { overflow-x: auto; margin: 0 0 14px 0; border: 1px solid var(--border); border-radius: 10px; }
+  .table-wrap table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  .table-wrap th, .table-wrap td {
+    padding: 10px 12px; text-align: left; vertical-align: top;
+    border-bottom: 1px solid var(--border); color: var(--text-dim);
+  }
+  .table-wrap thead th {
+    background: var(--bg-2); color: var(--text); font-size: 12px; font-weight: 600;
+  }
+  .table-wrap tbody tr:last-child td { border-bottom: none; }
+  .table-wrap td:first-child { color: var(--text); }
+
+  .note {
+    background: rgba(251,191,36,0.08); border: 1px solid rgba(251,191,36,0.35);
+    border-radius: 10px; padding: 12px 16px; margin: 0 0 14px 0;
+    font-size: 13px; color: var(--text-dim); line-height: 1.7;
+  }
+  .note strong { color: var(--text); }
+
+  blockquote.letter {
+    background: var(--bg-2); border: 1px solid var(--border); border-left: 3px solid var(--accent);
+    border-radius: 8px; margin: 0 0 14px 0; padding: 16px 20px;
+  }
+  blockquote.letter p { color: var(--text); font-size: 13px; }
+  blockquote.letter p:last-child { margin-bottom: 0; }
+
+  .calc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 16px; }
+  @media (max-width: 700px) { .calc-grid { grid-template-columns: 1fr; } }
+  .calc-grid label { display: block; font-size: 13px; color: var(--text); font-weight: 600; }
+  .calc-grid .hint { display: block; font-size: 12px; color: var(--text-muted); font-weight: 400; margin: 2px 0 6px 0; }
+  .calc-grid input {
+    width: 100%; background: var(--bg-2); border: 1px solid var(--border); border-radius: 8px;
+    color: var(--text); font-size: 16px; padding: 10px 12px; font-family: inherit;
+  }
+  .calc-grid input:focus { outline: none; border-color: var(--accent); }
+  .calc-out {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 14px;
+  }
+  @media (max-width: 700px) { .calc-out { grid-template-columns: 1fr 1fr; } }
+  .calc-out .out {
+    background: var(--bg-2); border: 1px solid var(--border); border-radius: 10px; padding: 14px;
+  }
+  .calc-out .out-label { font-size: 11px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.6px; }
+  .calc-out .out-value { font-size: 22px; font-weight: 700; color: var(--accent-2); margin-top: 4px; }
+
+  .sources li { font-size: 13px; }
+  .disclaimer { font-size: 12px; color: var(--text-muted); margin: 0 0 22px 0; }
+
+  footer.site-footer {
+    border-top: 1px solid var(--border);
+    margin-top: 50px; padding: 32px 28px 24px 28px;
+    color: var(--text-muted); font-size: 12px; line-height: 1.7;
+  }
+  footer.site-footer .footer-grid {
+    max-width: 1100px; margin: 0 auto;
+    display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 30px;
+  }
+  @media (max-width: 800px) { footer.site-footer .footer-grid { grid-template-columns: 1fr 1fr; } }
+  footer.site-footer h4 { color: var(--text); font-size: 12px; text-transform: uppercase; letter-spacing: 1px; margin: 0 0 10px 0; }
+  footer.site-footer ul { list-style: none; padding: 0; margin: 0; }
+  footer.site-footer li { margin-bottom: 6px; }
+  footer.site-footer a { color: var(--text-dim); }
+  footer.site-footer .copy { text-align: center; margin-top: 24px; padding-top: 18px; border-top: 1px solid var(--border); }
+
+  @media (max-width: 600px) {
+    nav.top-nav { padding: 10px 16px; }
+    .hero { margin-top: 24px; padding: 0 16px; }
+    .hero h1 { font-size: 26px; }
+    .container { padding: 0 16px 24px 16px; }
+    .section { padding: 20px 18px; }
+    footer.site-footer { padding: 28px 16px 20px 16px; }
+  }
+
+  /* Ad and paid-link places (see README, "Ads and paid links").
+     An empty place carries the attribute hidden: it takes no space and loads nothing.
+     A filled ad place reserves its height before the ad loads, so the page does not jump. */
+  .ad-slot[hidden], .paid-link[hidden], .paid-disclosure[hidden] { display: none !important; }
+  .ad-slot {
+    display: block; box-sizing: border-box; width: 100%; max-width: 980px;
+    min-height: 300px; margin: 22px auto; padding: 0 16px;
+    text-align: center; overflow: hidden; contain: layout paint;
+  }
+  .ad-slot .ad-label {
+    display: block; font-size: 11px; color: var(--text-muted);
+    text-transform: uppercase; letter-spacing: 0.6px; margin: 0 0 6px 0;
+  }
+  .paid-link { font-size: 13px; color: var(--text-dim); margin: 10px 0 0 0; line-height: 1.6; }
+  .paid-link .paid-label { font-size: 12px; color: var(--text-muted); }
+  .paid-disclosure { font-size: 12px; color: var(--text-muted); margin: 8px 0 0 0; line-height: 1.6; }
+</style>
+</head>
+<body>
+
+<nav class="top-nav">
+  <a href="/" class="nav-brand" style="color: var(--text); text-decoration: none;">
+    <span class="nav-mark">T</span>
+    <span>Tariff-Impact.com</span>
+  </a>
+  <div class="nav-links">
+    <a href="/">Calculator</a>
+    <a href="/#live-tariff-rates">Tariff Rates</a>
+    <a href="/#guides">Guides</a>
+    <a href="/#faq">FAQ</a>
+    <a href="/contact">Contact</a>
+  </div>
+</nav>
+
+<main>
+<div class="hero">
+  <p class="crumbs"><a href="/">Tariff Calculator</a> › Absorb a tariff or raise prices?</p>
+  <h1>Should you absorb a tariff or raise prices?</h1>
+  <p class="lede">It depends mostly on one thing you can estimate: how many sales you lose when your price goes up. If customers barely react, passing the tariff on keeps more profit. If they react strongly, absorbing it can cost you less. This page shows the sums on one product, then how to run them on yours.</p>
+  <p class="reviewed">Last reviewed: 25 November 2026. Estimates only, not legal or financial advice.</p>
+  <!-- PAID LINK DISCLOSURE. Delete hidden once any paid link on this page is shown. -->
+  <p class="paid-disclosure" hidden>Some links on this page are paid links: we earn a commission if you sign up or buy through them. Each one is marked “Paid link”. Who pays us never changes a rate or a result.</p>
+</div>
+
+<div class="container">
+  <p class="cta"><a class="btn-primary" href="/?cost=16&amp;tariff=25&amp;shipping=2&amp;price=40&amp;pass=50&amp;units=500&amp;elasticity=-1.5&amp;other=4&amp;fixed=0">Open the example in the calculator</a>
+    <span class="cta-note">It opens on the middle case below: half the tariff passed on, customers who react moderately. Change every number to yours.</span></p>
+  <div class="section">
+    <h2>One product, three choices</h2>
+    <p>Take a product you sell for $40. The goods cost $16 to import, shipping is $2 a unit, and other costs that rise with each sale (packaging, card fees) are $4. You sell 500 a month. Before any tariff you make $18 a unit, or $9,000 a month.</p>
+    <p>Now a tariff of 25% lands on the $16 import cost. That is $4 a unit. <strong>The 25% is an example to show the sums, not today's rate for any product.</strong></p>
+    <div class="table-wrap"><table>
+      <thead>
+        <tr><th>Choice</th><th>New price</th><th>Profit per unit</th><th>Monthly profit if customers barely react</th><th>If they react moderately</th><th>If they react strongly</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Absorb all of it</td><td>$40</td><td>$14</td><td><a href="/?cost=16&amp;tariff=25&amp;shipping=2&amp;price=40&amp;pass=0&amp;units=500&amp;elasticity=-0.5&amp;other=4&amp;fixed=0">$7,000</a></td><td><a href="/?cost=16&amp;tariff=25&amp;shipping=2&amp;price=40&amp;pass=0&amp;units=500&amp;elasticity=-1.5&amp;other=4&amp;fixed=0">$7,000</a></td><td><a href="/?cost=16&amp;tariff=25&amp;shipping=2&amp;price=40&amp;pass=0&amp;units=500&amp;elasticity=-3&amp;other=4&amp;fixed=0">$7,000</a></td></tr>
+        <tr><td>Split it (pass on half)</td><td>$42</td><td>$16</td><td><a href="/?cost=16&amp;tariff=25&amp;shipping=2&amp;price=40&amp;pass=50&amp;units=500&amp;elasticity=-0.5&amp;other=4&amp;fixed=0">$7,807</a></td><td><a href="/?cost=16&amp;tariff=25&amp;shipping=2&amp;price=40&amp;pass=50&amp;units=500&amp;elasticity=-1.5&amp;other=4&amp;fixed=0">$7,435</a></td><td><a href="/?cost=16&amp;tariff=25&amp;shipping=2&amp;price=40&amp;pass=50&amp;units=500&amp;elasticity=-3&amp;other=4&amp;fixed=0">$6,911</a></td></tr>
+        <tr><td>Pass on all of it</td><td>$44</td><td>$18</td><td><a href="/?cost=16&amp;tariff=25&amp;shipping=2&amp;price=40&amp;pass=100&amp;units=500&amp;elasticity=-0.5&amp;other=4&amp;fixed=0">$8,581</a></td><td><a href="/?cost=16&amp;tariff=25&amp;shipping=2&amp;price=40&amp;pass=100&amp;units=500&amp;elasticity=-1.5&amp;other=4&amp;fixed=0">$7,801</a></td><td><a href="/?cost=16&amp;tariff=25&amp;shipping=2&amp;price=40&amp;pass=100&amp;units=500&amp;elasticity=-3&amp;other=4&amp;fixed=0">$6,762</a></td></tr>
+      </tbody>
+    </table></div>
+    <p>"Barely react" means a price elasticity of −0.5: a 10% price rise loses about 4.7% of unit sales. "Moderately" is −1.5, where the same rise loses about 13.3%. "Strongly" is −3, where it loses about 24.9%. These are the figures the site's calculator gives for this example, and each one links to the calculator with that case filled in. The calculator shows monthly profit as a change from the $9,000 before the tariff: −$1,565, for instance, is $7,435.</p>
+    <p>Read across the rows and the answer flips. Where customers barely react, passing the whole tariff on keeps $1,581 a month more than absorbing it. Where they react strongly, passing it on is the worst choice, and absorbing is the best of three bad ones.</p>
+    <p>Nothing in the table gets you back to $9,000. A tariff is a real cost. The decision is how to lose the least.</p>
+  </div>
+  <div class="section">
+    <h2>Price sensitivity, in plain words</h2>
+    <p>Economists call it price elasticity of demand. It is one number: roughly, the percentage change in units sold for each 1% change in price. If a small price rise of 2% loses you 3% of sales, your number is about −1.5.</p>
+    <p>A rough rule for a small price rise: raising the price pays as long as that number, ignoring the minus sign, is smaller than your price divided by your profit per unit after the tariff. In the example, that is $40 ÷ $14, about 2.9. Below that, a small rise adds profit. Above it, a rise costs more in lost sales than it brings in. The larger the rise, the lower that limit falls, which is why the calculator is worth five minutes.</p>
+    <p>Customers tend to react less when:</p>
+    <ul>
+      <li>your competitors import the same goods and face the same tariff;</li>
+      <li>the product is a small part of what the customer spends, or hard to replace;</li>
+      <li>you sell on service, speed or trust more than on price.</li>
+    </ul>
+    <p>They react more when a rival sources somewhere with a lower tariff, when the product is easy to compare online, or when the purchase can wait.</p>
+  </div>
+  <div class="section">
+    <h2>How to guess your own number without a study</h2>
+    <ol>
+      <li><strong>Look at your last price change.</strong> Divide the percentage change in units sold by the percentage change in price. You raised a price 8% and units fell 6%: 6 ÷ 8 gives about −0.75. Compare like with like: the same months a year apart, not December against January.</li>
+      <li><strong>Look at a sale.</strong> A 10% discount that lifted units 20% suggests roughly −2. Discounts overstate it a little, because some buyers only stock up.</li>
+      <li><strong>Test on a few products.</strong> Raise the price on a handful of lines, leave similar ones alone, and compare after a month.</li>
+      <li><strong>If you have nothing, bracket it.</strong> Run the sums at −0.5, −1.5 and −3, as in the table above. If the same choice wins at all three, you have your answer. If it flips, test before you reprice everything.</li>
+    </ol>
+    <p>The division is a rough guide, and it is closest for small price changes.</p>
+  </div>
+  <div class="section">
+    <h2>How much to raise, if you raise</h2>
+    <p>Two targets give two different prices, and people often mix them up.</p>
+    <ul>
+      <li><strong>Keep the same dollars per unit.</strong> Add the tariff per unit to the price. In the example: $40 + $4 = $44. You still make $18 a unit.</li>
+      <li><strong>Keep the same percentage margin.</strong> Divide the new unit cost by one minus your margin. The margin was $18 ÷ $40 = 45%. The new cost is $26. $26 ÷ 0.55 = $47.27.</li>
+    </ul>
+    <p>The second price is $3.27 higher than the first. It protects your percentage, which matters if a lender or a marketplace fee is tied to it, but it asks the customer for more than the tariff cost you. Either way, the rise as a share of the price is smaller than the tariff rate: $4 on $40 is 10%, not 25%. The <a href="/tariff-surcharge-calculator">tariff surcharge calculator</a> turns your own figures into that percentage.</p>
+  </div>
+  <div class="section">
+    <h2>Other moves, before or beside a price rise</h2>
+    <ul>
+      <li><strong>Split by product.</strong> Pass the tariff on where customers react least, and absorb it on the lines that bring people in.</li>
+      <li><strong>Show it as a surcharge.</strong> A separate line is easier to remove if the tariff falls. See <a href="/tariff-surcharge-calculator">surcharge or price rise</a>.</li>
+      <li><strong>Ask the supplier to share it.</strong> Suppliers who want to keep the order sometimes take part of the cost.</li>
+      <li><strong>Change where you buy.</strong> A different origin can carry a different tariff, but the gap has to pay for the cost of moving. See <a href="/china-vs-vietnam-vs-mexico-vs-india-landed-cost">China vs Vietnam vs Mexico vs India: landed cost compared</a>.</li>
+      <li><strong>Cut another cost.</strong> Freight, packaging and order size are sometimes easier to move than the price.</li>
+    </ul>
+    <p>When you have decided, the <a href="/tariff-price-increase-letter">price increase letter templates</a> help you tell customers.</p>
+  </div>
+  <div class="section">
+    <h2>Run it on your product</h2>
+    <ol>
+      <li>Open the <a href="/?cost=16&amp;tariff=25&amp;shipping=2&amp;price=40&amp;pass=50&amp;units=500&amp;elasticity=-1.5&amp;other=4&amp;fixed=0">calculator on the example</a> and replace the unit cost, the tariff rate you pay, shipping, your selling price, your monthly units and your other costs with your own.</li>
+      <li>Set the price elasticity to your estimate from above.</li>
+      <li>Move the pass-through slider from 0% to 50% to 100% and read the "Monthly profit Δ" tile each time.</li>
+      <li>Repeat with a higher and a lower elasticity. If the best choice stays the same, act on it.</li>
+    </ol>
+    <p>Use the tariff rate from your own customs paperwork or from the official <a href="https://hts.usitc.gov/" target="_blank" rel="noopener">Harmonized Tariff Schedule</a>. U.S. duties changed several times in 2026.</p>
+  </div>
+  <!-- PAID LINK PLACE "page-1": Shopify (selling online: setting prices).
+       To fill: put the programme's link in front of the label, as <a href="..." rel="sponsored noopener" target="_blank">..</a>,
+       delete hidden here, and delete hidden on this page's paid-disclosure line. -->
+  <p class="paid-link" data-paid-link="page-1" hidden><span class="paid-label">Paid link: we earn a commission if you sign up or buy through it.</span></p>
+  <!-- AD PLACE "page-mid". Empty: hidden, no space, nothing loads.
+       To fill: paste the ad unit code from the ad network after the label, then delete the word hidden.
+       The place then keeps 300px of height before the ad loads (set by .ad-slot). -->
+  <aside class="ad-slot" data-ad-place="page-mid" aria-label="Advertisements" hidden><span class="ad-label">Advertisements</span></aside>
+  <div class="section">
+    <h2>Questions</h2>
+    <h3>Should I absorb a tariff or raise my prices?</h3>
+    <p>It depends on how many sales you lose when the price goes up. If customers barely react to price, passing the tariff on protects more profit. If they react strongly, absorbing some or all of it can leave you better off. Work out profit under each choice with your own price, cost and volume.</p>
+    <h3>How much should I raise prices because of a tariff?</h3>
+    <p>To keep the same profit per unit in dollars, raise the price by the tariff you pay per unit. To keep the same percentage margin, divide your new unit cost by one minus your margin; that gives a higher price. Then check how many sales the higher price is likely to cost you.</p>
+    <h3>Does a 25% tariff mean a 25% price rise?</h3>
+    <p>No. The tariff applies to the imported cost of the goods, not to the selling price. On an item that costs $16 to import and sells for $40, a 25% tariff is $4, which is 10% of the price.</p>
+  </div>
+  <div class="section">
+    <h2>How the table was worked out</h2>
+    <p>The table uses the same rule as the site's calculator. Units sold after a price change = 500 × (new price ÷ old price) raised to the power of the elasticity, with elasticity set to −0.5, −1.5 and −3. Monthly profit = units × (price − $26 unit cost), rounded to the dollar. No fixed costs are included, since they are the same under every choice. This page quotes no official tariff rate; every rate on it is an example.</p>
+  </div>
+  <div class="section">
+    <h2>Related</h2>
+    <ul>
+      <li><a href="/tariff-surcharge-calculator">Tariff surcharge calculator: what percentage to add to an invoice</a></li>
+      <li><a href="/tariff-price-increase-letter">Tariff price increase letter: three templates</a></li>
+      <li><a href="/china-vs-vietnam-vs-mexico-vs-india-landed-cost">China vs Vietnam vs Mexico vs India: landed cost compared</a></li>
+      <li><a href="/tariff-on-upholstered-furniture-from-vietnam">Tariff on upholstered furniture from Vietnam</a></li>
+      <li><a href="/">Tariff Impact Calculator</a></li>
+    </ul>
+  </div>
+  <!-- AD PLACE "page-end". Empty: hidden, no space, nothing loads.
+       To fill: paste the ad unit code from the ad network after the label, then delete the word hidden.
+       The place then keeps 300px of height before the ad loads (set by .ad-slot). -->
+  <aside class="ad-slot" data-ad-place="page-end" aria-label="Advertisements" hidden><span class="ad-label">Advertisements</span></aside>
+  <p class="disclaimer">Estimates only, not legal or financial advice.</p>
+</div>
+</main>
+
+<footer class="site-footer">
+  <div class="footer-grid">
+    <div>
+      <h4>Tariff-Impact.com</h4>
+      <p>Free tools and educational content for small business owners navigating import tariffs and trade policy.</p>
+      <p><a href="/about">About</a> · <a href="/contact">Contact &amp; Advertise</a> · <a href="/privacy">Privacy</a> · <a href="/terms">Terms</a></p>
+    </div>
+    <div>
+      <h4>Tools</h4>
+      <ul>
+        <li><a href="/">Tariff Calculator</a></li>
+        <li><a href="/#live-tariff-rates">Tariff Rates</a></li>
+        <li><a href="/tariff-surcharge-calculator">Tariff Surcharge Calculator</a></li>
+        <li><a href="/embed">Embed the Calculator</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Learn</h4>
+      <ul>
+        <li><a href="/#understanding-tariffs">Understanding Tariffs</a></li>
+        <li><a href="/#faq">FAQ</a></li>
+        <li><a href="/absorb-tariff-or-raise-prices">Absorb a Tariff or Raise Prices?</a></li>
+        <li><a href="/tariff-price-increase-letter">Price Increase Letter Templates</a></li>
+        <li><a href="/china-vs-vietnam-vs-mexico-vs-india-landed-cost">China vs Vietnam vs Mexico vs India</a></li>
+        <li><a href="/tariff-on-upholstered-furniture-from-vietnam">Furniture from Vietnam</a></li>
+        <li><a href="/tariff-on-upholstered-furniture-from-malaysia">Furniture from Malaysia</a></li>
+        <li><a href="/tariff-on-toys-from-vietnam">Toys from Vietnam</a></li>
+        <li><a href="/tariff-on-auto-parts-from-japan">Auto Parts from Japan</a></li>
+        <li><a href="/tariff-on-auto-parts-from-mexico">Auto Parts from Mexico</a></li>
+        <li><a href="/tariff-on-steel-and-aluminum-from-canada">Steel &amp; Aluminum from Canada</a></li>
+        <li><a href="/tariff-on-upholstered-furniture-from-china">Furniture from China</a></li>
+        <li><a href="/tariff-on-toys-from-china">Toys from China</a></li>
+        <li><a href="/tariff-on-electronics-from-china">Electronics from China</a></li>
+        <li><a href="/tariff-on-clothing-from-vietnam">Clothing from Vietnam</a></li>
+        <li><a href="/tariff-on-clothing-from-india">Clothing from India</a></li>
+        <li><a href="/tariff-on-clothing-from-china">Clothing from China</a></li>
+        <li><a href="/tariff-on-clothing-from-bangladesh">Clothing from Bangladesh</a></li>
+        <li><a href="/tariff-changes-january-2027">Tariff Changes, January 2027</a></li>
+        <li><a href="/section-301-excess-capacity-tariffs">Section 301 Excess Capacity Tariffs</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>External</h4>
+      <ul>
+        <li><a href="https://hts.usitc.gov/" target="_blank" rel="noopener">USITC HTS Lookup</a></li>
+        <li><a href="https://ustr.gov/" target="_blank" rel="noopener">USTR</a></li>
+        <li><a href="https://www.cbp.gov/trade" target="_blank" rel="noopener">CBP</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="copy">
+    © <span id="footerYear"></span> Tariff-Impact.com — Estimates only. Not legal or financial advice.
+  </div>
+</footer>
+
+<script>
+  document.getElementById('footerYear').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>

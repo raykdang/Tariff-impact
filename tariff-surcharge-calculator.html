@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3FXPSLFG9X"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-3FXPSLFG9X');
+</script>
+
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Tariff Surcharge Calculator: What % to Add to an Invoice</title>
+<meta name="description" content="Work out a tariff surcharge in dollars and as a percentage of your price. Free calculator, the formula, three worked examples and invoice wording.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://tariff-impact.com/tariff-surcharge-calculator">
+
+<!-- Favicon -->
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="apple-touch-icon" href="/favicon.svg">
+<meta name="theme-color" content="#4f8cff">
+
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://tariff-impact.com/tariff-surcharge-calculator">
+<meta property="og:title" content="Tariff Surcharge Calculator: What % to Add to an Invoice">
+<meta property="og:description" content="Work out a tariff surcharge in dollars and as a percentage of your price. Free calculator, the formula, three worked examples and invoice wording.">
+<meta property="og:site_name" content="Tariff-Impact.com">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebApplication",
+      "name": "Tariff Surcharge Calculator",
+      "url": "https://tariff-impact.com/tariff-surcharge-calculator",
+      "applicationCategory": "BusinessApplication",
+      "operatingSystem": "Any",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "description": "Works out a tariff surcharge per unit in dollars and as a percentage of the selling price."
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How do I calculate a tariff surcharge?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Multiply the imported cost of the item by the tariff rate you pay, then by the share of the tariff you want the customer to cover. That is the surcharge in dollars. Divide it by your selling price to get the surcharge as a percentage of the price."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is a tariff surcharge the same percentage as the tariff?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. The tariff is charged on the imported cost of the goods, not on your selling price. A 25% tariff on an item that costs you $10 and sells for $30 is $2.50, which is 8.3% of the price."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is sales tax charged on a tariff surcharge?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "It depends on the state. Washington and New Jersey both say a tariff charge passed to the customer is part of the taxable selling price, even when it is listed on its own line. Check your own state's revenue department."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Should I add a markup to the surcharge?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "That is your decision. A surcharge equal to the tariff keeps your profit in dollars the same. Some sellers add a little for the cash tied up in paying duty before the goods sell. If you do, don't describe the line as the tariff itself."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Tariff Calculator",
+          "item": "https://tariff-impact.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Tariff surcharge calculator",
+          "item": "https://tariff-impact.com/tariff-surcharge-calculator"
+        }
+      ]
+    }
+  ]
+}
+</script>
+
+<style>
+  :root {
+    --bg-0: #0b0f17; --bg-1: #111826; --bg-2: #1a2233; --bg-3: #232c40;
+    --border: #2b3650; --text: #e6ecf5; --text-dim: #97a3b8; --text-muted: #6b7791;
+    --accent: #4f8cff; --accent-2: #7dd3fc;
+    --good: #34d399; --warn: #fbbf24; --bad: #f87171;
+    --purple: #a78bfa;
+    --shadow: 0 6px 24px rgba(0,0,0,0.35);
+  }
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0; padding: 0;
+    background: radial-gradient(1200px 600px at 10% -10%, #182238 0%, var(--bg-0) 60%) fixed;
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Roboto, "Helvetica Neue", Arial, sans-serif;
+    font-size: 14px; min-height: 100vh; line-height: 1.55;
+  }
+  a { color: var(--accent-2); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+
+  nav.top-nav {
+    background: rgba(11,15,23,0.85); backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    padding: 12px 28px;
+    display: flex; align-items: center; justify-content: space-between;
+    position: sticky; top: 0; z-index: 90;
+    flex-wrap: wrap; gap: 12px;
+  }
+  nav.top-nav .nav-brand { display: flex; align-items: center; gap: 10px; font-weight: 700; }
+  nav.top-nav .nav-brand .nav-mark {
+    width: 28px; height: 28px; border-radius: 7px;
+    background: linear-gradient(135deg, var(--accent), var(--purple));
+    display: grid; place-items: center; font-size: 13px;
+  }
+  nav.top-nav .nav-links { display: flex; gap: 4px; flex-wrap: wrap; }
+  nav.top-nav .nav-links a {
+    color: var(--text-dim); padding: 6px 12px; border-radius: 6px;
+    font-size: 13px; text-decoration: none; transition: all 0.15s;
+  }
+  nav.top-nav .nav-links a:hover, nav.top-nav .nav-links a.active {
+    color: var(--text); background: var(--bg-2);
+  }
+
+  .hero {
+    max-width: 880px; margin: 36px auto 22px auto; padding: 0 28px;
+  }
+  .crumbs { font-size: 12px; color: var(--text-muted); margin: 0 0 14px 0; }
+  .crumbs a { color: var(--text-dim); }
+  .hero h1 {
+    font-size: 34px; line-height: 1.2; margin: 0 0 14px 0; letter-spacing: -0.5px;
+    background: linear-gradient(135deg, var(--text), var(--accent-2));
+    -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+    color: var(--text); /* fallback */
+  }
+  .hero .lede { font-size: 16px; color: var(--text-dim); line-height: 1.7; margin: 0 0 10px 0; }
+  .hero .lede strong { color: var(--text); }
+  .hero .reviewed { font-size: 12px; color: var(--text-muted); margin: 0; }
+
+  .container { max-width: 880px; margin: 0 auto; padding: 0 28px 30px 28px; }
+
+  .btn-primary {
+    background: linear-gradient(135deg, var(--accent), #6f7bff);
+    color: white; padding: 12px 24px; border-radius: 10px;
+    text-decoration: none; font-size: 14px; font-weight: 600;
+    border: none; cursor: pointer; display: inline-block;
+    transition: filter 0.15s;
+  }
+  .btn-primary:hover { filter: brightness(1.1); text-decoration: none; }
+  .cta { margin: 0 0 22px 0; }
+  .cta .cta-note { display: block; margin-top: 8px; font-size: 12px; color: var(--text-muted); }
+
+  .section {
+    background: var(--bg-1); border: 1px solid var(--border);
+    border-radius: 12px; padding: 26px 30px;
+    margin-bottom: 22px;
+  }
+  .section h2 { font-size: 20px; margin: 0 0 12px 0; color: var(--text); }
+  .section h3 { font-size: 15px; margin: 20px 0 8px 0; color: var(--text); }
+  .section p { font-size: 14px; color: var(--text-dim); line-height: 1.75; margin: 0 0 12px 0; }
+  .section ul, .section ol { color: var(--text-dim); line-height: 1.75; padding-left: 22px; margin: 0 0 12px 0; }
+  .section li { margin-bottom: 6px; }
+  .section strong { color: var(--text); }
+  .section > :last-child { margin-bottom: 0; }
+
+  .table-wrap { overflow-x: auto; margin: 0 0 14px 0; border: 1px solid var(--border); border-radius: 10px; }
+  .table-wrap table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  .table-wrap th, .table-wrap td {
+    padding: 10px 12px; text-align: left; vertical-align: top;
+    border-bottom: 1px solid var(--border); color: var(--text-dim);
+  }
+  .table-wrap thead th {
+    background: var(--bg-2); color: var(--text); font-size: 12px; font-weight: 600;
+  }
+  .table-wrap tbody tr:last-child td { border-bottom: none; }
+  .table-wrap td:first-child { color: var(--text); }
+
+  .note {
+    background: rgba(251,191,36,0.08); border: 1px solid rgba(251,191,36,0.35);
+    border-radius: 10px; padding: 12px 16px; margin: 0 0 14px 0;
+    font-size: 13px; color: var(--text-dim); line-height: 1.7;
+  }
+  .note strong { color: var(--text); }
+
+  blockquote.letter {
+    background: var(--bg-2); border: 1px solid var(--border); border-left: 3px solid var(--accent);
+    border-radius: 8px; margin: 0 0 14px 0; padding: 16px 20px;
+  }
+  blockquote.letter p { color: var(--text); font-size: 13px; }
+  blockquote.letter p:last-child { margin-bottom: 0; }
+
+  .calc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 16px; }
+  @media (max-width: 700px) { .calc-grid { grid-template-columns: 1fr; } }
+  .calc-grid label { display: block; font-size: 13px; color: var(--text); font-weight: 600; }
+  .calc-grid .hint { display: block; font-size: 12px; color: var(--text-muted); font-weight: 400; margin: 2px 0 6px 0; }
+  .calc-grid input {
+    width: 100%; background: var(--bg-2); border: 1px solid var(--border); border-radius: 8px;
+    color: var(--text); font-size: 16px; padding: 10px 12px; font-family: inherit;
+  }
+  .calc-grid input:focus { outline: none; border-color: var(--accent); }
+  .calc-out {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 14px;
+  }
+  @media (max-width: 700px) { .calc-out { grid-template-columns: 1fr 1fr; } }
+  .calc-out .out {
+    background: var(--bg-2); border: 1px solid var(--border); border-radius: 10px; padding: 14px;
+  }
+  .calc-out .out-label { font-size: 11px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.6px; }
+  .calc-out .out-value { font-size: 22px; font-weight: 700; color: var(--accent-2); margin-top: 4px; }
+
+  .sources li { font-size: 13px; }
+  .disclaimer { font-size: 12px; color: var(--text-muted); margin: 0 0 22px 0; }
+
+  footer.site-footer {
+    border-top: 1px solid var(--border);
+    margin-top: 50px; padding: 32px 28px 24px 28px;
+    color: var(--text-muted); font-size: 12px; line-height: 1.7;
+  }
+  footer.site-footer .footer-grid {
+    max-width: 1100px; margin: 0 auto;
+    display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 30px;
+  }
+  @media (max-width: 800px) { footer.site-footer .footer-grid { grid-template-columns: 1fr 1fr; } }
+  footer.site-footer h4 { color: var(--text); font-size: 12px; text-transform: uppercase; letter-spacing: 1px; margin: 0 0 10px 0; }
+  footer.site-footer ul { list-style: none; padding: 0; margin: 0; }
+  footer.site-footer li { margin-bottom: 6px; }
+  footer.site-footer a { color: var(--text-dim); }
+  footer.site-footer .copy { text-align: center; margin-top: 24px; padding-top: 18px; border-top: 1px solid var(--border); }
+
+  @media (max-width: 600px) {
+    nav.top-nav { padding: 10px 16px; }
+    .hero { margin-top: 24px; padding: 0 16px; }
+    .hero h1 { font-size: 26px; }
+    .container { padding: 0 16px 24px 16px; }
+    .section { padding: 20px 18px; }
+    footer.site-footer { padding: 28px 16px 20px 16px; }
+  }
+
+  /* Ad and paid-link places (see README, "Ads and paid links").
+     An empty place carries the attribute hidden: it takes no space and loads nothing.
+     A filled ad place reserves its height before the ad loads, so the page does not jump. */
+  .ad-slot[hidden], .paid-link[hidden], .paid-disclosure[hidden] { display: none !important; }
+  .ad-slot {
+    display: block; box-sizing: border-box; width: 100%; max-width: 980px;
+    min-height: 300px; margin: 22px auto; padding: 0 16px;
+    text-align: center; overflow: hidden; contain: layout paint;
+  }
+  .ad-slot .ad-label {
+    display: block; font-size: 11px; color: var(--text-muted);
+    text-transform: uppercase; letter-spacing: 0.6px; margin: 0 0 6px 0;
+  }
+  .paid-link { font-size: 13px; color: var(--text-dim); margin: 10px 0 0 0; line-height: 1.6; }
+  .paid-link .paid-label { font-size: 12px; color: var(--text-muted); }
+  .paid-disclosure { font-size: 12px; color: var(--text-muted); margin: 8px 0 0 0; line-height: 1.6; }
+</style>
+</head>
+<body>
+
+<nav class="top-nav">
+  <a href="/" class="nav-brand" style="color: var(--text); text-decoration: none;">
+    <span class="nav-mark">T</span>
+    <span>Tariff-Impact.com</span>
+  </a>
+  <div class="nav-links">
+    <a href="/">Calculator</a>
+    <a href="/#live-tariff-rates">Tariff Rates</a>
+    <a href="/#guides">Guides</a>
+    <a href="/#faq">FAQ</a>
+    <a href="/contact">Contact</a>
+  </div>
+</nav>
+
+<main>
+<div class="hero">
+  <p class="crumbs"><a href="/">Tariff Calculator</a> › Tariff surcharge calculator</p>
+  <h1>Tariff surcharge calculator: what percentage to add to an invoice</h1>
+  <p class="lede">Enter what the goods cost you, the tariff rate you pay and your selling price. You get the surcharge in dollars per unit, and the same amount as a percentage of your price to put on the invoice.</p>
+  <p class="reviewed">Last reviewed: 25 November 2026. Estimates only, not legal, tax or financial advice.</p>
+  <!-- PAID LINK DISCLOSURE. Delete hidden once any paid link on this page is shown. -->
+  <p class="paid-disclosure" hidden>Some links on this page are paid links: we earn a commission if you sign up or buy through them. Each one is marked “Paid link”. Who pays us never changes a rate or a result.</p>
+</div>
+
+<div class="container">
+  <div class="section">
+    <h2>The calculator</h2>
+    <form id="sc" onsubmit="return false">
+      <div class="calc-grid">
+        <label>Imported cost per unit, $
+          <span class="hint">What you pay the supplier for the imported goods in one unit</span>
+          <input id="sc-cost" type="number" inputmode="decimal" min="0" step="0.01" value="10"></label>
+        <label>Tariff rate you pay, %
+          <span class="hint">From your broker's entry summary or the official schedule</span>
+          <input id="sc-rate" type="number" inputmode="decimal" min="0" step="0.1" value="25"></label>
+        <label>Share of the tariff to pass on, %
+          <span class="hint">100 = the customer covers all of it</span>
+          <input id="sc-share" type="number" inputmode="decimal" min="0" max="100" step="1" value="100"></label>
+        <label>Selling price per unit, $
+          <span class="hint">Your price before the surcharge</span>
+          <input id="sc-price" type="number" inputmode="decimal" min="0" step="0.01" value="30"></label>
+      </div>
+    </form>
+    <div class="calc-out" aria-live="polite">
+      <div class="out"><div class="out-label">Tariff you pay per unit</div><div class="out-value" id="sc-tariff">$2.50</div></div>
+      <div class="out"><div class="out-label">Surcharge per unit</div><div class="out-value" id="sc-dollars">$2.50</div></div>
+      <div class="out"><div class="out-label">Surcharge as % of price</div><div class="out-value" id="sc-pct">8.3%</div></div>
+      <div class="out"><div class="out-label">New total per unit</div><div class="out-value" id="sc-total">$32.50</div></div>
+    </div>
+    <p>The numbers that open in the boxes are an example, not today's rate for any product. Enter your own.</p>
+    <p><a id="sc-full" href="/?cost=10&amp;tariff=25&amp;shipping=0&amp;price=30&amp;pass=100&amp;other=0"><strong>See what this surcharge does to units sold and monthly profit in the full Tariff Impact Calculator</strong></a>. The link carries the cost, rate, price and share from the boxes above, with shipping and other costs set to zero.</p>
+  </div>
+  <div class="section">
+    <h2>The formula, in words</h2>
+    <ol>
+      <li><strong>Tariff per unit</strong> = imported cost per unit × tariff rate.</li>
+      <li><strong>Surcharge per unit</strong> = tariff per unit × the share you pass on.</li>
+      <li><strong>Surcharge percentage</strong> = surcharge per unit ÷ selling price.</li>
+    </ol>
+    <p>Two things trip people up.</p>
+    <p><strong>The surcharge percentage is smaller than the tariff rate.</strong> The tariff is charged on what the goods cost you at import, not on what you sell them for. If you put the tariff rate itself on your invoice, you charge your customer far more than the tariff cost you.</p>
+    <p><strong>Only count the new part.</strong> If you already paid some duty before and built it into your prices, the surcharge should cover the increase only: use the new rate minus the old rate. And if only part of your product is imported, use the cost of that part, not the whole unit.</p>
+  </div>
+  <div class="section">
+    <h2>Three worked examples</h2>
+    <p class="note"><strong>The tariff rates below are round numbers chosen to show the sums.</strong> They are not today's rates for any product.</p>
+    <div class="table-wrap"><table>
+      <thead>
+        <tr><th>Case</th><th>Imported cost</th><th>Example tariff rate</th><th>Share passed on</th><th>Selling price</th><th>Surcharge</th><th>As % of price</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>A. A reseller passes on all of it</td><td>$10.00</td><td>25%</td><td>100%</td><td>$30.00</td><td>$2.50</td><td>8.3%</td></tr>
+        <tr><td>B. A maker with imported parts in a $200 product</td><td>$60.00</td><td>15%</td><td>100%</td><td>$200.00</td><td>$9.00</td><td>4.5%</td></tr>
+        <tr><td>C. A wholesaler who splits it with the customer</td><td>$40.00</td><td>20%</td><td>50%</td><td>$90.00</td><td>$4.00</td><td>4.4%</td></tr>
+      </tbody>
+    </table></div>
+    <p>Open an example in the full calculator: <a href="/?cost=10&amp;tariff=25&amp;shipping=0&amp;price=30&amp;pass=100&amp;other=0">case A</a>, <a href="/?cost=60&amp;tariff=15&amp;shipping=0&amp;price=200&amp;pass=100&amp;other=0">case B</a>, <a href="/?cost=40&amp;tariff=20&amp;shipping=0&amp;price=90&amp;pass=50&amp;other=0">case C</a>. The tariff rate in each link is the example's, and the note under the two countries says so.</p>
+    <p>In case A, a surcharge of $2.50 covers the tariff dollar for dollar. Your profit per unit in dollars stays where it was. Your margin as a percentage of the price still falls a little, because the price went up and the profit did not: $20 on $30 is 66.7%, and $20 on $32.50 is 61.5%. If you need the same percentage margin, you need a larger rise; the <a href="/absorb-tariff-or-raise-prices">absorb-or-raise page</a> shows that sum.</p>
+  </div>
+  <div class="section">
+    <h2>A surcharge line or a plain price rise?</h2>
+    <div class="table-wrap"><table>
+      <thead><tr><th></th><th>Separate surcharge line</th><th>Higher price</th></tr></thead>
+      <tbody>
+        <tr><td>What the customer sees</td><td>Your price unchanged, plus a named cost</td><td>One higher number</td></tr>
+        <tr><td>If the tariff changes</td><td>Change or remove one line</td><td>Reprice everything again</td></tr>
+        <tr><td>Message it sends</td><td>"This is not our doing, and it may not last"</td><td>"This is the price now"</td></tr>
+        <tr><td>Works well for</td><td>Business customers, quotes, contracts, repeat orders</td><td>Retail shelves, online shops, marketplaces that show one price</td></tr>
+        <tr><td>Watch for</td><td>Customers who refuse line-item fees; contracts with fixed prices; rules on advertised prices</td><td>Harder to take back down without looking like a sale</td></tr>
+      </tbody>
+    </table></div>
+    <p>If you sell under a contract or a purchase order with agreed prices, read it before you add a line. A surcharge the contract doesn't allow is a dispute waiting to happen.</p>
+  </div>
+  <div class="section">
+    <h2>Wording for the invoice or quote</h2>
+    <p>Keep it short, name the cost, and don't call it a government charge on the customer. It is your cost, which you are passing on.</p>
+    <ul>
+      <li><strong>Line item:</strong> "Tariff surcharge (4.5% of goods): $9.00"</li>
+      <li><strong>Note on a quote:</strong> "Prices include a tariff surcharge of 4.5%, shown separately. It covers import duties we pay on this product. We will reduce or remove it if those duties fall."</li>
+      <li><strong>Note on an order form:</strong> "A tariff surcharge applies to imported items and is listed on its own line. It is reviewed whenever duty rates change."</li>
+    </ul>
+    <p>Only promise a review if you will do one. For a full notice to customers, see the <a href="/tariff-price-increase-letter">tariff price increase letter templates</a>.</p>
+  </div>
+  <div class="section">
+    <h2>Sales tax can apply to the surcharge</h2>
+    <p>A surcharge is usually part of what you charge for the goods, so states that tax the sale tend to tax the surcharge with it. Two states say so in plain words:</p>
+    <ul>
+      <li><strong>Washington:</strong> the Department of Revenue says surcharges, including tariffs, "are included in the selling price and are taxed", and that they can't be deducted "even if they're listed separately on the invoice".</li>
+      <li><strong>New Jersey:</strong> the Division of Taxation says that when a seller passes the cost of a tariff to the purchaser, the charge is subject to sales tax as part of the taxable sales price, "even if the tariff is separately stated".</li>
+    </ul>
+    <p>Other states have their own rules. Look up "tariff" or "surcharge" on your state revenue department's site, or ask your accountant, before you send the first invoice.</p>
+  </div>
+  <div class="section">
+    <h2>Where to find the rate you pay</h2>
+    <p>Use the rate on your own paperwork, not a headline. Your customs broker's entry summary shows the duty paid on each shipment. For a product you haven't imported yet, look up its code in the official <a href="https://hts.usitc.gov/" target="_blank" rel="noopener">Harmonized Tariff Schedule</a> and ask a broker which extra duties sit on top. U.S. duties changed several times in 2026, so check the date on anything you read, this page included.</p>
+  </div>
+  <!-- PAID LINK PLACE "page-1": QuickBooks or Airwallex (invoicing the surcharge).
+       To fill: put the programme's link in front of the label, as <a href="..." rel="sponsored noopener" target="_blank">..</a>,
+       delete hidden here, and delete hidden on this page's paid-disclosure line. -->
+  <p class="paid-link" data-paid-link="page-1" hidden><span class="paid-label">Paid link: we earn a commission if you sign up or buy through it.</span></p>
+  <!-- AD PLACE "page-mid". Empty: hidden, no space, nothing loads.
+       To fill: paste the ad unit code from the ad network after the label, then delete the word hidden.
+       The place then keeps 300px of height before the ad loads (set by .ad-slot). -->
+  <aside class="ad-slot" data-ad-place="page-mid" aria-label="Advertisements" hidden><span class="ad-label">Advertisements</span></aside>
+  <div class="section">
+    <h2>Questions</h2>
+    <h3>How do I calculate a tariff surcharge?</h3>
+    <p>Multiply the imported cost of the item by the tariff rate you pay, then by the share of the tariff you want the customer to cover. That is the surcharge in dollars. Divide it by your selling price to get the surcharge as a percentage of the price.</p>
+    <h3>Is a tariff surcharge the same percentage as the tariff?</h3>
+    <p>No. The tariff is charged on the imported cost of the goods, not on your selling price. A 25% tariff on an item that costs you $10 and sells for $30 is $2.50, which is 8.3% of the price.</p>
+    <h3>Is sales tax charged on a tariff surcharge?</h3>
+    <p>It depends on the state. Washington and New Jersey both say a tariff charge passed to the customer is part of the taxable selling price, even when it is listed on its own line. Check your own state&#x27;s revenue department.</p>
+    <h3>Should I add a markup to the surcharge?</h3>
+    <p>That is your decision. A surcharge equal to the tariff keeps your profit in dollars the same. Some sellers add a little for the cash tied up in paying duty before the goods sell. If you do, don&#x27;t describe the line as the tariff itself.</p>
+  </div>
+  <div class="section">
+    <h2>Related</h2>
+    <ul>
+      <li><a href="/absorb-tariff-or-raise-prices">Should you absorb a tariff or raise prices?</a></li>
+      <li><a href="/tariff-price-increase-letter">Tariff price increase letter: three templates</a></li>
+      <li><a href="/china-vs-vietnam-vs-mexico-vs-india-landed-cost">China vs Vietnam vs Mexico vs India: landed cost compared</a></li>
+      <li><a href="/tariff-on-upholstered-furniture-from-vietnam">Tariff on upholstered furniture from Vietnam</a></li>
+      <li><a href="/">Tariff Impact Calculator</a></li>
+    </ul>
+  </div>
+  <div class="section">
+    <h2>Sources</h2>
+    <ul class="sources">
+      <li>Washington Department of Revenue, "Surcharges including tariffs". Read 25 November 2026.</li>
+      <li>New Jersey Division of Taxation, "Sales Tax Treatment of Tariff Mark Ups", last updated 20 May 2025. Read 25 November 2026.</li>
+      <li>U.S. International Trade Commission, Harmonized Tariff Schedule, hts.usitc.gov, for looking up a product's rate. No rate from it is quoted on this page.</li>
+    </ul>
+  </div>
+  <!-- AD PLACE "page-end". Empty: hidden, no space, nothing loads.
+       To fill: paste the ad unit code from the ad network after the label, then delete the word hidden.
+       The place then keeps 300px of height before the ad loads (set by .ad-slot). -->
+  <aside class="ad-slot" data-ad-place="page-end" aria-label="Advertisements" hidden><span class="ad-label">Advertisements</span></aside>
+  <p class="disclaimer">Estimates only, not legal, tax or financial advice. The example rates on this page are illustrations.</p>
+</div>
+</main>
+
+<footer class="site-footer">
+  <div class="footer-grid">
+    <div>
+      <h4>Tariff-Impact.com</h4>
+      <p>Free tools and educational content for small business owners navigating import tariffs and trade policy.</p>
+      <p><a href="/about">About</a> · <a href="/contact">Contact &amp; Advertise</a> · <a href="/privacy">Privacy</a> · <a href="/terms">Terms</a></p>
+    </div>
+    <div>
+      <h4>Tools</h4>
+      <ul>
+        <li><a href="/">Tariff Calculator</a></li>
+        <li><a href="/#live-tariff-rates">Tariff Rates</a></li>
+        <li><a href="/tariff-surcharge-calculator">Tariff Surcharge Calculator</a></li>
+        <li><a href="/embed">Embed the Calculator</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Learn</h4>
+      <ul>
+        <li><a href="/#understanding-tariffs">Understanding Tariffs</a></li>
+        <li><a href="/#faq">FAQ</a></li>
+        <li><a href="/absorb-tariff-or-raise-prices">Absorb a Tariff or Raise Prices?</a></li>
+        <li><a href="/tariff-price-increase-letter">Price Increase Letter Templates</a></li>
+        <li><a href="/china-vs-vietnam-vs-mexico-vs-india-landed-cost">China vs Vietnam vs Mexico vs India</a></li>
+        <li><a href="/tariff-on-upholstered-furniture-from-vietnam">Furniture from Vietnam</a></li>
+        <li><a href="/tariff-on-upholstered-furniture-from-malaysia">Furniture from Malaysia</a></li>
+        <li><a href="/tariff-on-toys-from-vietnam">Toys from Vietnam</a></li>
+        <li><a href="/tariff-on-auto-parts-from-japan">Auto Parts from Japan</a></li>
+        <li><a href="/tariff-on-auto-parts-from-mexico">Auto Parts from Mexico</a></li>
+        <li><a href="/tariff-on-steel-and-aluminum-from-canada">Steel &amp; Aluminum from Canada</a></li>
+        <li><a href="/tariff-on-upholstered-furniture-from-china">Furniture from China</a></li>
+        <li><a href="/tariff-on-toys-from-china">Toys from China</a></li>
+        <li><a href="/tariff-on-electronics-from-china">Electronics from China</a></li>
+        <li><a href="/tariff-on-clothing-from-vietnam">Clothing from Vietnam</a></li>
+        <li><a href="/tariff-on-clothing-from-india">Clothing from India</a></li>
+        <li><a href="/tariff-on-clothing-from-china">Clothing from China</a></li>
+        <li><a href="/tariff-on-clothing-from-bangladesh">Clothing from Bangladesh</a></li>
+        <li><a href="/tariff-changes-january-2027">Tariff Changes, January 2027</a></li>
+        <li><a href="/section-301-excess-capacity-tariffs">Section 301 Excess Capacity Tariffs</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>External</h4>
+      <ul>
+        <li><a href="https://hts.usitc.gov/" target="_blank" rel="noopener">USITC HTS Lookup</a></li>
+        <li><a href="https://ustr.gov/" target="_blank" rel="noopener">USTR</a></li>
+        <li><a href="https://www.cbp.gov/trade" target="_blank" rel="noopener">CBP</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="copy">
+    © <span id="footerYear"></span> Tariff-Impact.com — Estimates only. Not legal or financial advice.
+  </div>
+</footer>
+
+<script>
+  document.getElementById('footerYear').textContent = new Date().getFullYear();
+</script>
+<script>
+(function () {
+  function n(id) { var v = parseFloat(document.getElementById(id).value); return isFinite(v) && v > 0 ? v : 0; }
+  function money(x) { return '$' + x.toFixed(2); }
+  function plain(x) { return String(Math.round(x * 10000) / 10000); }
+  function run() {
+    var cost = n('sc-cost'), ratePct = n('sc-rate'), sharePct = Math.min(n('sc-share'), 100), price = n('sc-price');
+    var tariff = cost * ratePct / 100, sur = tariff * sharePct / 100;
+    document.getElementById('sc-tariff').textContent = money(tariff);
+    document.getElementById('sc-dollars').textContent = money(sur);
+    document.getElementById('sc-pct').textContent = price > 0 ? (sur / price * 100).toFixed(1) + '%' : 'enter a price';
+    document.getElementById('sc-total').textContent = money(price + sur);
+    var link = '/?cost=' + plain(cost) + '&tariff=' + plain(ratePct) + '&shipping=0';
+    if (price > 0) link += '&price=' + plain(price);
+    link += '&pass=' + plain(sharePct) + '&other=0';
+    document.getElementById('sc-full').setAttribute('href', link);
+  }
+  ['sc-cost', 'sc-rate', 'sc-share', 'sc-price'].forEach(function (id) { document.getElementById(id).addEventListener('input', run); });
+  run();
+})();
+</script>
+</body>
+</html>
