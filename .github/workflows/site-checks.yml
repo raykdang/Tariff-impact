@@ -22,7 +22,7 @@ name: Site checks
 on:
   pull_request:
   push:
-    branches: [main]
+    branches: [main, "checks-proof-*"]
   workflow_dispatch:
 
 permissions:
