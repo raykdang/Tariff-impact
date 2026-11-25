@@ -1,0 +1,3 @@
+# Python bytecode from running the check scripts locally
+__pycache__/
+*.pyc
