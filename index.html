@@ -502,7 +502,7 @@
   .rates-filters label { display: block; font-size: 11px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.6px; margin-bottom: 4px; }
   .rates-filters input, .rates-filters select { width: 100%; background: var(--bg-2); color: var(--text); border: 1px solid var(--border); border-radius: 6px; padding: 7px 10px; font-size: 13px; }
   .rates-filters input:focus, .rates-filters select:focus { border-color: var(--accent); outline: none; }
-  .rates-table-wrap { background: var(--bg-1); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; max-height: 560px; overflow-y: auto; }
+  .rates-table-wrap { background: var(--bg-1); border: 1px solid var(--border); border-radius: 12px; overflow: auto; max-height: 560px; -webkit-overflow-scrolling: touch; }
   table.rates-tbl { width: 100%; border-collapse: collapse; font-variant-numeric: tabular-nums; }
   table.rates-tbl thead { background: var(--bg-2); position: sticky; top: 0; z-index: 1; }
   table.rates-tbl th { padding: 12px 14px; text-align: left; font-size: 11px; text-transform: uppercase; letter-spacing: 0.6px; color: var(--text-dim); font-weight: 600; cursor: pointer; user-select: none; border-bottom: 1px solid var(--border); white-space: nowrap; }
@@ -543,6 +543,18 @@
   .volatility-banner .small { color: var(--text-dim); font-size: 12px; margin-top: 4px; display: block; }
   .rates-disclaimer { font-size: 11px; color: var(--text-muted); margin-top: 12px; line-height: 1.6; }
   .rates-empty { padding: 40px; text-align: center; color: var(--text-muted); }
+
+  /* Phone widths: keep every grid column within the screen; wide tables scroll inside their own box */
+  .layout { grid-template-columns: 380px minmax(0, 1fr); }
+  @media (max-width: 1100px) { .layout { grid-template-columns: minmax(0, 1fr); } }
+  .layout > *, .charts-grid > *, .kpi-grid > *, .content-grid > *, .rates-summary > *, .rates-filters > *, .sources-grid > *, footer.site-footer .footer-grid > * { min-width: 0; }
+  .chart-wrap canvas { max-width: 100%; }
+  @media (max-width: 600px) {
+    nav.top-nav, header.app-header { padding-left: 16px; padding-right: 16px; }
+    .layout { padding-left: 16px; padding-right: 16px; }
+    .rates-section, .content-section { padding-left: 16px; padding-right: 16px; }
+    .panel { padding: 14px; }
+  }
 </style>
 </head>
 <body>
@@ -558,7 +570,7 @@
     <a href="#understanding-tariffs">Guide</a>
     <a href="#guides">Guides</a>
     <a href="#faq">FAQ</a>
-    <a href="/contact.html">Contact</a>
+    <a href="/contact">Contact</a>
   </div>
 </nav>
 
