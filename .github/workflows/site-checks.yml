@@ -11,7 +11,8 @@
 #            home page) stay out of it. See the script's top comment.
 #   head     each page has a title, a meta description and one canonical
 #            link on https://tariff-impact.com
-#   html     each page parses with no unclosed or stray block tags
+#   html     each page parses with no unclosed or stray block tags, and no
+#            comment, tag or <script> body left open (a "<!--" with no "-->")
 #
 # Job "wrangler" runs a Cloudflare dry run (no upload, no login) when the
 # repository has a Wrangler config, and skips cleanly when it has none.

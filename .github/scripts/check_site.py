@@ -6,7 +6,7 @@ It uses only Python's standard library. It prints every problem it finds and
 exits with status 1 if there is any, so a GitHub Actions run goes red.
 
 What counts as a page
-  Every .html file in the repository (outside .git, node_modules, .wrangler)
+  Every .html file in the repository (outside .git, .github, node_modules, .wrangler)
   is a page, served at its name without ".html" (index.html is "/").
   A page is PUBLIC when it is not marked noindex and its canonical link points
   to its own address. Public pages must be in sitemap.xml. Pages marked
@@ -28,7 +28,9 @@ The checks
                 description, and exactly one canonical link on
                 https://tariff-impact.com that points to a page in the repo.
   4. html:      each page parses: a doctype, one <html>, <head> and <body>,
-                no unclosed or stray block tags, no unterminated comment or tag.
+                no unclosed or stray block tags, and no comment ("<!--" with no
+                "-->"), tag ("<div" with no ">") or <script>/<style> body left
+                open, which a browser would let swallow the rest of the page.
                 Only structural faults fail; style nits do not.
 """
 
@@ -116,10 +118,10 @@ class Page(HTMLParser):
             self.title += data
 
     def finish(self):
+        # Markup left open at the end of a page is found by find_unterminated()
+        # on the raw text before parsing: HTMLParser.close() quietly turns any
+        # leftover into data or a comment, so nothing is left to look at here.
         self.close()
-        rest = self.rawdata.strip() if self.rawdata else ""
-        if rest:
-            problem(self.name, f"html: unterminated markup at the end: {rest[:60]!r}")
         for t, l in self.stack:
             if t not in OPTIONAL_END:
                 problem(f"{self.name}:{l}", f"html: <{t}> is never closed")
@@ -154,6 +156,84 @@ class Page(HTMLParser):
                     url = part.strip().split(" ")[0]
                     if url:
                         self.refs.append((attr, url, line))
+
+
+RAW_TEXT = {"script", "style", "textarea", "title", "xmp", "iframe",
+            "noembed", "noframes", "noscript"}
+
+
+def find_unterminated(text):
+    """Return (line, message) for the first comment, tag or raw-text element
+    that is opened and never closed, or None. It reads the raw text the way a
+    browser starts to: "<!--" runs to the next "-->", "<!" and "<?" to the next
+    ">", "<tag ..." to the next ">" outside a quoted attribute value, and the
+    body of <script>, <style> and the like to its own end tag. A "<" followed by
+    anything else (a space, a digit) is plain text, as in a browser."""
+    n = len(text)
+    i = 0
+
+    def at(pos, what):
+        return text.count("\n", 0, pos) + 1, what
+
+    while True:
+        i = text.find("<", i)
+        if i < 0 or i + 1 >= n:
+            return None
+        start = i
+        if text.startswith("<!--", i):
+            end = text.find("-->", i + 4)
+            if end < 0:
+                return at(start, f"comment opened here is never closed with -->: {text[i:i+50]!r}")
+            i = end + 3
+            continue
+        c = text[i + 1]
+        if c in "!?":
+            end = text.find(">", i + 2)
+            if end < 0:
+                return at(start, f"markup opened here is never closed with >: {text[i:i+50]!r}")
+            i = end + 1
+            continue
+        closing = c == "/"
+        j = i + 2 if closing else i + 1
+        if j >= n or not text[j].isascii() or not text[j].isalpha():
+            i += 1
+            continue
+        k = j
+        while k < n and not text[k].isspace() and text[k] not in "/>":
+            k += 1
+        name = text[j:k].lower()
+        # Find the ">" that ends the tag, skipping quoted attribute values.
+        quote = None
+        after_eq = False
+        end = -1
+        while k < n:
+            ch = text[k]
+            if quote:
+                if ch == quote:
+                    quote = None
+            elif after_eq and ch in "\"'":
+                quote = ch
+                after_eq = False
+            elif ch == "=":
+                after_eq = True
+            elif ch == ">":
+                end = k
+                break
+            elif not ch.isspace():
+                after_eq = False
+            k += 1
+        if end < 0:
+            if quote:
+                return at(start, f"<{'/' if closing else ''}{name}> tag has an attribute value "
+                                 f"opened with {quote} and never closed: {text[i:i+50]!r}")
+            return at(start, f"<{'/' if closing else ''}{name}> tag is never closed with >: "
+                             f"{text[i:i+50]!r}")
+        i = end + 1
+        if not closing and name in RAW_TEXT and not text[end - 1] == "/":
+            m = re.compile(r"</" + re.escape(name) + r"[\s/>]", re.I).search(text, i)
+            if not m:
+                return at(start, f"<{name}> opened here is never closed")
+            i = m.start()
 
 
 def find_pages():
@@ -229,6 +309,9 @@ def main():
         with open(page, encoding="utf-8") as fh:
             text = fh.read()
         p = Page(page)
+        bad = find_unterminated(text)
+        if bad:
+            problem(f"{page}:{bad[0]}", "html: " + bad[1])
         try:
             p.feed(text)
             p.finish()
