@@ -5,11 +5,14 @@
 // in the Cloudflare dashboard, or the build fails.
 {
   "$schema": "https://unpkg.com/wrangler@4/config-schema.json",
-  "name": "tariff-impact",
+  "name": "wild-mouse-60ad",
   "compatibility_date": "2026-11-01",
   "assets": {
     "directory": "./",
     "html_handling": "auto-trailing-slash",
     "not_found_handling": "none"
-  }
+  },
+  "routes": [
+    { "pattern": "tariff-impact.com", "custom_domain": true }
+  ]
 }
