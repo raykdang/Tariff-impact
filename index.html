@@ -352,6 +352,14 @@
   }
   .insight-box strong { color: var(--text); }
 
+  /* Copy link to this scenario */
+  .share-row { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-bottom: 18px; }
+  .share-row .share-status { font-size: 12px; color: var(--text-dim); }
+  .share-row input.share-link {
+    flex: 1 1 280px; min-width: min(100%, 260px); background: var(--bg-2); border: 1px solid var(--border);
+    color: var(--text); padding: 8px 10px; border-radius: 8px; font-size: 12px;
+  }
+
   /* Glossary overlay */
   .glossary-overlay {
     position: fixed; inset: 0; background: rgba(7, 11, 19, 0.85);
@@ -709,6 +717,12 @@
         <div class="kpi-sub" id="kpi_breakevenSub">to maintain pre-tariff profit</div>
         <div class="kpi-delta neutral" id="kpi_breakevenDelta">+$0.00 vs current</div>
       </div>
+    </div>
+
+    <div class="share-row">
+      <button class="btn" id="copyLinkBtn" type="button">Copy link to this scenario</button>
+      <span class="share-status" id="copyLinkStatus" role="status" aria-live="polite"></span>
+      <input class="share-link" id="copyLinkField" type="text" readonly hidden aria-label="Link to this scenario">
     </div>
 
     <div class="charts-grid">
@@ -2000,9 +2014,86 @@ document.getElementById('glossaryOverlay').addEventListener('click', e => {
 });
 document.addEventListener('keydown', e => { if (e.key === 'Escape') closeGlossary(); });
 
+// ---------------------- LINK TO A SCENARIO ----------------------
+// The address can carry the inputs: /?from=VN&to=US&cost=40&tariff=20&price=90
+// Every value from the address is treated as untrusted text. A number is used
+// only if it is a plain decimal inside the limits below, and a country only if
+// it is one of the codes in tariffData. Anything else is dropped, and that
+// input keeps its normal opening value. Nothing from the address is written
+// into the page as text or markup.
+const linkParams = [
+  { name: 'cost',       key: 'cost',   min: 0,    max: 1000000 },
+  { name: 'tariff',     key: 'tariff', min: 0,    max: 1000 },
+  { name: 'shipping',   key: 'ship',   min: 0,    max: 1000000 },
+  { name: 'price',      key: 'price',  min: 0.01, max: 1000000 },
+  { name: 'pass',       key: 'pass',   min: 0,    max: 100 },
+  { name: 'units',      key: 'units',  min: 0,    max: 10000000 },
+  { name: 'elasticity', key: 'elast',  min: -5,   max: 0 },
+  { name: 'other',      key: 'var',    min: 0,    max: 1000000 },
+  { name: 'fixed',      key: 'fixed',  min: 0,    max: 1000000000 },
+];
+const linkNumber = /^-?\d{1,10}(\.\d{1,4})?$/;
+
+function linkValueOk(p, num) {
+  return typeof num === 'number' && isFinite(num) && num >= p.min && num <= p.max;
+}
+
+function readScenarioFromAddress() {
+  const found = {};
+  let params;
+  try { params = new URLSearchParams(window.location.search); } catch (e) { return found; }
+  const from = params.get('from'), to = params.get('to');
+  if (from !== null && tariffData.origins.some(o => o.code === from)) found.countryFrom = from;
+  if (to !== null && tariffData.destinations.some(d => d.code === to)) found.countryTo = to;
+  linkParams.forEach(p => {
+    const raw = params.get(p.name);
+    if (raw === null || !linkNumber.test(raw)) return;
+    const num = parseFloat(raw);
+    if (linkValueOk(p, num)) found[p.key] = num;
+  });
+  return found;
+}
+
+function scenarioLink() {
+  const params = new URLSearchParams();
+  params.set('from', state.countryFrom);
+  params.set('to', state.countryTo);
+  linkParams.forEach(p => {
+    const num = Math.round(state[p.key] * 10000) / 10000;
+    if (linkValueOk(p, num)) params.set(p.name, String(num));
+  });
+  return window.location.origin + window.location.pathname + '?' + params.toString();
+}
+
+document.getElementById('copyLinkBtn').addEventListener('click', () => {
+  const link = scenarioLink();
+  const status = document.getElementById('copyLinkStatus');
+  const field = document.getElementById('copyLinkField');
+  const showByHand = () => {
+    field.value = link; field.hidden = false;
+    status.textContent = 'Copy this link:';
+    field.focus(); field.select();
+  };
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(link).then(() => {
+      field.hidden = true;
+      status.textContent = 'Link copied. Anyone who opens it sees this scenario.';
+    }, showByHand);
+  } else {
+    showByHand();
+  }
+});
+
 // ---------------------- INIT ----------------------
 initCharts();
+// Countries from the link go in first, so the country row fills its own tariff
+// rate. The link's numbers go in after it, so a tariff given in the link wins
+// and one not given still comes from the row.
+const linked = readScenarioFromAddress();
+if (linked.countryFrom) state.countryFrom = linked.countryFrom;
+if (linked.countryTo) state.countryTo = linked.countryTo;
 populateCountries();
+linkParams.forEach(p => { if (p.key in linked) state[p.key] = linked[p.key]; });
 syncFromState();
 update();
 
