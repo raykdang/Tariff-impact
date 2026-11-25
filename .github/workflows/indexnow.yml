@@ -7,9 +7,12 @@
 #   address in sitemap.xml once, so merging this file submits the whole site.
 # - Any other change to main sends only the sitemap pages whose .html changed.
 # - "Run workflow" by hand (Actions tab) sends every address.
-# The script first waits until this commit is live: Cloudflare's Workers Builds
-# check on the commit has passed, and the live site serves the commit's
-# version of each changed file (see the script's top comment).
+# The script first waits until this commit is live: it polls up to 15 minutes
+# for Cloudflare's Workers Builds check on the commit to appear (Cloudflare
+# posts it only when the build ends) and pass, then for the live site to serve
+# the commit's version of each changed file. Only if the check never passes in
+# that time does it rely on the live-page comparison alone, for 5 more minutes
+# (see the script's top comment). Hence the 30-minute job limit.
 name: IndexNow
 
 on:
@@ -34,7 +37,7 @@ jobs:
   notify:
     name: Tell IndexNow engines
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 30
     steps:
       - uses: actions/checkout@v7
         with:

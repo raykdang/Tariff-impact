@@ -8,24 +8,31 @@ Standard library only.
                                                       .html file is listed in FILE
 FILE lists the files this push changed, one repository path a line.
 
-Before it sends anything it waits (up to WAIT_SECONDS, default 900) until this
-very commit is live, so no engine is told about a page before its new text is
-published:
+Before it sends anything it waits until this very commit is live, so no
+engine is told about a page before its new text is published:
 
   1. Cloudflare's own "Workers Builds" check on this commit (read from GitHub
-     with the job's read-only token) has finished. If it failed or was
-     cancelled, this commit never went live: nothing is sent. If GitHub shows
-     no such check, or can't be read, the script relies on step 2 alone.
+     with the job's read-only token). Cloudflare posts that check only when
+     its build ends, about five minutes after the commit lands, so "no check
+     yet" is normal at first: the script polls for up to WAIT_SECONDS
+     (default 900) for the check to appear and complete.
+     - Failed or cancelled: this commit never went live, nothing is sent.
+     - Passed: it goes on to step 2, and if a page still differs after
+       GRACE_SECONDS (default 300), for example because a newer commit has
+       since gone live or Cloudflare edits pages in a new way, it sends
+       anyway and says why: the build proves this commit was published.
+     - Never passed in time (never posted, still running, or GitHub could
+       not be read): only then does it fall back to step 2 alone, for up to
+       FALLBACK_SECONDS (default 300) more, and sends nothing if the pages
+       never match. With no token at all, that fallback starts at once.
   2. The live site serves this commit's key file and sitemap, and every
      changed file that the site serves (top-level .html, .xml, .txt, .js, .svg)
      has the same content live as in the commit. Cloudflare adds a hidden
      /cdn-cgi/ link and its analytics script to live pages; those are removed
      before comparing.
 
-If the build check passed but a page still differs after GRACE_SECONDS
-(default 300), for example because a newer commit has since gone live or
-Cloudflare edits pages in a new way, it sends anyway and says why: the build
-proves this commit was published.
+The tests are in test_indexnow.py beside this script:
+  python3 -m unittest discover -s .github/scripts
 
 It then sends one POST to api.indexnow.org, which shares the list with every
 IndexNow engine, and prints the answer. HTTP 200 or 202 is success; anything
@@ -46,6 +53,7 @@ SITE = f"https://{HOST}"
 ENDPOINT = "https://api.indexnow.org/indexnow"
 WAIT_SECONDS = int(os.environ.get("WAIT_SECONDS", "900"))
 GRACE_SECONDS = int(os.environ.get("GRACE_SECONDS", "300"))
+FALLBACK_SECONDS = int(os.environ.get("FALLBACK_SECONDS", "300"))
 POLL_SECONDS = int(os.environ.get("POLL_SECONDS", "30"))
 BUILD_CHECK_PREFIX = os.environ.get("BUILD_CHECK_PREFIX", "Workers Builds")
 NS = {"s": "http://www.sitemaps.org/schemas/sitemap/0.9"}
@@ -114,24 +122,26 @@ def files_to_compare(changed):
     return sorted(pairs.items())
 
 
-def build_check(sha, repo, token, api="https://api.github.com"):
-    """State of Cloudflare's build check on this commit:
-    'success', 'failed', 'running', or None (no such check, or not readable)."""
+def build_check(sha, repo, token, api="https://api.github.com", fetcher=None):
+    """State of Cloudflare's build check on this commit: 'success', 'failed',
+    'running', 'missing' (no such check yet, since Cloudflare posts it only
+    when the build ends; or GitHub could not be read this time), or
+    'unavailable' (no commit, repository or token to read it with)."""
     if not (sha and repo and token):
-        return None
+        return "unavailable"
     url = f"{api}/repos/{repo}/commits/{sha}/check-runs?per_page=100"
     try:
-        data = json.loads(fetch(url, {
+        data = json.loads((fetcher or fetch)(url, {
             "Authorization": f"Bearer {token}",
             "Accept": "application/vnd.github+json",
             "X-GitHub-Api-Version": "2022-11-28",
         }))
     except Exception as e:
-        print(f"Could not read this commit's checks ({e}); relying on the page comparison.")
-        return None
+        print(f"Could not read this commit's checks ({e}); will try again.")
+        return "missing"
     runs = [r for r in data.get("check_runs", []) if r.get("name", "").startswith(BUILD_CHECK_PREFIX)]
     if not runs:
-        return None
+        return "missing"
     if any(r.get("status") != "completed" for r in runs):
         return "running"
     if all(r.get("conclusion") == "success" for r in runs):
@@ -156,7 +166,9 @@ def live_mismatches(pairs, fetcher=fetch):
 
 
 def wait_until_live(changed, check=None, mismatches=None, clock=time.time, sleep=time.sleep):
-    """True once this commit is live, False if it never goes live in time."""
+    """True once this commit is live, False if it never goes live in time.
+    See the top comment: the build check first, the page comparison alone
+    only after WAIT_SECONDS without a passed check."""
     sha = os.environ.get("GITHUB_SHA")
     repo = os.environ.get("GITHUB_REPOSITORY")
     token = os.environ.get("GITHUB_TOKEN")
@@ -164,30 +176,49 @@ def wait_until_live(changed, check=None, mismatches=None, clock=time.time, sleep
     pairs = files_to_compare(changed)
     mismatches = mismatches or (lambda: live_mismatches(pairs))
     print("Waiting for these files to be live: " + ", ".join(p for p, _ in pairs))
-    deadline = clock() + WAIT_SECONDS
+    check_deadline = clock() + WAIT_SECONDS
     built_at = None
+    in_fallback = False
     while True:
         state = check()
         if state == "failed":
             print("Cloudflare's build of this commit failed or was cancelled, so it is not live.")
             return False
-        if state == "success" and built_at is None:
-            built_at = clock()
-            print("Cloudflare's build of this commit has finished.")
-        if state in (None, "success"):
+        if state == "success":
+            if built_at is None:
+                built_at = clock()
+                print("Cloudflare's build of this commit has passed.")
             bad = mismatches()
             if not bad:
                 print("The live site serves this commit's version of every file above.")
                 return True
-            if built_at is not None and clock() - built_at >= GRACE_SECONDS:
-                print("The build finished but these still differ live: " + ", ".join(bad)
+            if clock() - built_at >= GRACE_SECONDS:
+                print("The build passed but these still differ live: " + ", ".join(bad)
                       + ". A newer commit may be live, or Cloudflare changed the page; sending anyway.")
                 return True
-            print("Not live yet: " + ", ".join(bad) + "; waiting.")
+            print("Build passed; not live yet: " + ", ".join(bad) + "; waiting.")
+        elif state != "unavailable" and not in_fallback and clock() < check_deadline:
+            if state == "running":
+                print("Cloudflare is still building this commit; waiting.")
+            else:
+                print("Cloudflare has not posted its build check on this commit yet; waiting.")
         else:
-            print("Cloudflare is still building this commit; waiting.")
-        if clock() >= deadline:
-            return False
+            if not in_fallback:
+                in_fallback = True
+                check_deadline = min(check_deadline, clock())
+                if state == "unavailable":
+                    print("No token to read Cloudflare's build check; relying on the page comparison.")
+                else:
+                    print(f"No passed build check after {WAIT_SECONDS}s (last state: {state}); "
+                          "falling back to the page comparison.")
+            bad = mismatches()
+            if not bad:
+                print("The live site serves this commit's version of every file above.")
+                return True
+            if clock() >= check_deadline + FALLBACK_SECONDS:
+                print("Still not live: " + ", ".join(bad) + ".")
+                return False
+            print("Not live yet: " + ", ".join(bad) + "; waiting.")
         sleep(POLL_SECONDS)
 
 
