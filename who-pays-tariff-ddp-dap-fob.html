@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3FXPSLFG9X"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-3FXPSLFG9X');
+</script>
+
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Who Pays the Tariff Under DDP, DAP and FOB?</title>
+<meta name="description" content="Under DDP the seller pays the import tariff; under FOB, DAP, CIF and the rest the buyer does. Table, DDP vs FOB worked example, and what to ask a supplier.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://tariff-impact.com/who-pays-tariff-ddp-dap-fob">
+
+<!-- Favicon -->
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="apple-touch-icon" href="/favicon.svg">
+<meta name="theme-color" content="#4f8cff">
+
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://tariff-impact.com/who-pays-tariff-ddp-dap-fob">
+<meta property="og:title" content="Who Pays the Tariff Under DDP, DAP and FOB?">
+<meta property="og:description" content="Under DDP the seller pays the import tariff; under FOB, DAP, CIF and the rest the buyer does. Table, DDP vs FOB worked example, and what to ask a supplier.">
+<meta property="og:site_name" content="Tariff-Impact.com">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "Who pays the tariff under DDP, DAP and FOB?",
+      "description": "Under DDP the seller pays the import tariff; under FOB, DAP, CIF and the rest the buyer does. Table, DDP vs FOB worked example, and what to ask a supplier.",
+      "mainEntityOfPage": "https://tariff-impact.com/who-pays-tariff-ddp-dap-fob",
+      "dateModified": "2026-11-25",
+      "author": {
+        "@type": "Organization",
+        "name": "Tariff-Impact.com",
+        "url": "https://tariff-impact.com/"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Tariff-Impact.com",
+        "url": "https://tariff-impact.com/"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Who pays the tariff under FOB?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The buyer. Under FOB the seller's job ends when the goods are loaded on the ship at the port of export. Freight, insurance, import clearance and the tariff are the buyer's, and in a US import the buyer is usually the importer of record who owes the duty."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is the tariff included in a DDP price?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "It should be: under DDP the seller delivers to you with import duty, taxes and clearance paid. Ask the supplier to confirm in writing that the quote includes all duties at today's rates, which tariff code they used, and who is the importer of record."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Who pays duty under DAP?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The buyer. DAP means the seller pays to deliver the goods to your named place, but import clearance, duty and import taxes stay with you. Carriers often collect them on delivery."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is DDP or FOB cheaper?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Compare landed cost, not the quote. Add freight, insurance, the tariff, customs fees and broker costs to the FOB price, and set that against the DDP price. A DDP price above that total is what you pay for the convenience; one far below it may mean the duty has been understated."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Tariff Calculator",
+          "item": "https://tariff-impact.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Who pays the tariff: DDP, DAP, FOB",
+          "item": "https://tariff-impact.com/who-pays-tariff-ddp-dap-fob"
+        }
+      ]
+    }
+  ]
+}
+</script>
+
+<style>
+  :root {
+    --bg-0: #0b0f17; --bg-1: #111826; --bg-2: #1a2233; --bg-3: #232c40;
+    --border: #2b3650; --text: #e6ecf5; --text-dim: #97a3b8; --text-muted: #6b7791;
+    --accent: #4f8cff; --accent-2: #7dd3fc;
+    --good: #34d399; --warn: #fbbf24; --bad: #f87171;
+    --purple: #a78bfa;
+    --shadow: 0 6px 24px rgba(0,0,0,0.35);
+  }
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0; padding: 0;
+    background: radial-gradient(1200px 600px at 10% -10%, #182238 0%, var(--bg-0) 60%) fixed;
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Roboto, "Helvetica Neue", Arial, sans-serif;
+    font-size: 14px; min-height: 100vh; line-height: 1.55;
+  }
+  a { color: var(--accent-2); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+
+  nav.top-nav {
+    background: rgba(11,15,23,0.85); backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    padding: 12px 28px;
+    display: flex; align-items: center; justify-content: space-between;
+    position: sticky; top: 0; z-index: 90;
+    flex-wrap: wrap; gap: 12px;
+  }
+  nav.top-nav .nav-brand { display: flex; align-items: center; gap: 10px; font-weight: 700; }
+  nav.top-nav .nav-brand .nav-mark {
+    width: 28px; height: 28px; border-radius: 7px;
+    background: linear-gradient(135deg, var(--accent), var(--purple));
+    display: grid; place-items: center; font-size: 13px;
+  }
+  nav.top-nav .nav-links { display: flex; gap: 4px; flex-wrap: wrap; }
+  nav.top-nav .nav-links a {
+    color: var(--text-dim); padding: 6px 12px; border-radius: 6px;
+    font-size: 13px; text-decoration: none; transition: all 0.15s;
+  }
+  nav.top-nav .nav-links a:hover, nav.top-nav .nav-links a.active {
+    color: var(--text); background: var(--bg-2);
+  }
+
+  .hero {
+    max-width: 880px; margin: 36px auto 22px auto; padding: 0 28px;
+  }
+  .crumbs { font-size: 12px; color: var(--text-muted); margin: 0 0 14px 0; }
+  .crumbs a { color: var(--text-dim); }
+  .hero h1 {
+    font-size: 34px; line-height: 1.2; margin: 0 0 14px 0; letter-spacing: -0.5px;
+    background: linear-gradient(135deg, var(--text), var(--accent-2));
+    -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+    color: var(--text); /* fallback */
+  }
+  .hero .lede { font-size: 16px; color: var(--text-dim); line-height: 1.7; margin: 0 0 10px 0; }
+  .hero .lede strong { color: var(--text); }
+  .hero .reviewed { font-size: 12px; color: var(--text-muted); margin: 0; }
+
+  .container { max-width: 880px; margin: 0 auto; padding: 0 28px 30px 28px; }
+
+  .btn-primary {
+    background: linear-gradient(135deg, var(--accent), #6f7bff);
+    color: white; padding: 12px 24px; border-radius: 10px;
+    text-decoration: none; font-size: 14px; font-weight: 600;
+    border: none; cursor: pointer; display: inline-block;
+    transition: filter 0.15s;
+  }
+  .btn-primary:hover { filter: brightness(1.1); text-decoration: none; }
+  .cta { margin: 0 0 22px 0; }
+  .cta .cta-note { display: block; margin-top: 8px; font-size: 12px; color: var(--text-muted); }
+
+  .section {
+    background: var(--bg-1); border: 1px solid var(--border);
+    border-radius: 12px; padding: 26px 30px;
+    margin-bottom: 22px;
+  }
+  .section h2 { font-size: 20px; margin: 0 0 12px 0; color: var(--text); }
+  .section h3 { font-size: 15px; margin: 20px 0 8px 0; color: var(--text); }
+  .section p { font-size: 14px; color: var(--text-dim); line-height: 1.75; margin: 0 0 12px 0; }
+  .section ul, .section ol { color: var(--text-dim); line-height: 1.75; padding-left: 22px; margin: 0 0 12px 0; }
+  .section li { margin-bottom: 6px; }
+  .section strong { color: var(--text); }
+  .section > :last-child { margin-bottom: 0; }
+
+  .table-wrap { overflow-x: auto; margin: 0 0 14px 0; border: 1px solid var(--border); border-radius: 10px; }
+  .table-wrap table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  .table-wrap th, .table-wrap td {
+    padding: 10px 12px; text-align: left; vertical-align: top;
+    border-bottom: 1px solid var(--border); color: var(--text-dim);
+  }
+  .table-wrap thead th {
+    background: var(--bg-2); color: var(--text); font-size: 12px; font-weight: 600;
+  }
+  .table-wrap tbody tr:last-child td { border-bottom: none; }
+  .table-wrap td:first-child { color: var(--text); }
+
+  .note {
+    background: rgba(251,191,36,0.08); border: 1px solid rgba(251,191,36,0.35);
+    border-radius: 10px; padding: 12px 16px; margin: 0 0 14px 0;
+    font-size: 13px; color: var(--text-dim); line-height: 1.7;
+  }
+  .note strong { color: var(--text); }
+
+  blockquote.letter {
+    background: var(--bg-2); border: 1px solid var(--border); border-left: 3px solid var(--accent);
+    border-radius: 8px; margin: 0 0 14px 0; padding: 16px 20px;
+  }
+  blockquote.letter p { color: var(--text); font-size: 13px; }
+  blockquote.letter p:last-child { margin-bottom: 0; }
+
+  .calc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 16px; }
+  @media (max-width: 700px) { .calc-grid { grid-template-columns: 1fr; } }
+  .calc-grid label { display: block; font-size: 13px; color: var(--text); font-weight: 600; }
+  .calc-grid .hint { display: block; font-size: 12px; color: var(--text-muted); font-weight: 400; margin: 2px 0 6px 0; }
+  .calc-grid input {
+    width: 100%; background: var(--bg-2); border: 1px solid var(--border); border-radius: 8px;
+    color: var(--text); font-size: 16px; padding: 10px 12px; font-family: inherit;
+  }
+  .calc-grid input:focus { outline: none; border-color: var(--accent); }
+  .calc-out {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 14px;
+  }
+  @media (max-width: 700px) { .calc-out { grid-template-columns: 1fr 1fr; } }
+  .calc-out .out {
+    background: var(--bg-2); border: 1px solid var(--border); border-radius: 10px; padding: 14px;
+  }
+  .calc-out .out-label { font-size: 11px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.6px; }
+  .calc-out .out-value { font-size: 22px; font-weight: 700; color: var(--accent-2); margin-top: 4px; }
+
+  .sources li { font-size: 13px; }
+  .disclaimer { font-size: 12px; color: var(--text-muted); margin: 0 0 22px 0; }
+
+  footer.site-footer {
+    border-top: 1px solid var(--border);
+    margin-top: 50px; padding: 32px 28px 24px 28px;
+    color: var(--text-muted); font-size: 12px; line-height: 1.7;
+  }
+  footer.site-footer .footer-grid {
+    max-width: 1100px; margin: 0 auto;
+    display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 30px;
+  }
+  @media (max-width: 800px) { footer.site-footer .footer-grid { grid-template-columns: 1fr 1fr; } }
+  footer.site-footer h4 { color: var(--text); font-size: 12px; text-transform: uppercase; letter-spacing: 1px; margin: 0 0 10px 0; }
+  footer.site-footer ul { list-style: none; padding: 0; margin: 0; }
+  footer.site-footer li { margin-bottom: 6px; }
+  footer.site-footer a { color: var(--text-dim); }
+  footer.site-footer .copy { text-align: center; margin-top: 24px; padding-top: 18px; border-top: 1px solid var(--border); }
+
+  @media (max-width: 600px) {
+    nav.top-nav { padding: 10px 16px; }
+    .hero { margin-top: 24px; padding: 0 16px; }
+    .hero h1 { font-size: 26px; }
+    .container { padding: 0 16px 24px 16px; }
+    .section { padding: 20px 18px; }
+    footer.site-footer { padding: 28px 16px 20px 16px; }
+  }
+
+  /* Ad and paid-link places (see README, "Ads and paid links").
+     An empty place carries the attribute hidden: it takes no space and loads nothing.
+     A filled ad place reserves its height before the ad loads, so the page does not jump. */
+  .ad-slot[hidden], .paid-link[hidden], .paid-disclosure[hidden] { display: none !important; }
+  .ad-slot {
+    display: block; box-sizing: border-box; width: 100%; max-width: 980px;
+    min-height: 300px; margin: 22px auto; padding: 0 16px;
+    text-align: center; overflow: hidden; contain: layout paint;
+  }
+  .ad-slot .ad-label {
+    display: block; font-size: 11px; color: var(--text-muted);
+    text-transform: uppercase; letter-spacing: 0.6px; margin: 0 0 6px 0;
+  }
+  .paid-link { font-size: 13px; color: var(--text-dim); margin: 10px 0 0 0; line-height: 1.6; }
+  .paid-link .paid-label { font-size: 12px; color: var(--text-muted); }
+  .paid-disclosure { font-size: 12px; color: var(--text-muted); margin: 8px 0 0 0; line-height: 1.6; }
+</style>
+</head>
+<body>
+
+<nav class="top-nav">
+  <a href="/" class="nav-brand" style="color: var(--text); text-decoration: none;">
+    <span class="nav-mark">T</span>
+    <span>Tariff-Impact.com</span>
+  </a>
+  <div class="nav-links">
+    <a href="/">Calculator</a>
+    <a href="/#live-tariff-rates">Tariff Rates</a>
+    <a href="/#guides">Guides</a>
+    <a href="/#faq">FAQ</a>
+    <a href="/contact">Contact</a>
+  </div>
+</nav>
+
+<main>
+<div class="hero">
+  <p class="crumbs"><a href="/">Tariff Calculator</a> › Who pays the tariff: DDP, DAP, FOB</p>
+  <h1>Who pays the tariff under DDP, DAP and FOB?</h1>
+  <p class="lede">Under <strong>DDP</strong> (Delivered Duty Paid) the seller pays the import tariff. Under <strong>every other Incoterm</strong>, including FOB, DAP, CIF and EXW, the buyer does. That one rule decides how to read a supplier's quote. This page gives the table, shows how to compare a DDP quote with an FOB one, and lists what to ask before you order.</p>
+  <p class="reviewed">Last reviewed: 25 November 2026. Estimates only, not legal or financial advice.</p>
+  <!-- PAID LINK DISCLOSURE. Delete hidden once any paid link on this page is shown. -->
+  <p class="paid-disclosure" hidden>Some links on this page are paid links: we earn a commission if you sign up or buy through them. Each one is marked “Paid link”. Who pays us never changes a rate or a result.</p>
+</div>
+
+<div class="container">
+  <p class="cta"><a class="btn-primary" href="/?cost=10&amp;tariff=25&amp;shipping=1.5&amp;price=25&amp;pass=0&amp;units=500&amp;elasticity=-1.2&amp;other=0&amp;fixed=0">Compare an FOB quote in the calculator</a>
+    <span class="cta-note">It opens on the FOB example below. The DDP version is linked further down.</span></p>
+  <div class="section">
+    <h2>Who pays import duty under each Incoterm</h2>
+    <p>Incoterms are the eleven trade terms published by the International Chamber of Commerce; the current set is Incoterms 2020. Each one says where the seller's costs and risk end. Import duty is always on the buyer's side except under DDP.</p>
+    <div class="table-wrap"><table>
+      <thead><tr><th>Term</th><th>Name</th><th>Pays import duty</th><th>What it means</th></tr></thead>
+      <tbody>
+        <tr><td>EXW</td><td>Ex Works</td><td><strong>Buyer</strong></td><td>Buyer collects at the seller's premises and handles everything, including export clearance.</td></tr>
+        <tr><td>FCA</td><td>Free Carrier</td><td><strong>Buyer</strong></td><td>Seller clears export and hands over to the buyer's carrier.</td></tr>
+        <tr><td>FAS</td><td>Free Alongside Ship</td><td><strong>Buyer</strong></td><td>Sea only. Goods placed beside the ship at the port of loading.</td></tr>
+        <tr><td>FOB</td><td>Free On Board</td><td><strong>Buyer</strong></td><td>Sea only. Goods loaded on the ship; the buyer pays freight from there.</td></tr>
+        <tr><td>CFR</td><td>Cost and Freight</td><td><strong>Buyer</strong></td><td>Sea only. Seller pays freight to your port, not insurance or import costs.</td></tr>
+        <tr><td>CIF</td><td>Cost, Insurance and Freight</td><td><strong>Buyer</strong></td><td>Sea only. Seller pays freight and insurance to your port. Duty is still yours.</td></tr>
+        <tr><td>CPT</td><td>Carriage Paid To</td><td><strong>Buyer</strong></td><td>Seller pays carriage to a named place; risk passes at handover to the first carrier.</td></tr>
+        <tr><td>CIP</td><td>Carriage and Insurance Paid To</td><td><strong>Buyer</strong></td><td>As CPT, plus insurance.</td></tr>
+        <tr><td>DAP</td><td>Delivered At Place</td><td><strong>Buyer</strong></td><td>Seller delivers to your named place, ready to unload. Import clearance and duty are yours.</td></tr>
+        <tr><td>DPU</td><td>Delivered at Place Unloaded</td><td><strong>Buyer</strong></td><td>As DAP, and the seller unloads.</td></tr>
+        <tr><td>DDP</td><td>Delivered Duty Paid</td><td><strong>Seller</strong></td><td>Seller delivers, clears import and pays the duty, taxes and fees.</td></tr>
+      </tbody>
+    </table></div>
+    <p>A term only works with its named place, as in "FOB Ho Chi Minh City" or "DAP Chicago warehouse". And Incoterms say who pays costs between buyer and seller, not who the customs authority will chase: in the United States the duty is owed by the importer of record, the party named on the customs entry.</p>
+  </div>
+  <div class="section">
+    <h2>"My supplier quoted DDP. Is the tariff included?"</h2>
+    <p>It should be, but check three things before you rely on it.</p>
+    <ul>
+      <li><strong>Which rate did they use?</strong> US tariffs changed several times in 2026 (see <a href="/us-tariff-rates-by-country">US tariff rates by country</a>). A quote priced on an old rate can come back as a surcharge, or with a supplier asking to reprice.</li>
+      <li><strong>Which tariff code?</strong> The duty depends on the product's HTS code. Ask for it, and check it yourself with <a href="/how-to-find-hts-code">how to find your HTS code</a>.</li>
+      <li><strong>Who is the importer of record?</strong> If the supplier, or an agent it hires, files the entry, the duty is its legal debt. If the entry names your business, the duty is yours in law whatever the contract says, and you would have to claim it back from the supplier.</li>
+    </ul>
+    <p>Also ask whether the price is fixed if the tariff changes before delivery, and whether customs fees and the broker are included. Any duty refund also goes to the importer of record, not to whoever paid in the end.</p>
+  </div>
+  <div class="section">
+    <h2>How suppliers price a tariff into DDP</h2>
+    <p>A DDP supplier has to guess your duty before the goods ship, so expect a buffer for rate changes, the cost of its own broker, and the cost of carrying the duty until you pay. That is why a DDP quote is often higher than FOB plus your own costs. It can still be worth it for a first order, small parcels, or if you have no broker yet.</p>
+    <p>A DDP price that is <em>lower</em> than it should be is a warning sign: the duty may be worked out on a value below what you paid, or on the wrong code. If the entry names you, an underpaid duty can come back to you later.</p>
+  </div>
+  <!-- AD PLACE "page-mid". Empty: hidden, no space, nothing loads.
+       To fill: paste the ad unit code from the ad network after the label, then delete the word hidden.
+       The place then keeps 300px of height before the ad loads (set by .ad-slot). -->
+  <aside class="ad-slot" data-ad-place="page-mid" aria-label="Advertisements" hidden><span class="ad-label">Advertisements</span></aside>
+  <div class="section">
+    <h2>Compare a DDP quote with an FOB quote</h2>
+    <p>An example with made-up figures. Supplier A quotes <strong>FOB $10.00</strong> a unit. Freight and insurance to your door cost $1.50 a unit, and the tariff on this product is 25% of the $10 value: $2.50. <strong>The 25% is an example, not today's rate for any product.</strong> Supplier B quotes <strong>DDP $14.00</strong>. You sell at $25.</p>
+    <div class="table-wrap"><table>
+      <thead><tr><th></th><th>FOB $10 + your costs</th><th>DDP $14</th><th>DDP $15</th></tr></thead>
+      <tbody>
+        <tr><td>Goods</td><td>$10.00</td><td rowspan="3">$14.00, all in</td><td rowspan="3">$15.00, all in</td></tr>
+        <tr><td>Freight and insurance</td><td>$1.50</td></tr>
+        <tr><td>Tariff</td><td>$2.50</td></tr>
+        <tr><td>Landed cost per unit</td><td><strong>$14.00</strong></td><td><strong>$14.00</strong></td><td><strong>$15.00</strong></td></tr>
+        <tr><td>Profit per unit at $25</td><td><a href="/?cost=10&amp;tariff=25&amp;shipping=1.5&amp;price=25&amp;pass=0&amp;units=500&amp;elasticity=-1.2&amp;other=0&amp;fixed=0">$11.00</a></td><td><a href="/?cost=14&amp;tariff=0&amp;shipping=0&amp;price=25&amp;pass=0&amp;units=500&amp;elasticity=-1.2&amp;other=0&amp;fixed=0">$11.00</a></td><td><a href="/?cost=15&amp;tariff=0&amp;shipping=0&amp;price=25&amp;pass=0&amp;units=500&amp;elasticity=-1.2&amp;other=0&amp;fixed=0">$10.00</a></td></tr>
+      </tbody>
+    </table></div>
+    <p>At $14 the two quotes cost the same; DDP buys you less paperwork. At $15 you pay $1 a unit, $500 on 500 units, for it. In the calculator, enter the FOB price as unit cost with the tariff rate and freight filled in; enter a DDP price as unit cost with the tariff at 0 and shipping at 0. Each profit figure above opens that case.</p>
+    <p>Customs value: in a US import the duty is generally charged on the price paid for the goods, without international freight and insurance. So compare the tariff on the goods' price alone, even when the quote is CIF. Customs fees and broker charges come on top; see <a href="/tariff-vs-duty-vs-customs-fees">tariff vs duty vs customs fees</a>.</p>
+  </div>
+  <div class="section">
+    <h2>What to ask before you order</h2>
+    <ol>
+      <li>Which Incoterm, at which named place?</li>
+      <li>For DDP: who is the importer of record, which HTS code, and which duty rate is in the price?</li>
+      <li>Is the price fixed if the tariff changes before the goods clear customs?</li>
+      <li>For anything but DDP: who is your customs broker, and what do the broker and the customs fees add per shipment?</li>
+      <li>Can you have the commercial invoice before shipping, to check the value and code yourself?</li>
+    </ol>
+  </div>
+  <!-- PAID LINK PLACE "page-1": Freight forwarder or customs broker (quotes).
+       To fill: put the programme's link in front of the label, as <a href="..." rel="sponsored noopener" target="_blank">..</a>,
+       delete hidden here, and delete hidden on this page's paid-disclosure line. -->
+  <p class="paid-link" data-paid-link="page-1" hidden><span class="paid-label">Paid link: we earn a commission if you sign up or buy through it.</span></p>
+  <div class="section">
+    <h2>Questions</h2>
+    <h3>Who pays the tariff under FOB?</h3>
+    <p>The buyer. Under FOB the seller's job ends when the goods are loaded on the ship at the port of export. Freight, insurance, import clearance and the tariff are the buyer's, and in a US import the buyer is usually the importer of record who owes the duty.</p>
+    <h3>Is the tariff included in a DDP price?</h3>
+    <p>It should be: under DDP the seller delivers to you with import duty, taxes and clearance paid. Ask the supplier to confirm in writing that the quote includes all duties at today's rates, which tariff code they used, and who is the importer of record.</p>
+    <h3>Who pays duty under DAP?</h3>
+    <p>The buyer. DAP means the seller pays to deliver the goods to your named place, but import clearance, duty and import taxes stay with you. Carriers often collect them on delivery.</p>
+    <h3>Is DDP or FOB cheaper?</h3>
+    <p>Compare landed cost, not the quote. Add freight, insurance, the tariff, customs fees and broker costs to the FOB price, and set that against the DDP price. A DDP price above that total is what you pay for the convenience; one far below it may mean the duty has been understated.</p>
+  </div>
+  <div class="section">
+    <h2>About this page</h2>
+    <p>The Incoterm rules are those of the International Chamber of Commerce's Incoterms 2020. The worked example uses made-up prices and an example tariff rate; this page quotes no official tariff rate. Each profit figure is what the site's calculator gives for that case. For the duty on your own goods, check the official <a href="https://hts.usitc.gov/" target="_blank" rel="noopener">Harmonized Tariff Schedule</a> or ask a licensed customs broker.</p>
+  </div>
+  <div class="section">
+    <h2>Related</h2>
+    <ul>
+      <li><a href="/china-vs-vietnam-vs-mexico-vs-india-landed-cost">China vs Vietnam vs Mexico vs India: landed cost compared</a></li>
+      <li><a href="/tariff-vs-duty-vs-customs-fees">Tariff vs duty vs customs fees</a></li>
+      <li><a href="/how-to-find-hts-code">How to find your HTS code and tariff rate</a></li>
+      <li><a href="/break-even-price-after-tariff">Break-even price after a tariff</a></li>
+      <li><a href="/">Tariff Impact Calculator</a></li>
+    </ul>
+  </div>
+
+  <!-- AD PLACE "page-end". Empty: hidden, no space, nothing loads.
+       To fill: paste the ad unit code from the ad network after the label, then delete the word hidden.
+       The place then keeps 300px of height before the ad loads (set by .ad-slot). -->
+  <aside class="ad-slot" data-ad-place="page-end" aria-label="Advertisements" hidden><span class="ad-label">Advertisements</span></aside>
+  <p class="disclaimer">Estimates only, not legal or financial advice.</p>
+</div>
+</main>
+
+<footer class="site-footer">
+  <div class="footer-grid">
+    <div>
+      <h4>Tariff-Impact.com</h4>
+      <p>Free tools and educational content for small business owners navigating import tariffs and trade policy.</p>
+      <p><a href="/about">About</a> · <a href="/contact">Contact &amp; Advertise</a> · <a href="/privacy">Privacy</a> · <a href="/terms">Terms</a></p>
+    </div>
+    <div>
+      <h4>Tools</h4>
+      <ul>
+        <li><a href="/">Tariff Calculator</a></li>
+        <li><a href="/#live-tariff-rates">Tariff Rates</a></li>
+        <li><a href="/tariff-surcharge-calculator">Tariff Surcharge Calculator</a></li>
+        <li><a href="/embed">Embed the Calculator</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Learn</h4>
+      <ul>
+        <li><a href="/#understanding-tariffs">Understanding Tariffs</a></li>
+        <li><a href="/#faq">FAQ</a></li>
+        <li><a href="/absorb-tariff-or-raise-prices">Absorb a Tariff or Raise Prices?</a></li>
+        <li><a href="/tariff-price-increase-letter">Price Increase Letter Templates</a></li>
+        <li><a href="/china-vs-vietnam-vs-mexico-vs-india-landed-cost">China vs Vietnam vs Mexico vs India</a></li>
+        <li><a href="/tariff-on-upholstered-furniture-from-vietnam">Furniture from Vietnam</a></li>
+        <li><a href="/tariff-on-upholstered-furniture-from-malaysia">Furniture from Malaysia</a></li>
+        <li><a href="/tariff-on-toys-from-vietnam">Toys from Vietnam</a></li>
+        <li><a href="/tariff-on-auto-parts-from-japan">Auto Parts from Japan</a></li>
+        <li><a href="/tariff-on-auto-parts-from-mexico">Auto Parts from Mexico</a></li>
+        <li><a href="/tariff-on-steel-and-aluminum-from-canada">Steel &amp; Aluminum from Canada</a></li>
+        <li><a href="/tariff-on-upholstered-furniture-from-china">Furniture from China</a></li>
+        <li><a href="/tariff-on-toys-from-china">Toys from China</a></li>
+        <li><a href="/tariff-on-electronics-from-china">Electronics from China</a></li>
+        <li><a href="/tariff-on-clothing-from-vietnam">Clothing from Vietnam</a></li>
+        <li><a href="/tariff-on-clothing-from-india">Clothing from India</a></li>
+        <li><a href="/tariff-on-clothing-from-china">Clothing from China</a></li>
+        <li><a href="/tariff-on-clothing-from-bangladesh">Clothing from Bangladesh</a></li>
+        <li><a href="/tariff-changes-january-2027">Tariff Changes, January 2027</a></li>
+        <li><a href="/section-301-excess-capacity-tariffs">Section 301 Excess Capacity Tariffs</a></li>
+        <li><a href="/break-even-price-after-tariff">Break-Even Price After a Tariff</a></li>
+        <li><a href="/who-pays-tariff-ddp-dap-fob">Who Pays the Tariff: DDP, DAP, FOB</a></li>
+        <li><a href="/us-tariff-rates-by-country">US Tariff Rates by Country</a></li>
+        <li><a href="/tariff-vs-duty-vs-customs-fees">Tariff vs Duty vs Customs Fees</a></li>
+        <li><a href="/how-to-find-hts-code">How to Find Your HTS Code</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>External</h4>
+      <ul>
+        <li><a href="https://hts.usitc.gov/" target="_blank" rel="noopener">USITC HTS Lookup</a></li>
+        <li><a href="https://ustr.gov/" target="_blank" rel="noopener">USTR</a></li>
+        <li><a href="https://www.cbp.gov/trade" target="_blank" rel="noopener">CBP</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="copy">
+    © <span id="footerYear"></span> Tariff-Impact.com — Estimates only. Not legal or financial advice.
+  </div>
+</footer>
+
+<script>
+  document.getElementById('footerYear').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
