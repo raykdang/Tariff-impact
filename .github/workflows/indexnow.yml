@@ -1,0 +1,54 @@
+# After a change to main goes live, tells the IndexNow search engines
+# (Bing, Yandex, Seznam, Naver and others; not Google) which pages changed.
+# Free GitHub-hosted runner, no secrets: an IndexNow key is public by design,
+# and this one is already served at /52e097de978708b53f3f6311e220f244.txt.
+#
+# - A change to main that touches this workflow or its script sends every
+#   address in sitemap.xml once, so merging this file submits the whole site.
+# - Any other change to main sends only the sitemap pages whose .html changed.
+# - "Run workflow" by hand (Actions tab) sends every address.
+# The script first waits until the live site serves the commit's sitemap.
+name: IndexNow
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "*.html"
+      - "sitemap.xml"
+      - ".github/workflows/indexnow.yml"
+      - ".github/scripts/indexnow.py"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: indexnow
+  cancel-in-progress: false
+
+jobs:
+  notify:
+    name: Tell IndexNow engines
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Send the changed (or all) addresses
+        env:
+          EVENT: ${{ github.event_name }}
+          BEFORE: ${{ github.event.before }}
+        run: |
+          if [ "$EVENT" != "push" ] || ! git cat-file -e "$BEFORE^{commit}" 2>/dev/null; then
+            python3 .github/scripts/indexnow.py all
+            exit $?
+          fi
+          git diff --name-only "$BEFORE" "$GITHUB_SHA" > changed.txt
+          cat changed.txt
+          if grep -qE '^\.github/(workflows/indexnow\.yml|scripts/indexnow\.py)$' changed.txt; then
+            python3 .github/scripts/indexnow.py all
+          else
+            python3 .github/scripts/indexnow.py changed changed.txt
+          fi
