@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3FXPSLFG9X"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-3FXPSLFG9X');
+</script>
+
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Does a 25% Tariff Raise Prices 25%? The Margin Maths</title>
+<meta name="description" content="A 25% tariff is charged on the import value, not the shelf price. Why it can mean a 6% price rise, when it means 25%, and what it does to margins.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://tariff-impact.com/does-a-25-percent-tariff-raise-prices-25-percent">
+
+<!-- Favicon -->
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="apple-touch-icon" href="/favicon.svg">
+<meta name="theme-color" content="#4f8cff">
+
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://tariff-impact.com/does-a-25-percent-tariff-raise-prices-25-percent">
+<meta property="og:title" content="Does a 25% Tariff Raise Prices 25%? The Margin Maths">
+<meta property="og:description" content="A 25% tariff is charged on the import value, not the shelf price. Why it can mean a 6% price rise, when it means 25%, and what it does to margins.">
+<meta property="og:site_name" content="Tariff-Impact.com">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "A 25% tariff doesn’t mean a 25% price rise: the margin maths",
+      "description": "A 25% tariff is charged on the import value, not the shelf price. Why it can mean a 6% price rise, when it means 25%, and what it does to margins.",
+      "mainEntityOfPage": "https://tariff-impact.com/does-a-25-percent-tariff-raise-prices-25-percent",
+      "dateModified": "2026-11-25",
+      "author": {
+        "@type": "Organization",
+        "name": "Tariff-Impact.com",
+        "url": "https://tariff-impact.com/"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Tariff-Impact.com",
+        "url": "https://tariff-impact.com/"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Does a 25% tariff raise prices by 25%?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Usually not. The tariff is 25% of the import value, which is only part of the shelf price. If an $80 product cost $20 to import, the tariff is $5, and passing on exactly that is a 6.25% rise. Prices rise by the full 25% only if every seller in the chain keeps the same percentage markup on its higher cost."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do tariffs affect profit margins?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "If the seller keeps its price, the tariff comes straight out of profit per unit: a $5 tariff on a product earning $25 a unit cuts that profit by a fifth. If the seller raises the price by the tariff in dollars, profit per unit stays the same but the percentage margin falls a little, and some customers may buy less."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is a tariff charged on the retail price?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. For goods entering the United States, duty is charged on the customs value, normally the price the importer paid the foreign supplier for the goods. Freight, the importer’s markup, the retailer’s markup and sales tax all come later and are not part of it."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why do some prices rise by more than the tariff?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Because businesses that price by a fixed markup apply it to their new, higher cost. If an importer doubles its cost and a retailer doubles again, a $5 tariff becomes $20 on the shelf. Some sellers also raise prices on goods that pay no tariff, because competitors’ prices went up."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Tariff Calculator",
+          "item": "https://tariff-impact.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Does a 25% tariff raise prices 25%?",
+          "item": "https://tariff-impact.com/does-a-25-percent-tariff-raise-prices-25-percent"
+        }
+      ]
+    }
+  ]
+}
+</script>
+
+<style>
+  :root {
+    --bg-0: #0b0f17; --bg-1: #111826; --bg-2: #1a2233; --bg-3: #232c40;
+    --border: #2b3650; --text: #e6ecf5; --text-dim: #97a3b8; --text-muted: #6b7791;
+    --accent: #4f8cff; --accent-2: #7dd3fc;
+    --good: #34d399; --warn: #fbbf24; --bad: #f87171;
+    --purple: #a78bfa;
+    --shadow: 0 6px 24px rgba(0,0,0,0.35);
+  }
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0; padding: 0;
+    background: radial-gradient(1200px 600px at 10% -10%, #182238 0%, var(--bg-0) 60%) fixed;
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Roboto, "Helvetica Neue", Arial, sans-serif;
+    font-size: 14px; min-height: 100vh; line-height: 1.55;
+  }
+  a { color: var(--accent-2); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+
+  nav.top-nav {
+    background: rgba(11,15,23,0.85); backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    padding: 12px 28px;
+    display: flex; align-items: center; justify-content: space-between;
+    position: sticky; top: 0; z-index: 90;
+    flex-wrap: wrap; gap: 12px;
+  }
+  nav.top-nav .nav-brand { display: flex; align-items: center; gap: 10px; font-weight: 700; }
+  nav.top-nav .nav-brand .nav-mark {
+    width: 28px; height: 28px; border-radius: 7px;
+    background: linear-gradient(135deg, var(--accent), var(--purple));
+    display: grid; place-items: center; font-size: 13px;
+  }
+  nav.top-nav .nav-links { display: flex; gap: 4px; flex-wrap: wrap; }
+  nav.top-nav .nav-links a {
+    color: var(--text-dim); padding: 6px 12px; border-radius: 6px;
+    font-size: 13px; text-decoration: none; transition: all 0.15s;
+  }
+  nav.top-nav .nav-links a:hover, nav.top-nav .nav-links a.active {
+    color: var(--text); background: var(--bg-2);
+  }
+
+  .hero {
+    max-width: 880px; margin: 36px auto 22px auto; padding: 0 28px;
+  }
+  .crumbs { font-size: 12px; color: var(--text-muted); margin: 0 0 14px 0; }
+  .crumbs a { color: var(--text-dim); }
+  .hero h1 {
+    font-size: 34px; line-height: 1.2; margin: 0 0 14px 0; letter-spacing: -0.5px;
+    background: linear-gradient(135deg, var(--text), var(--accent-2));
+    -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+    color: var(--text); /* fallback */
+  }
+  .hero .lede { font-size: 16px; color: var(--text-dim); line-height: 1.7; margin: 0 0 10px 0; }
+  .hero .lede strong { color: var(--text); }
+  .hero .reviewed { font-size: 12px; color: var(--text-muted); margin: 0; }
+
+  .container { max-width: 880px; margin: 0 auto; padding: 0 28px 30px 28px; }
+
+  .btn-primary {
+    background: linear-gradient(135deg, var(--accent), #6f7bff);
+    color: white; padding: 12px 24px; border-radius: 10px;
+    text-decoration: none; font-size: 14px; font-weight: 600;
+    border: none; cursor: pointer; display: inline-block;
+    transition: filter 0.15s;
+  }
+  .btn-primary:hover { filter: brightness(1.1); text-decoration: none; }
+  .cta { margin: 0 0 22px 0; }
+  .cta .cta-note { display: block; margin-top: 8px; font-size: 12px; color: var(--text-muted); }
+
+  .section {
+    background: var(--bg-1); border: 1px solid var(--border);
+    border-radius: 12px; padding: 26px 30px;
+    margin-bottom: 22px;
+  }
+  .section h2 { font-size: 20px; margin: 0 0 12px 0; color: var(--text); }
+  .section h3 { font-size: 15px; margin: 20px 0 8px 0; color: var(--text); }
+  .section p { font-size: 14px; color: var(--text-dim); line-height: 1.75; margin: 0 0 12px 0; }
+  .section ul, .section ol { color: var(--text-dim); line-height: 1.75; padding-left: 22px; margin: 0 0 12px 0; }
+  .section li { margin-bottom: 6px; }
+  .section strong { color: var(--text); }
+  .section > :last-child { margin-bottom: 0; }
+
+  .table-wrap { overflow-x: auto; margin: 0 0 14px 0; border: 1px solid var(--border); border-radius: 10px; }
+  .table-wrap table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  .table-wrap th, .table-wrap td {
+    padding: 10px 12px; text-align: left; vertical-align: top;
+    border-bottom: 1px solid var(--border); color: var(--text-dim);
+  }
+  .table-wrap thead th {
+    background: var(--bg-2); color: var(--text); font-size: 12px; font-weight: 600;
+  }
+  .table-wrap tbody tr:last-child td { border-bottom: none; }
+  .table-wrap td:first-child { color: var(--text); }
+
+  .note {
+    background: rgba(251,191,36,0.08); border: 1px solid rgba(251,191,36,0.35);
+    border-radius: 10px; padding: 12px 16px; margin: 0 0 14px 0;
+    font-size: 13px; color: var(--text-dim); line-height: 1.7;
+  }
+  .note strong { color: var(--text); }
+
+  blockquote.letter {
+    background: var(--bg-2); border: 1px solid var(--border); border-left: 3px solid var(--accent);
+    border-radius: 8px; margin: 0 0 14px 0; padding: 16px 20px;
+  }
+  blockquote.letter p { color: var(--text); font-size: 13px; }
+  blockquote.letter p:last-child { margin-bottom: 0; }
+
+  .calc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 16px; }
+  @media (max-width: 700px) { .calc-grid { grid-template-columns: 1fr; } }
+  .calc-grid label { display: block; font-size: 13px; color: var(--text); font-weight: 600; }
+  .calc-grid .hint { display: block; font-size: 12px; color: var(--text-muted); font-weight: 400; margin: 2px 0 6px 0; }
+  .calc-grid input {
+    width: 100%; background: var(--bg-2); border: 1px solid var(--border); border-radius: 8px;
+    color: var(--text); font-size: 16px; padding: 10px 12px; font-family: inherit;
+  }
+  .calc-grid input:focus { outline: none; border-color: var(--accent); }
+  .calc-out {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 14px;
+  }
+  @media (max-width: 700px) { .calc-out { grid-template-columns: 1fr 1fr; } }
+  .calc-out .out {
+    background: var(--bg-2); border: 1px solid var(--border); border-radius: 10px; padding: 14px;
+  }
+  .calc-out .out-label { font-size: 11px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.6px; }
+  .calc-out .out-value { font-size: 22px; font-weight: 700; color: var(--accent-2); margin-top: 4px; }
+
+  .sources li { font-size: 13px; }
+  .disclaimer { font-size: 12px; color: var(--text-muted); margin: 0 0 22px 0; }
+
+  footer.site-footer {
+    border-top: 1px solid var(--border);
+    margin-top: 50px; padding: 32px 28px 24px 28px;
+    color: var(--text-muted); font-size: 12px; line-height: 1.7;
+  }
+  footer.site-footer .footer-grid {
+    max-width: 1100px; margin: 0 auto;
+    display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 30px;
+  }
+  @media (max-width: 800px) { footer.site-footer .footer-grid { grid-template-columns: 1fr 1fr; } }
+  footer.site-footer h4 { color: var(--text); font-size: 12px; text-transform: uppercase; letter-spacing: 1px; margin: 0 0 10px 0; }
+  footer.site-footer ul { list-style: none; padding: 0; margin: 0; }
+  footer.site-footer li { margin-bottom: 6px; }
+  footer.site-footer a { color: var(--text-dim); }
+  footer.site-footer .copy { text-align: center; margin-top: 24px; padding-top: 18px; border-top: 1px solid var(--border); }
+
+  @media (max-width: 600px) {
+    nav.top-nav { padding: 10px 16px; }
+    .hero { margin-top: 24px; padding: 0 16px; }
+    .hero h1 { font-size: 26px; }
+    .container { padding: 0 16px 24px 16px; }
+    .section { padding: 20px 18px; }
+    footer.site-footer { padding: 28px 16px 20px 16px; }
+  }
+
+  /* Ad and paid-link places (see README, "Ads and paid links").
+     An empty place carries the attribute hidden: it takes no space and loads nothing.
+     A filled ad place reserves its height before the ad loads, so the page does not jump. */
+  .ad-slot[hidden], .paid-link[hidden], .paid-disclosure[hidden] { display: none !important; }
+  .ad-slot {
+    display: block; box-sizing: border-box; width: 100%; max-width: 980px;
+    min-height: 300px; margin: 22px auto; padding: 0 16px;
+    text-align: center; overflow: hidden; contain: layout paint;
+  }
+  .ad-slot .ad-label {
+    display: block; font-size: 11px; color: var(--text-muted);
+    text-transform: uppercase; letter-spacing: 0.6px; margin: 0 0 6px 0;
+  }
+  .paid-link { font-size: 13px; color: var(--text-dim); margin: 10px 0 0 0; line-height: 1.6; }
+  .paid-link .paid-label { font-size: 12px; color: var(--text-muted); }
+  .paid-disclosure { font-size: 12px; color: var(--text-muted); margin: 8px 0 0 0; line-height: 1.6; }
+</style>
+</head>
+<body>
+
+<nav class="top-nav">
+  <a href="/" class="nav-brand" style="color: var(--text); text-decoration: none;">
+    <span class="nav-mark">T</span>
+    <span>Tariff-Impact.com</span>
+  </a>
+  <div class="nav-links">
+    <a href="/">Calculator</a>
+    <a href="/#live-tariff-rates">Tariff Rates</a>
+    <a href="/#guides">Guides</a>
+    <a href="/#faq">FAQ</a>
+    <a href="/contact">Contact</a>
+  </div>
+</nav>
+
+<main>
+<div class="hero">
+  <p class="crumbs"><a href="/">Tariff Calculator</a> › Does a 25% tariff raise prices 25%?</p>
+  <h1>A 25% tariff doesn’t mean a 25% price rise: the margin maths</h1>
+  <p class="lede">A tariff is charged on <strong>what the importer paid for the goods</strong>, not on the price in the shop. On a product that sells for four times its import cost, a 25% tariff is a <strong>6.25% price rise</strong> if it is passed on dollar for dollar. It becomes a full 25% only when every business along the way adds its usual markup on top of the tariff.</p>
+  <p class="reviewed">Last reviewed: 25 November 2026. Every rate on this page is an example, not the rate on any product. Estimates only, not legal or financial advice.</p>
+  <!-- PAID LINK DISCLOSURE. Delete hidden once any paid link on this page is shown. -->
+  <p class="paid-disclosure" hidden>Some links on this page are paid links: we earn a commission if you sign up or buy through them. Each one is marked “Paid link”. Who pays us never changes a rate or a result.</p>
+</div>
+
+<div class="container">
+  <p class="cta"><a class="btn-primary" href="/?cost=20&amp;tariff=25&amp;shipping=0&amp;price=80&amp;pass=100&amp;other=0&amp;fixed=0">Try it in the calculator</a>
+    <span class="cta-note">It opens on the $80 product below with a 25% tariff passed on in full. Read the new price, then change the numbers to yours.</span></p>
+  <div class="section">
+    <h2>The rule in one line</h2>
+    <p><strong>Price rise = tariff rate × the import value’s share of the price.</strong> A 25% tariff on goods that are a quarter of the price is a 6.25% rise; on goods that are half the price, 12.5%; only when the import value is the whole price is it 25%. This holds when the tariff is passed on dollar for dollar, the way most small sellers do it.</p>
+    <p>The tariff is charged on the customs value: what the importer paid the foreign supplier for the goods. Freight, warehousing, wages, rent, the importer’s margin and the shop’s margin come later, and none of them pays the tariff.</p>
+  </div>
+  <div class="section">
+    <h2>One product, three prices</h2>
+    <p>The same item costs <strong>$20</strong> to import. A 25% tariff is <strong>$5</strong>. Three sellers sell it at three different prices and each passes on exactly $5.</p>
+    <div class="table-wrap"><table>
+      <thead><tr><th>Selling price</th><th>Import value as share of price</th><th>New price</th><th>Price rise</th></tr></thead>
+      <tbody>
+        <tr><td><a href="/?cost=20&amp;tariff=25&amp;shipping=0&amp;price=25&amp;pass=100&amp;other=0&amp;fixed=0">$25</a> (thin margin, e.g. a wholesaler)</td><td>80%</td><td>$30</td><td>+20%</td></tr>
+        <tr><td><a href="/?cost=20&amp;tariff=25&amp;shipping=0&amp;price=40&amp;pass=100&amp;other=0&amp;fixed=0">$40</a> (double the import cost)</td><td>50%</td><td>$45</td><td>+12.5%</td></tr>
+        <tr><td><a href="/?cost=20&amp;tariff=25&amp;shipping=0&amp;price=80&amp;pass=100&amp;other=0&amp;fixed=0">$80</a> (four times, a typical shop price)</td><td>25%</td><td>$85</td><td>+6.25%</td></tr>
+      </tbody>
+    </table></div>
+    <p>Each price links to the calculator with that case. The higher the markup, the smaller the rise in percentage terms, though it is $5 every time.</p>
+  </div>
+  <div class="section">
+    <h2>When a 25% tariff does become a 25% price rise</h2>
+    <p>Follow the item along the chain: the importer pays $20 and sells to a shop at $40; the shop sells at $80. Now add the $5 tariff, and see what each business does with it.</p>
+    <div class="table-wrap"><table>
+      <thead><tr><th>What each seller does</th><th>Importer sells at</th><th>Shop sells at</th><th>Shelf rise</th></tr></thead>
+      <tbody>
+        <tr><td>No tariff</td><td>$40</td><td>$80</td><td>—</td></tr>
+        <tr><td>Both pass on the $5 in dollars</td><td>$45</td><td>$85</td><td>+6.25%</td></tr>
+        <tr><td>Importer keeps its 50% margin; shop passes on dollars</td><td>$50</td><td>$90</td><td>+12.5%</td></tr>
+        <tr><td>Both keep their 50% margins</td><td>$50</td><td>$100</td><td>+25%</td></tr>
+      </tbody>
+    </table></div>
+    <p>When every seller doubles its cost, the $5 tariff becomes $20 on the shelf: a 25% rise, and each seller earns more in dollars than before ($25 instead of $20 for the importer, $50 instead of $40 for the shop). So the answer to “does a 25% tariff raise prices 25%?” is: <strong>only if everyone in the chain keeps their percentage markup on the tariff too</strong>.</p>
+  </div>
+  <!-- AD PLACE "page-mid". Empty: hidden, no space, nothing loads.
+       To fill: paste the ad unit code from the ad network after the label, then delete the word hidden.
+       The place then keeps 300px of height before the ad loads (set by .ad-slot). -->
+  <aside class="ad-slot" data-ad-place="page-mid" aria-label="Advertisements" hidden><span class="ad-label">Advertisements</span></aside>
+  <div class="section">
+    <h2>Tariff rate against shelf-price rise</h2>
+    <p>Price rise when the tariff is passed on in dollars, for each share of the price that the import value makes up. All rates are examples.</p>
+    <div class="table-wrap"><table>
+      <thead><tr><th>Tariff rate</th><th>Import value 25% of price</th><th>40%</th><th>50%</th><th>100%</th></tr></thead>
+      <tbody>
+        <tr><td>10%</td><td>+2.5%</td><td>+4%</td><td>+5%</td><td>+10%</td></tr>
+        <tr><td>15%</td><td>+3.75%</td><td>+6%</td><td>+7.5%</td><td>+15%</td></tr>
+        <tr><td>25%</td><td>+6.25%</td><td>+10%</td><td>+12.5%</td><td>+25%</td></tr>
+        <tr><td>50%</td><td>+12.5%</td><td>+20%</td><td>+25%</td><td>+50%</td></tr>
+      </tbody>
+    </table></div>
+    <p>If you keep your percentage markup instead, the rise is the tariff rate times the import value’s share of your <strong>unit cost</strong> (not of your price), which is a bigger share and so a bigger rise.</p>
+  </div>
+  <div class="section">
+    <h2>What it does to the margin</h2>
+    <p>Take a business that imports the item at $20 and sells it at $40: $20 profit a unit, a 50% margin. The 25% tariff adds $5 to its cost.</p>
+    <ul>
+      <li><strong>Price held at $40:</strong> cost $25, profit $15 instead of $20, margin 37.5%. The tariff took a quarter of the profit per unit.</li>
+      <li><strong>Price $45 (tariff passed on in dollars):</strong> profit $20, margin 44.4%. Same dollars, a lower percentage, and a few customers may stop buying.</li>
+      <li><strong>Price $50 (margin kept):</strong> profit $25, margin 50%. The customer pays $10 for a $5 tariff.</li>
+    </ul>
+    <p>Which to choose depends on how your customers react to price: see <a href="/absorb-tariff-or-raise-prices">absorb a tariff or raise prices?</a> and <a href="/break-even-price-after-tariff">break-even price after a tariff</a>.</p>
+  </div>
+  <!-- PAID LINK PLACE "page-1": an accounting or pricing tool.
+       To fill: put the programme's link in front of the label, as <a href="..." rel="sponsored noopener" target="_blank">..</a>,
+       delete hidden here, and delete hidden on this page's paid-disclosure line. -->
+  <p class="paid-link" data-paid-link="page-1" hidden><span class="paid-label">Paid link: we earn a commission if you sign up or buy through it.</span></p>
+  <div class="section">
+    <h2>Questions</h2>
+    <h3>Does a 25% tariff raise prices by 25%?</h3>
+    <p>Usually not. The tariff is 25% of the import value, which is only part of the shelf price. If an $80 product cost $20 to import, the tariff is $5, and passing on exactly that is a 6.25% rise. Prices rise by the full 25% only if every seller in the chain keeps the same percentage markup on its higher cost.</p>
+    <h3>How do tariffs affect profit margins?</h3>
+    <p>If the seller keeps its price, the tariff comes straight out of profit per unit: a $5 tariff on a product earning $25 a unit cuts that profit by a fifth. If the seller raises the price by the tariff in dollars, profit per unit stays the same but the percentage margin falls a little, and some customers may buy less.</p>
+    <h3>Is a tariff charged on the retail price?</h3>
+    <p>No. For goods entering the United States, duty is charged on the customs value, normally the price the importer paid the foreign supplier for the goods. Freight, the importer’s markup, the retailer’s markup and sales tax all come later and are not part of it.</p>
+    <h3>Why do some prices rise by more than the tariff?</h3>
+    <p>Because businesses that price by a fixed markup apply it to their new, higher cost. If an importer doubles its cost and a retailer doubles again, a $5 tariff becomes $20 on the shelf. Some sellers also raise prices on goods that pay no tariff, because competitors’ prices went up.</p>
+  </div>
+  <div class="section">
+    <h2>How the figures were worked out</h2>
+    <p>Plain arithmetic on example numbers. Tariff = 25% × $20 import value = $5. Price rise = new price ÷ old price − 1. This page quotes no official tariff rate; for real rates, see <a href="/us-tariff-rates-by-country">US tariff rates by country</a> and <a href="/how-to-find-hts-code">how to find your HTS code</a>.</p>
+  </div>
+  <div class="section">
+    <h2>Related</h2>
+    <ul>
+      <li><a href="/break-even-price-after-tariff">Break-even price after a tariff</a></li>
+      <li><a href="/absorb-tariff-or-raise-prices">Should you absorb a tariff or raise prices?</a></li>
+      <li><a href="/tariff-surcharge-calculator">Tariff surcharge calculator</a></li>
+      <li><a href="/tariff-vs-duty-vs-customs-fees">Tariff vs duty vs customs fees</a></li>
+      <li><a href="/us-tariff-rates-by-country">US tariff rates by country</a></li>
+      <li><a href="/">Tariff Impact Calculator</a></li>
+    </ul>
+  </div>
+
+  <!-- AD PLACE "page-end". Empty: hidden, no space, nothing loads.
+       To fill: paste the ad unit code from the ad network after the label, then delete the word hidden.
+       The place then keeps 300px of height before the ad loads (set by .ad-slot). -->
+  <aside class="ad-slot" data-ad-place="page-end" aria-label="Advertisements" hidden><span class="ad-label">Advertisements</span></aside>
+  <p class="disclaimer">Estimates only, not legal or financial advice. The 25% and other rates on this page are examples.</p>
+</div>
+</main>
+
+<footer class="site-footer">
+  <div class="footer-grid">
+    <div>
+      <h4>Tariff-Impact.com</h4>
+      <p>Free tools and educational content for small business owners navigating import tariffs and trade policy.</p>
+      <p><a href="/about">About</a> · <a href="/contact">Contact &amp; Advertise</a> · <a href="/privacy">Privacy</a> · <a href="/terms">Terms</a></p>
+    </div>
+    <div>
+      <h4>Tools</h4>
+      <ul>
+        <li><a href="/">Tariff Calculator</a></li>
+        <li><a href="/#live-tariff-rates">Tariff Rates</a></li>
+        <li><a href="/tariff-surcharge-calculator">Tariff Surcharge Calculator</a></li>
+        <li><a href="/embed">Embed the Calculator</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Learn</h4>
+      <ul>
+        <li><a href="/#understanding-tariffs">Understanding Tariffs</a></li>
+        <li><a href="/#faq">FAQ</a></li>
+        <li><a href="/absorb-tariff-or-raise-prices">Absorb a Tariff or Raise Prices?</a></li>
+        <li><a href="/tariff-price-increase-letter">Price Increase Letter Templates</a></li>
+        <li><a href="/china-vs-vietnam-vs-mexico-vs-india-landed-cost">China vs Vietnam vs Mexico vs India</a></li>
+        <li><a href="/tariff-on-upholstered-furniture-from-vietnam">Furniture from Vietnam</a></li>
+        <li><a href="/tariff-on-upholstered-furniture-from-malaysia">Furniture from Malaysia</a></li>
+        <li><a href="/tariff-on-toys-from-vietnam">Toys from Vietnam</a></li>
+        <li><a href="/tariff-on-auto-parts-from-japan">Auto Parts from Japan</a></li>
+        <li><a href="/tariff-on-auto-parts-from-mexico">Auto Parts from Mexico</a></li>
+        <li><a href="/tariff-on-steel-and-aluminum-from-canada">Steel &amp; Aluminum from Canada</a></li>
+        <li><a href="/tariff-on-upholstered-furniture-from-china">Furniture from China</a></li>
+        <li><a href="/tariff-on-toys-from-china">Toys from China</a></li>
+        <li><a href="/tariff-on-electronics-from-china">Electronics from China</a></li>
+        <li><a href="/tariff-on-clothing-from-vietnam">Clothing from Vietnam</a></li>
+        <li><a href="/tariff-on-clothing-from-india">Clothing from India</a></li>
+        <li><a href="/tariff-on-clothing-from-china">Clothing from China</a></li>
+        <li><a href="/tariff-on-clothing-from-bangladesh">Clothing from Bangladesh</a></li>
+        <li><a href="/tariff-changes-january-2027">Tariff Changes, January 2027</a></li>
+        <li><a href="/section-301-excess-capacity-tariffs">Section 301 Excess Capacity Tariffs</a></li>
+        <li><a href="/break-even-price-after-tariff">Break-Even Price After a Tariff</a></li>
+        <li><a href="/who-pays-tariff-ddp-dap-fob">Who Pays the Tariff: DDP, DAP, FOB</a></li>
+        <li><a href="/us-tariff-rates-by-country">US Tariff Rates by Country</a></li>
+        <li><a href="/tariff-vs-duty-vs-customs-fees">Tariff vs Duty vs Customs Fees</a></li>
+        <li><a href="/how-to-find-hts-code">How to Find Your HTS Code</a></li>
+        <li><a href="/landed-cost-from-china">Landed Cost From China</a></li>
+        <li><a href="/amazon-fba-tariff-calculator">Amazon FBA Tariff Calculator</a></li>
+        <li><a href="/does-a-25-percent-tariff-raise-prices-25-percent">Does a 25% Tariff Raise Prices 25%?</a></li>
+        <li><a href="/merchandise-processing-fee-calculator">MPF Calculator</a></li>
+        <li><a href="/what-is-section-232">What Is Section 232?</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>External</h4>
+      <ul>
+        <li><a href="https://hts.usitc.gov/" target="_blank" rel="noopener">USITC HTS Lookup</a></li>
+        <li><a href="https://ustr.gov/" target="_blank" rel="noopener">USTR</a></li>
+        <li><a href="https://www.cbp.gov/trade" target="_blank" rel="noopener">CBP</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="copy">
+    © <span id="footerYear"></span> Tariff-Impact.com — Estimates only. Not legal or financial advice.
+  </div>
+</footer>
+
+<script>
+  document.getElementById('footerYear').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>

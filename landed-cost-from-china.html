@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3FXPSLFG9X"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-3FXPSLFG9X');
+</script>
+
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Landed Cost From China to the US: Every Line, Worked</title>
+<meta name="description" content="How to calculate landed cost from China: goods, freight, insurance, duty, customs fee, broker, bond and delivery, worked through on one real-size shipment.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://tariff-impact.com/landed-cost-from-china">
+
+<!-- Favicon -->
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="apple-touch-icon" href="/favicon.svg">
+<meta name="theme-color" content="#4f8cff">
+
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://tariff-impact.com/landed-cost-from-china">
+<meta property="og:title" content="Landed Cost From China to the US: Every Line, Worked">
+<meta property="og:description" content="How to calculate landed cost from China: goods, freight, insurance, duty, customs fee, broker, bond and delivery, worked through on one real-size shipment.">
+<meta property="og:site_name" content="Tariff-Impact.com">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "Landed cost from China to the US: every line, with a worked example",
+      "description": "How to calculate landed cost from China: goods, freight, insurance, duty, customs fee, broker, bond and delivery, worked through on one real-size shipment.",
+      "mainEntityOfPage": "https://tariff-impact.com/landed-cost-from-china",
+      "dateModified": "2026-11-25",
+      "author": {
+        "@type": "Organization",
+        "name": "Tariff-Impact.com",
+        "url": "https://tariff-impact.com/"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Tariff-Impact.com",
+        "url": "https://tariff-impact.com/"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How do I calculate landed cost from China?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Add every cost of getting the goods to your door, then divide by the number of units: the supplier price, freight, cargo insurance, the duty (the rate times the customs value of the goods), the Merchandise Processing Fee, your customs broker, your customs bond and the delivery from the port. On our 2,000-shirt example that is $10,090.58, or $5.05 a shirt."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the duty on goods from China today?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "It depends on the product’s tariff code. Most goods from China pay three layers: the ordinary duty for the code, any older Section 301 China duty for the list the code is on, and the 12.5% country-wide duty in force since 24 July 2026. A cotton T-shirt pays 16.5% + 7.5% + 12.5% = 36.5%. Checked 25 November 2026."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is duty charged on the freight as well as the goods?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "For goods entering the United States, duty is normally charged on the price paid to the supplier for the goods, not on the international freight and insurance. Your broker states the customs value on the entry. On a DDP or CIF quote, ask the supplier to show the goods price on its own."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Which costs do people forget in landed cost?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The minimum customs fee on small entries, the broker and bond, delivery from the port, customs exams and storage if a container is held, payment and currency fees, and the Harbor Maintenance Fee on sea freight. Each is small on its own, but on a small shipment they can add more than a tenth to the unit cost."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Tariff Calculator",
+          "item": "https://tariff-impact.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Landed cost from China",
+          "item": "https://tariff-impact.com/landed-cost-from-china"
+        }
+      ]
+    }
+  ]
+}
+</script>
+
+<style>
+  :root {
+    --bg-0: #0b0f17; --bg-1: #111826; --bg-2: #1a2233; --bg-3: #232c40;
+    --border: #2b3650; --text: #e6ecf5; --text-dim: #97a3b8; --text-muted: #6b7791;
+    --accent: #4f8cff; --accent-2: #7dd3fc;
+    --good: #34d399; --warn: #fbbf24; --bad: #f87171;
+    --purple: #a78bfa;
+    --shadow: 0 6px 24px rgba(0,0,0,0.35);
+  }
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0; padding: 0;
+    background: radial-gradient(1200px 600px at 10% -10%, #182238 0%, var(--bg-0) 60%) fixed;
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Roboto, "Helvetica Neue", Arial, sans-serif;
+    font-size: 14px; min-height: 100vh; line-height: 1.55;
+  }
+  a { color: var(--accent-2); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+
+  nav.top-nav {
+    background: rgba(11,15,23,0.85); backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    padding: 12px 28px;
+    display: flex; align-items: center; justify-content: space-between;
+    position: sticky; top: 0; z-index: 90;
+    flex-wrap: wrap; gap: 12px;
+  }
+  nav.top-nav .nav-brand { display: flex; align-items: center; gap: 10px; font-weight: 700; }
+  nav.top-nav .nav-brand .nav-mark {
+    width: 28px; height: 28px; border-radius: 7px;
+    background: linear-gradient(135deg, var(--accent), var(--purple));
+    display: grid; place-items: center; font-size: 13px;
+  }
+  nav.top-nav .nav-links { display: flex; gap: 4px; flex-wrap: wrap; }
+  nav.top-nav .nav-links a {
+    color: var(--text-dim); padding: 6px 12px; border-radius: 6px;
+    font-size: 13px; text-decoration: none; transition: all 0.15s;
+  }
+  nav.top-nav .nav-links a:hover, nav.top-nav .nav-links a.active {
+    color: var(--text); background: var(--bg-2);
+  }
+
+  .hero {
+    max-width: 880px; margin: 36px auto 22px auto; padding: 0 28px;
+  }
+  .crumbs { font-size: 12px; color: var(--text-muted); margin: 0 0 14px 0; }
+  .crumbs a { color: var(--text-dim); }
+  .hero h1 {
+    font-size: 34px; line-height: 1.2; margin: 0 0 14px 0; letter-spacing: -0.5px;
+    background: linear-gradient(135deg, var(--text), var(--accent-2));
+    -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+    color: var(--text); /* fallback */
+  }
+  .hero .lede { font-size: 16px; color: var(--text-dim); line-height: 1.7; margin: 0 0 10px 0; }
+  .hero .lede strong { color: var(--text); }
+  .hero .reviewed { font-size: 12px; color: var(--text-muted); margin: 0; }
+
+  .container { max-width: 880px; margin: 0 auto; padding: 0 28px 30px 28px; }
+
+  .btn-primary {
+    background: linear-gradient(135deg, var(--accent), #6f7bff);
+    color: white; padding: 12px 24px; border-radius: 10px;
+    text-decoration: none; font-size: 14px; font-weight: 600;
+    border: none; cursor: pointer; display: inline-block;
+    transition: filter 0.15s;
+  }
+  .btn-primary:hover { filter: brightness(1.1); text-decoration: none; }
+  .cta { margin: 0 0 22px 0; }
+  .cta .cta-note { display: block; margin-top: 8px; font-size: 12px; color: var(--text-muted); }
+
+  .section {
+    background: var(--bg-1); border: 1px solid var(--border);
+    border-radius: 12px; padding: 26px 30px;
+    margin-bottom: 22px;
+  }
+  .section h2 { font-size: 20px; margin: 0 0 12px 0; color: var(--text); }
+  .section h3 { font-size: 15px; margin: 20px 0 8px 0; color: var(--text); }
+  .section p { font-size: 14px; color: var(--text-dim); line-height: 1.75; margin: 0 0 12px 0; }
+  .section ul, .section ol { color: var(--text-dim); line-height: 1.75; padding-left: 22px; margin: 0 0 12px 0; }
+  .section li { margin-bottom: 6px; }
+  .section strong { color: var(--text); }
+  .section > :last-child { margin-bottom: 0; }
+
+  .table-wrap { overflow-x: auto; margin: 0 0 14px 0; border: 1px solid var(--border); border-radius: 10px; }
+  .table-wrap table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  .table-wrap th, .table-wrap td {
+    padding: 10px 12px; text-align: left; vertical-align: top;
+    border-bottom: 1px solid var(--border); color: var(--text-dim);
+  }
+  .table-wrap thead th {
+    background: var(--bg-2); color: var(--text); font-size: 12px; font-weight: 600;
+  }
+  .table-wrap tbody tr:last-child td { border-bottom: none; }
+  .table-wrap td:first-child { color: var(--text); }
+
+  .note {
+    background: rgba(251,191,36,0.08); border: 1px solid rgba(251,191,36,0.35);
+    border-radius: 10px; padding: 12px 16px; margin: 0 0 14px 0;
+    font-size: 13px; color: var(--text-dim); line-height: 1.7;
+  }
+  .note strong { color: var(--text); }
+
+  blockquote.letter {
+    background: var(--bg-2); border: 1px solid var(--border); border-left: 3px solid var(--accent);
+    border-radius: 8px; margin: 0 0 14px 0; padding: 16px 20px;
+  }
+  blockquote.letter p { color: var(--text); font-size: 13px; }
+  blockquote.letter p:last-child { margin-bottom: 0; }
+
+  .calc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 16px; }
+  @media (max-width: 700px) { .calc-grid { grid-template-columns: 1fr; } }
+  .calc-grid label { display: block; font-size: 13px; color: var(--text); font-weight: 600; }
+  .calc-grid .hint { display: block; font-size: 12px; color: var(--text-muted); font-weight: 400; margin: 2px 0 6px 0; }
+  .calc-grid input {
+    width: 100%; background: var(--bg-2); border: 1px solid var(--border); border-radius: 8px;
+    color: var(--text); font-size: 16px; padding: 10px 12px; font-family: inherit;
+  }
+  .calc-grid input:focus { outline: none; border-color: var(--accent); }
+  .calc-out {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 14px;
+  }
+  @media (max-width: 700px) { .calc-out { grid-template-columns: 1fr 1fr; } }
+  .calc-out .out {
+    background: var(--bg-2); border: 1px solid var(--border); border-radius: 10px; padding: 14px;
+  }
+  .calc-out .out-label { font-size: 11px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.6px; }
+  .calc-out .out-value { font-size: 22px; font-weight: 700; color: var(--accent-2); margin-top: 4px; }
+
+  .sources li { font-size: 13px; }
+  .disclaimer { font-size: 12px; color: var(--text-muted); margin: 0 0 22px 0; }
+
+  footer.site-footer {
+    border-top: 1px solid var(--border);
+    margin-top: 50px; padding: 32px 28px 24px 28px;
+    color: var(--text-muted); font-size: 12px; line-height: 1.7;
+  }
+  footer.site-footer .footer-grid {
+    max-width: 1100px; margin: 0 auto;
+    display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 30px;
+  }
+  @media (max-width: 800px) { footer.site-footer .footer-grid { grid-template-columns: 1fr 1fr; } }
+  footer.site-footer h4 { color: var(--text); font-size: 12px; text-transform: uppercase; letter-spacing: 1px; margin: 0 0 10px 0; }
+  footer.site-footer ul { list-style: none; padding: 0; margin: 0; }
+  footer.site-footer li { margin-bottom: 6px; }
+  footer.site-footer a { color: var(--text-dim); }
+  footer.site-footer .copy { text-align: center; margin-top: 24px; padding-top: 18px; border-top: 1px solid var(--border); }
+
+  @media (max-width: 600px) {
+    nav.top-nav { padding: 10px 16px; }
+    .hero { margin-top: 24px; padding: 0 16px; }
+    .hero h1 { font-size: 26px; }
+    .container { padding: 0 16px 24px 16px; }
+    .section { padding: 20px 18px; }
+    footer.site-footer { padding: 28px 16px 20px 16px; }
+  }
+
+  /* Ad and paid-link places (see README, "Ads and paid links").
+     An empty place carries the attribute hidden: it takes no space and loads nothing.
+     A filled ad place reserves its height before the ad loads, so the page does not jump. */
+  .ad-slot[hidden], .paid-link[hidden], .paid-disclosure[hidden] { display: none !important; }
+  .ad-slot {
+    display: block; box-sizing: border-box; width: 100%; max-width: 980px;
+    min-height: 300px; margin: 22px auto; padding: 0 16px;
+    text-align: center; overflow: hidden; contain: layout paint;
+  }
+  .ad-slot .ad-label {
+    display: block; font-size: 11px; color: var(--text-muted);
+    text-transform: uppercase; letter-spacing: 0.6px; margin: 0 0 6px 0;
+  }
+  .paid-link { font-size: 13px; color: var(--text-dim); margin: 10px 0 0 0; line-height: 1.6; }
+  .paid-link .paid-label { font-size: 12px; color: var(--text-muted); }
+  .paid-disclosure { font-size: 12px; color: var(--text-muted); margin: 8px 0 0 0; line-height: 1.6; }
+</style>
+</head>
+<body>
+
+<nav class="top-nav">
+  <a href="/" class="nav-brand" style="color: var(--text); text-decoration: none;">
+    <span class="nav-mark">T</span>
+    <span>Tariff-Impact.com</span>
+  </a>
+  <div class="nav-links">
+    <a href="/">Calculator</a>
+    <a href="/#live-tariff-rates">Tariff Rates</a>
+    <a href="/#guides">Guides</a>
+    <a href="/#faq">FAQ</a>
+    <a href="/contact">Contact</a>
+  </div>
+</nav>
+
+<main>
+<div class="hero">
+  <p class="crumbs"><a href="/">Tariff Calculator</a> › Landed cost from China</p>
+  <h1>Landed cost from China to the US: every line, with a worked example</h1>
+  <p class="lede">Landed cost is what one unit really costs you once it is in your warehouse: the supplier’s price <strong>plus freight, insurance, duty, customs fees, the broker, the bond and the last delivery</strong>. Below, each line is explained and one shipment of 2,000 cotton T-shirts from China is worked through, from $3.20 a shirt at the factory to <strong>$5.05 a shirt</strong> on your shelf.</p>
+  <p class="reviewed">Rates last checked: 25 November 2026. Estimates only, not legal, customs or financial advice.</p>
+  <!-- PAID LINK DISCLOSURE. Delete hidden once any paid link on this page is shown. -->
+  <p class="paid-disclosure" hidden>Some links on this page are paid links: we earn a commission if you sign up or buy through them. Each one is marked “Paid link”. Who pays us never changes a rate or a result.</p>
+</div>
+
+<div class="container">
+  <p class="cta"><a class="btn-primary" href="/?from=CN&amp;to=US&amp;cost=3.2&amp;tariff=36.5&amp;shipping=0.5475&amp;price=9&amp;pass=0&amp;other=0.1298&amp;fixed=0">Open this shipment in the calculator</a>
+    <span class="cta-note">It opens on one T-shirt from this page, with the duty at 36.5% and the other costs spread per shirt. Change every number to yours.</span></p>
+  <div class="section">
+    <h2>The example shipment</h2>
+    <p>You import <strong>2,000 cotton T-shirts</strong> (tariff code 6109.10.00) from a factory in China at <strong>$3.20 a shirt, $6,400</strong> in all, on FOB terms: the supplier delivers to the ship and you pay everything after that. You sell them to shops at $9.00.</p>
+    <p>The duty rate is real and checked; freight, insurance, broker, bond and delivery are <strong>example figures</strong> for a small sea shipment. Get your own quotes: they swing with the season, the port and the size of the load.</p>
+  </div>
+  <div class="section">
+    <h2>Every line of the landed cost</h2>
+    <div class="table-wrap"><table>
+      <thead><tr><th>Line</th><th>How it is worked out</th><th>Shipment</th><th>Per shirt</th></tr></thead>
+      <tbody>
+        <tr><td>Goods</td><td>2,000 × $3.20, the supplier’s FOB price</td><td>$6,400.00</td><td>$3.20</td></tr>
+        <tr><td>Sea freight</td><td>Example quote for a part container to a US port</td><td>$700.00</td><td>$0.35</td></tr>
+        <tr><td>Cargo insurance</td><td>Example: about 0.7% of the goods</td><td>$45.00</td><td>$0.02</td></tr>
+        <tr><td>Duty</td><td>36.5% × $6,400 (16.5% ordinary + 7.5% list 4A + 12.5% country-wide)</td><td>$2,336.00</td><td>$1.17</td></tr>
+        <tr><td>Merchandise Processing Fee</td><td>0.3464% × $6,400 = $22.17, below the minimum, so $34.58</td><td>$34.58</td><td>$0.02</td></tr>
+        <tr><td>Customs broker</td><td>Example fee to file the entry</td><td>$150.00</td><td>$0.08</td></tr>
+        <tr><td>Customs bond</td><td>Example price of a single-entry bond</td><td>$75.00</td><td>$0.04</td></tr>
+        <tr><td>Delivery from the port</td><td>Example: port to your warehouse by truck</td><td>$350.00</td><td>$0.18</td></tr>
+        <tr><td><strong>Landed cost</strong></td><td>Sum of the lines</td><td><strong>$10,090.58</strong></td><td><strong>$5.05</strong></td></tr>
+      </tbody>
+    </table></div>
+    <p>Per-shirt figures are rounded; the exact landed cost is $5.0453 a shirt. The duty is the biggest line after the goods: <strong>$2,336, 23% of the landed cost</strong>, and more than freight, insurance, broker, bond and delivery put together ($1,320).</p>
+    <p>What it does to your margin at $9.00: without the duty the shirt would land at $3.88 and earn $5.12 (56.9%). With it, it lands at $5.05 and earns $3.95 (43.9%).</p>
+  </div>
+  <div class="section">
+    <h2>Each line, in plain words</h2>
+    <h3>Goods</h3>
+    <p>The price on the supplier’s invoice. This is normally the customs value that duty is charged on. If the supplier quotes CIF or DDP, freight (and on DDP the duty) is inside the price: ask for the goods price on its own line. See <a href="/who-pays-tariff-ddp-dap-fob">who pays the tariff under DDP, DAP and FOB</a>.</p>
+    <h3>Freight and insurance</h3>
+    <p>Sea freight is priced by container or, for a part load, by volume. Air is many times dearer and only pays for light, urgent or valuable goods. Cargo insurance is usually a small percentage of the goods’ value. For goods entering the United States, international freight and insurance are normally not part of the value that duty is charged on.</p>
+    <h3>Duty</h3>
+    <p>The rate for your product’s code times the customs value. For goods made in China it is usually three layers that add up: the ordinary duty in the tariff schedule, any older Section 301 China duty for the list your code is on (+25% on lists 1 to 3, +7.5% on list 4A), and the <strong>12.5% country-wide duty</strong> on products of China in force since 24 July 2026. Some goods skip the 12.5%: goods under <a href="/what-is-section-232">Section 232</a> such as steel, aluminum, cars and parts, and upholstered wooden furniture, which pay their own duty instead, and goods on the exempt lists. Look your code up with <a href="/how-to-find-hts-code">our step-by-step guide</a>.</p>
+    <p>Examples checked on 25 November 2026: cotton T-shirts 36.5% (<a href="/tariff-on-clothing-from-china">clothing from China</a>), toys 12.5% (<a href="/tariff-on-toys-from-china">toys from China</a>).</p>
+    <h3>Merchandise Processing Fee</h3>
+    <p>Customs’ own fee on each formal entry: 0.3464% of the goods’ value, at least $34.58 and at most $670.86, from 1 October 2026. On a small shipment the minimum applies; on our $6,400 it is $34.58, not $22.17. The <a href="/merchandise-processing-fee-calculator">MPF calculator</a> works it out for any value.</p>
+    <h3>Harbor Maintenance Fee</h3>
+    <p>Goods that arrive by sea also pay a Harbor Maintenance Fee, a small percentage of the value. We have not checked its current rate for this page, so it is left out of the example: your broker will show it on the entry.</p>
+    <h3>Broker and bond</h3>
+    <p>A licensed customs broker files the entry for you and charges per entry. Every formal entry also needs a customs bond: a single-entry bond for one shipment, or a yearly bond if you import often. Both are quotes, not set fees.</p>
+    <h3>Delivery from the port</h3>
+    <p>Trucking or rail from the port to your door, plus any warehouse handling. For Amazon sellers this line is the trip to the fulfilment centre; see <a href="/amazon-fba-tariff-calculator">the FBA tariff calculator</a>.</p>
+  </div>
+  <!-- AD PLACE "page-mid". Empty: hidden, no space, nothing loads.
+       To fill: paste the ad unit code from the ad network after the label, then delete the word hidden.
+       The place then keeps 300px of height before the ad loads (set by .ad-slot). -->
+  <aside class="ad-slot" data-ad-place="page-mid" aria-label="Advertisements" hidden><span class="ad-label">Advertisements</span></aside>
+  <div class="section">
+    <h2>The costs people forget</h2>
+    <ul>
+      <li><strong>The minimum fee.</strong> On entries under about $9,983 the Merchandise Processing Fee is a flat $34.58, so it weighs more on small orders.</li>
+      <li><strong>Per-entry costs on small shipments.</strong> Broker, bond and fee are close to the same for $6,400 as for $16,000. Here they add $0.13 a shirt; on 5,000 shirts they would add about half that.</li>
+      <li><strong>Customs exams and port storage.</strong> If a container is picked for inspection or held at the port, you pay the exam and the storage days.</li>
+      <li><strong>Payment and currency fees.</strong> Bank transfers and exchange margins on the supplier payment.</li>
+      <li><strong>Samples, inspections and testing.</strong> A pre-shipment inspection, or product safety testing for toys and children’s goods.</li>
+      <li><strong>Anti-dumping or countervailing duty.</strong> Some products from China pay one on top of everything above. We did not check any for this page; a broker can tell you whether yours does.</li>
+    </ul>
+  </div>
+  <div class="section">
+    <h2>Checklist for your own shipment</h2>
+    <ol>
+      <li>Get the supplier’s goods price on its own, and the Incoterm (FOB, CIF, DDP).</li>
+      <li>Find the tariff code and add up the layers: ordinary duty, any China list, the 12.5% (or Section 232 instead).</li>
+      <li>Get a freight quote to your port and a delivery quote to your door.</li>
+      <li>Ask a broker for the entry fee and the bond, and whether any anti-dumping duty applies.</li>
+      <li>Work out the fee: 0.3464% of the goods’ value, between $34.58 and $670.86.</li>
+      <li>Add it all and divide by units. Then put the per-unit figures in <a href="/?from=CN&amp;to=US&amp;cost=3.2&amp;tariff=36.5&amp;shipping=0.5475&amp;price=9&amp;pass=0&amp;other=0.1298&amp;fixed=0">the calculator</a> to see the margin and the price you need.</li>
+    </ol>
+  </div>
+  <!-- PAID LINK PLACE "page-1": Freightos or Flexport (freight quotes), or a customs broker.
+       To fill: put the programme's link in front of the label, as <a href="..." rel="sponsored noopener" target="_blank">..</a>,
+       delete hidden here, and delete hidden on this page's paid-disclosure line. -->
+  <p class="paid-link" data-paid-link="page-1" hidden><span class="paid-label">Paid link: we earn a commission if you sign up or buy through it.</span></p>
+  <div class="section">
+    <h2>Questions</h2>
+    <h3>How do I calculate landed cost from China?</h3>
+    <p>Add every cost of getting the goods to your door, then divide by the number of units: the supplier price, freight, cargo insurance, the duty (the rate times the customs value of the goods), the Merchandise Processing Fee, your customs broker, your customs bond and the delivery from the port. On our 2,000-shirt example that is $10,090.58, or $5.05 a shirt.</p>
+    <h3>What is the duty on goods from China today?</h3>
+    <p>It depends on the product’s tariff code. Most goods from China pay three layers: the ordinary duty for the code, any older Section 301 China duty for the list the code is on, and the 12.5% country-wide duty in force since 24 July 2026. A cotton T-shirt pays 16.5% + 7.5% + 12.5% = 36.5%. Checked 25 November 2026.</p>
+    <h3>Is duty charged on the freight as well as the goods?</h3>
+    <p>For goods entering the United States, duty is normally charged on the price paid to the supplier for the goods, not on the international freight and insurance. Your broker states the customs value on the entry. On a DDP or CIF quote, ask the supplier to show the goods price on its own.</p>
+    <h3>Which costs do people forget in landed cost?</h3>
+    <p>The minimum customs fee on small entries, the broker and bond, delivery from the port, customs exams and storage if a container is held, payment and currency fees, and the Harbor Maintenance Fee on sea freight. Each is small on its own, but on a small shipment they can add more than a tenth to the unit cost.</p>
+  </div>
+  <div class="section">
+    <h2>Sources</h2>
+    <ul class="sources">
+      <li>U.S. International Trade Commission, Harmonized Tariff Schedule of the United States, 2026 Revision 23, hts.usitc.gov: 6109.10.00 (16.5%, column 1 general); heading 9903.05.31 (China); chapter 99, US note 20(s)(i) with heading 9903.88.15 (list 4A, +7.5%). Read 25 November 2026.</li>
+      <li>Office of the U.S. Trade Representative, "Notice of Actions in Section 301 Investigations … Forced Labor", Federal Register, 28 July 2026, 91 FR 47318 (document 2026-15181): China 12.5% from 24 July 2026; US note 52(f), goods under Section 232 exempt. Read 25 November 2026.</li>
+      <li>Office of the U.S. Trade Representative, "Continuation of Actions: China’s Acts, Policies, and Practices Related to Technology Transfer …", Federal Register, 7 October 2026, 91 FR 64212 (document 2026-20510): the older China duties remain in effect. Read 25 November 2026.</li>
+      <li>U.S. Customs and Border Protection, CBP Dec. 26-14, "Customs User Fees To Be Adjusted for Inflation in Fiscal Year 2027", Federal Register, 31 July 2026, 91 FR 48398: Merchandise Processing Fee 0.3464%, minimum $34.58, maximum $670.86 per formal entry, from 1 October 2026. Read 25 November 2026.</li>
+    </ul>
+  </div>
+  <div class="section">
+    <h2>Related</h2>
+    <ul>
+      <li><a href="/tariff-on-clothing-from-china">Tariff on clothing from China</a></li>
+      <li><a href="/china-vs-vietnam-vs-mexico-vs-india-landed-cost">China vs Vietnam vs Mexico vs India: landed cost compared</a></li>
+      <li><a href="/who-pays-tariff-ddp-dap-fob">Who pays the tariff under DDP, DAP and FOB?</a></li>
+      <li><a href="/merchandise-processing-fee-calculator">Merchandise Processing Fee calculator</a></li>
+      <li><a href="/how-to-find-hts-code">How to find your HTS code and rate</a></li>
+      <li><a href="/">Tariff Impact Calculator</a></li>
+    </ul>
+  </div>
+
+  <!-- AD PLACE "page-end". Empty: hidden, no space, nothing loads.
+       To fill: paste the ad unit code from the ad network after the label, then delete the word hidden.
+       The place then keeps 300px of height before the ad loads (set by .ad-slot). -->
+  <aside class="ad-slot" data-ad-place="page-end" aria-label="Advertisements" hidden><span class="ad-label">Advertisements</span></aside>
+  <p class="disclaimer">Estimates only, not legal, customs or financial advice. Freight, insurance, broker, bond and delivery figures are examples.</p>
+</div>
+</main>
+
+<footer class="site-footer">
+  <div class="footer-grid">
+    <div>
+      <h4>Tariff-Impact.com</h4>
+      <p>Free tools and educational content for small business owners navigating import tariffs and trade policy.</p>
+      <p><a href="/about">About</a> · <a href="/contact">Contact &amp; Advertise</a> · <a href="/privacy">Privacy</a> · <a href="/terms">Terms</a></p>
+    </div>
+    <div>
+      <h4>Tools</h4>
+      <ul>
+        <li><a href="/">Tariff Calculator</a></li>
+        <li><a href="/#live-tariff-rates">Tariff Rates</a></li>
+        <li><a href="/tariff-surcharge-calculator">Tariff Surcharge Calculator</a></li>
+        <li><a href="/embed">Embed the Calculator</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Learn</h4>
+      <ul>
+        <li><a href="/#understanding-tariffs">Understanding Tariffs</a></li>
+        <li><a href="/#faq">FAQ</a></li>
+        <li><a href="/absorb-tariff-or-raise-prices">Absorb a Tariff or Raise Prices?</a></li>
+        <li><a href="/tariff-price-increase-letter">Price Increase Letter Templates</a></li>
+        <li><a href="/china-vs-vietnam-vs-mexico-vs-india-landed-cost">China vs Vietnam vs Mexico vs India</a></li>
+        <li><a href="/tariff-on-upholstered-furniture-from-vietnam">Furniture from Vietnam</a></li>
+        <li><a href="/tariff-on-upholstered-furniture-from-malaysia">Furniture from Malaysia</a></li>
+        <li><a href="/tariff-on-toys-from-vietnam">Toys from Vietnam</a></li>
+        <li><a href="/tariff-on-auto-parts-from-japan">Auto Parts from Japan</a></li>
+        <li><a href="/tariff-on-auto-parts-from-mexico">Auto Parts from Mexico</a></li>
+        <li><a href="/tariff-on-steel-and-aluminum-from-canada">Steel &amp; Aluminum from Canada</a></li>
+        <li><a href="/tariff-on-upholstered-furniture-from-china">Furniture from China</a></li>
+        <li><a href="/tariff-on-toys-from-china">Toys from China</a></li>
+        <li><a href="/tariff-on-electronics-from-china">Electronics from China</a></li>
+        <li><a href="/tariff-on-clothing-from-vietnam">Clothing from Vietnam</a></li>
+        <li><a href="/tariff-on-clothing-from-india">Clothing from India</a></li>
+        <li><a href="/tariff-on-clothing-from-china">Clothing from China</a></li>
+        <li><a href="/tariff-on-clothing-from-bangladesh">Clothing from Bangladesh</a></li>
+        <li><a href="/tariff-changes-january-2027">Tariff Changes, January 2027</a></li>
+        <li><a href="/section-301-excess-capacity-tariffs">Section 301 Excess Capacity Tariffs</a></li>
+        <li><a href="/break-even-price-after-tariff">Break-Even Price After a Tariff</a></li>
+        <li><a href="/who-pays-tariff-ddp-dap-fob">Who Pays the Tariff: DDP, DAP, FOB</a></li>
+        <li><a href="/us-tariff-rates-by-country">US Tariff Rates by Country</a></li>
+        <li><a href="/tariff-vs-duty-vs-customs-fees">Tariff vs Duty vs Customs Fees</a></li>
+        <li><a href="/how-to-find-hts-code">How to Find Your HTS Code</a></li>
+        <li><a href="/landed-cost-from-china">Landed Cost From China</a></li>
+        <li><a href="/amazon-fba-tariff-calculator">Amazon FBA Tariff Calculator</a></li>
+        <li><a href="/does-a-25-percent-tariff-raise-prices-25-percent">Does a 25% Tariff Raise Prices 25%?</a></li>
+        <li><a href="/merchandise-processing-fee-calculator">MPF Calculator</a></li>
+        <li><a href="/what-is-section-232">What Is Section 232?</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>External</h4>
+      <ul>
+        <li><a href="https://hts.usitc.gov/" target="_blank" rel="noopener">USITC HTS Lookup</a></li>
+        <li><a href="https://ustr.gov/" target="_blank" rel="noopener">USTR</a></li>
+        <li><a href="https://www.cbp.gov/trade" target="_blank" rel="noopener">CBP</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="copy">
+    © <span id="footerYear"></span> Tariff-Impact.com — Estimates only. Not legal or financial advice.
+  </div>
+</footer>
+
+<script>
+  document.getElementById('footerYear').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
