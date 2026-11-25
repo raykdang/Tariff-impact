@@ -1,0 +1,71 @@
+# Checks every pull request, and every change to main, before Cloudflare
+# publishes the site. Free GitHub-hosted runners only; no secrets, no paid service.
+#
+# Job "site" runs .github/scripts/check_site.py (Python standard library only):
+#   links    every internal href/src in every page resolves to a file here
+#            ("/guide" and "/guide.html" both mean guide.html), and a
+#            "/page#anchor" matches an id on that page
+#   sitemap  sitemap.xml parses and lists exactly the public pages, once each.
+#            Public = not noindex, and canonical points to the page itself.
+#            So /widget (noindex) and tariff-calculator.html (canonical is the
+#            home page) stay out of it. See the script's top comment.
+#   head     each page has a title, a meta description and one canonical
+#            link on https://tariff-impact.com
+#   html     each page parses with no unclosed or stray block tags
+#
+# Job "wrangler" runs a Cloudflare dry run (no upload, no login) when the
+# repository has a Wrangler config, and skips cleanly when it has none.
+# The script lives under .github/ so Cloudflare's .assetsignore keeps it
+# off the live site.
+name: Site checks
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: site-checks-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  site:
+    name: Links, sitemap, head tags, HTML
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Check the site's files
+        run: python3 .github/scripts/check_site.py
+
+  wrangler:
+    name: Cloudflare dry run
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - name: Look for a Wrangler config
+        id: cfg
+        run: |
+          if [ -f wrangler.jsonc ] || [ -f wrangler.json ] || [ -f wrangler.toml ]; then
+            echo "present=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "present=false" >> "$GITHUB_OUTPUT"
+            echo "No wrangler.jsonc, wrangler.json or wrangler.toml here: dry run skipped." >> "$GITHUB_STEP_SUMMARY"
+          fi
+      - uses: actions/setup-node@v4
+        if: steps.cfg.outputs.present == 'true'
+        with:
+          node-version: "22"
+      - name: wrangler deploy --dry-run
+        if: steps.cfg.outputs.present == 'true'
+        env:
+          WRANGLER_SEND_METRICS: "false"
+        run: npx --yes wrangler@4.168.0 deploy --dry-run
