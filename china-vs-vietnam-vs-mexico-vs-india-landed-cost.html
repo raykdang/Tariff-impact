@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3FXPSLFG9X"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-3FXPSLFG9X');
+</script>
+
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>China vs Vietnam vs Mexico vs India: Landed Cost Compared</title>
+<meta name="description" content="Compare landed cost for the same product from China, Vietnam, Mexico and India: the method, a worked table, and when a tariff gap is worth switching for.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://tariff-impact.com/china-vs-vietnam-vs-mexico-vs-india-landed-cost">
+
+<!-- Favicon -->
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="apple-touch-icon" href="/favicon.svg">
+<meta name="theme-color" content="#4f8cff">
+
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://tariff-impact.com/china-vs-vietnam-vs-mexico-vs-india-landed-cost">
+<meta property="og:title" content="China vs Vietnam vs Mexico vs India: Landed Cost Compared">
+<meta property="og:description" content="Compare landed cost for the same product from China, Vietnam, Mexico and India: the method, a worked table, and when a tariff gap is worth switching for.">
+<meta property="og:site_name" content="Tariff-Impact.com">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "China vs Vietnam vs Mexico vs India: landed cost compared for the same product",
+      "description": "How to compare landed cost across four supplier countries, with a worked table and the point at which a tariff gap pays for a switch.",
+      "mainEntityOfPage": "https://tariff-impact.com/china-vs-vietnam-vs-mexico-vs-india-landed-cost",
+      "dateModified": "2026-11-25",
+      "author": {
+        "@type": "Organization",
+        "name": "Tariff-Impact.com",
+        "url": "https://tariff-impact.com/"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Tariff-Impact.com",
+        "url": "https://tariff-impact.com/"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Which country is cheapest to source from after tariffs?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "There is no single answer, because the duty depends on the product's tariff code as well as the country, and the supplier's price and freight often matter more than the duty gap. Compare landed cost per unit for your own product: supplier price, plus duty, plus freight and fees."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I compare landed cost between two countries?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Get a quote for the same product and quantity from each country, find the total duty rate for the product's tariff code from each origin, and add freight, insurance and entry fees per unit. Landed cost per unit is the supplier price, plus the price times the duty rate, plus freight and fees."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "When is a tariff gap big enough to switch supplier?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Divide the one-off cost of switching by the saving per unit. That gives the number of units you must buy before the move pays for itself. If that is more than you expect to buy before rates could change again, the gap is too small."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Tariff Calculator",
+          "item": "https://tariff-impact.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "China vs Vietnam vs Mexico vs India",
+          "item": "https://tariff-impact.com/china-vs-vietnam-vs-mexico-vs-india-landed-cost"
+        }
+      ]
+    }
+  ]
+}
+</script>
+
+<style>
+  :root {
+    --bg-0: #0b0f17; --bg-1: #111826; --bg-2: #1a2233; --bg-3: #232c40;
+    --border: #2b3650; --text: #e6ecf5; --text-dim: #97a3b8; --text-muted: #6b7791;
+    --accent: #4f8cff; --accent-2: #7dd3fc;
+    --good: #34d399; --warn: #fbbf24; --bad: #f87171;
+    --purple: #a78bfa;
+    --shadow: 0 6px 24px rgba(0,0,0,0.35);
+  }
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0; padding: 0;
+    background: radial-gradient(1200px 600px at 10% -10%, #182238 0%, var(--bg-0) 60%) fixed;
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Roboto, "Helvetica Neue", Arial, sans-serif;
+    font-size: 14px; min-height: 100vh; line-height: 1.55;
+  }
+  a { color: var(--accent-2); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+
+  nav.top-nav {
+    background: rgba(11,15,23,0.85); backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    padding: 12px 28px;
+    display: flex; align-items: center; justify-content: space-between;
+    position: sticky; top: 0; z-index: 90;
+    flex-wrap: wrap; gap: 12px;
+  }
+  nav.top-nav .nav-brand { display: flex; align-items: center; gap: 10px; font-weight: 700; }
+  nav.top-nav .nav-brand .nav-mark {
+    width: 28px; height: 28px; border-radius: 7px;
+    background: linear-gradient(135deg, var(--accent), var(--purple));
+    display: grid; place-items: center; font-size: 13px;
+  }
+  nav.top-nav .nav-links { display: flex; gap: 4px; flex-wrap: wrap; }
+  nav.top-nav .nav-links a {
+    color: var(--text-dim); padding: 6px 12px; border-radius: 6px;
+    font-size: 13px; text-decoration: none; transition: all 0.15s;
+  }
+  nav.top-nav .nav-links a:hover, nav.top-nav .nav-links a.active {
+    color: var(--text); background: var(--bg-2);
+  }
+
+  .hero {
+    max-width: 880px; margin: 36px auto 22px auto; padding: 0 28px;
+  }
+  .crumbs { font-size: 12px; color: var(--text-muted); margin: 0 0 14px 0; }
+  .crumbs a { color: var(--text-dim); }
+  .hero h1 {
+    font-size: 34px; line-height: 1.2; margin: 0 0 14px 0; letter-spacing: -0.5px;
+    background: linear-gradient(135deg, var(--text), var(--accent-2));
+    -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+    color: var(--text); /* fallback */
+  }
+  .hero .lede { font-size: 16px; color: var(--text-dim); line-height: 1.7; margin: 0 0 10px 0; }
+  .hero .lede strong { color: var(--text); }
+  .hero .reviewed { font-size: 12px; color: var(--text-muted); margin: 0; }
+
+  .container { max-width: 880px; margin: 0 auto; padding: 0 28px 30px 28px; }
+
+  .btn-primary {
+    background: linear-gradient(135deg, var(--accent), #6f7bff);
+    color: white; padding: 12px 24px; border-radius: 10px;
+    text-decoration: none; font-size: 14px; font-weight: 600;
+    border: none; cursor: pointer; display: inline-block;
+    transition: filter 0.15s;
+  }
+  .btn-primary:hover { filter: brightness(1.1); text-decoration: none; }
+  .cta { margin: 0 0 22px 0; }
+  .cta .cta-note { display: block; margin-top: 8px; font-size: 12px; color: var(--text-muted); }
+
+  .section {
+    background: var(--bg-1); border: 1px solid var(--border);
+    border-radius: 12px; padding: 26px 30px;
+    margin-bottom: 22px;
+  }
+  .section h2 { font-size: 20px; margin: 0 0 12px 0; color: var(--text); }
+  .section h3 { font-size: 15px; margin: 20px 0 8px 0; color: var(--text); }
+  .section p { font-size: 14px; color: var(--text-dim); line-height: 1.75; margin: 0 0 12px 0; }
+  .section ul, .section ol { color: var(--text-dim); line-height: 1.75; padding-left: 22px; margin: 0 0 12px 0; }
+  .section li { margin-bottom: 6px; }
+  .section strong { color: var(--text); }
+  .section > :last-child { margin-bottom: 0; }
+
+  .table-wrap { overflow-x: auto; margin: 0 0 14px 0; border: 1px solid var(--border); border-radius: 10px; }
+  .table-wrap table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  .table-wrap th, .table-wrap td {
+    padding: 10px 12px; text-align: left; vertical-align: top;
+    border-bottom: 1px solid var(--border); color: var(--text-dim);
+  }
+  .table-wrap thead th {
+    background: var(--bg-2); color: var(--text); font-size: 12px; font-weight: 600;
+  }
+  .table-wrap tbody tr:last-child td { border-bottom: none; }
+  .table-wrap td:first-child { color: var(--text); }
+
+  .note {
+    background: rgba(251,191,36,0.08); border: 1px solid rgba(251,191,36,0.35);
+    border-radius: 10px; padding: 12px 16px; margin: 0 0 14px 0;
+    font-size: 13px; color: var(--text-dim); line-height: 1.7;
+  }
+  .note strong { color: var(--text); }
+
+  blockquote.letter {
+    background: var(--bg-2); border: 1px solid var(--border); border-left: 3px solid var(--accent);
+    border-radius: 8px; margin: 0 0 14px 0; padding: 16px 20px;
+  }
+  blockquote.letter p { color: var(--text); font-size: 13px; }
+  blockquote.letter p:last-child { margin-bottom: 0; }
+
+  .calc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 16px; }
+  @media (max-width: 700px) { .calc-grid { grid-template-columns: 1fr; } }
+  .calc-grid label { display: block; font-size: 13px; color: var(--text); font-weight: 600; }
+  .calc-grid .hint { display: block; font-size: 12px; color: var(--text-muted); font-weight: 400; margin: 2px 0 6px 0; }
+  .calc-grid input {
+    width: 100%; background: var(--bg-2); border: 1px solid var(--border); border-radius: 8px;
+    color: var(--text); font-size: 16px; padding: 10px 12px; font-family: inherit;
+  }
+  .calc-grid input:focus { outline: none; border-color: var(--accent); }
+  .calc-out {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 14px;
+  }
+  @media (max-width: 700px) { .calc-out { grid-template-columns: 1fr 1fr; } }
+  .calc-out .out {
+    background: var(--bg-2); border: 1px solid var(--border); border-radius: 10px; padding: 14px;
+  }
+  .calc-out .out-label { font-size: 11px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.6px; }
+  .calc-out .out-value { font-size: 22px; font-weight: 700; color: var(--accent-2); margin-top: 4px; }
+
+  .sources li { font-size: 13px; }
+  .disclaimer { font-size: 12px; color: var(--text-muted); margin: 0 0 22px 0; }
+
+  footer.site-footer {
+    border-top: 1px solid var(--border);
+    margin-top: 50px; padding: 32px 28px 24px 28px;
+    color: var(--text-muted); font-size: 12px; line-height: 1.7;
+  }
+  footer.site-footer .footer-grid {
+    max-width: 1100px; margin: 0 auto;
+    display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 30px;
+  }
+  @media (max-width: 800px) { footer.site-footer .footer-grid { grid-template-columns: 1fr 1fr; } }
+  footer.site-footer h4 { color: var(--text); font-size: 12px; text-transform: uppercase; letter-spacing: 1px; margin: 0 0 10px 0; }
+  footer.site-footer ul { list-style: none; padding: 0; margin: 0; }
+  footer.site-footer li { margin-bottom: 6px; }
+  footer.site-footer a { color: var(--text-dim); }
+  footer.site-footer .copy { text-align: center; margin-top: 24px; padding-top: 18px; border-top: 1px solid var(--border); }
+
+  @media (max-width: 600px) {
+    nav.top-nav { padding: 10px 16px; }
+    .hero { margin-top: 24px; padding: 0 16px; }
+    .hero h1 { font-size: 26px; }
+    .container { padding: 0 16px 24px 16px; }
+    .section { padding: 20px 18px; }
+    footer.site-footer { padding: 28px 16px 20px 16px; }
+  }
+
+  /* Ad and paid-link places (see README, "Ads and paid links").
+     An empty place carries the attribute hidden: it takes no space and loads nothing.
+     A filled ad place reserves its height before the ad loads, so the page does not jump. */
+  .ad-slot[hidden], .paid-link[hidden], .paid-disclosure[hidden] { display: none !important; }
+  .ad-slot {
+    display: block; box-sizing: border-box; width: 100%; max-width: 980px;
+    min-height: 300px; margin: 22px auto; padding: 0 16px;
+    text-align: center; overflow: hidden; contain: layout paint;
+  }
+  .ad-slot .ad-label {
+    display: block; font-size: 11px; color: var(--text-muted);
+    text-transform: uppercase; letter-spacing: 0.6px; margin: 0 0 6px 0;
+  }
+  .paid-link { font-size: 13px; color: var(--text-dim); margin: 10px 0 0 0; line-height: 1.6; }
+  .paid-link .paid-label { font-size: 12px; color: var(--text-muted); }
+  .paid-disclosure { font-size: 12px; color: var(--text-muted); margin: 8px 0 0 0; line-height: 1.6; }
+</style>
+</head>
+<body>
+
+<nav class="top-nav">
+  <a href="/" class="nav-brand" style="color: var(--text); text-decoration: none;">
+    <span class="nav-mark">T</span>
+    <span>Tariff-Impact.com</span>
+  </a>
+  <div class="nav-links">
+    <a href="/">Calculator</a>
+    <a href="/#live-tariff-rates">Tariff Rates</a>
+    <a href="/#understanding-tariffs">Guide</a>
+    <a href="/#guides">Guides</a>
+    <a href="/#faq">FAQ</a>
+    <a href="/contact">Contact</a>
+  </div>
+</nav>
+
+<main>
+<div class="hero">
+  <p class="crumbs"><a href="/">Tariff Calculator</a> › China vs Vietnam vs Mexico vs India</p>
+  <h1>China vs Vietnam vs Mexico vs India: landed cost compared for the same product</h1>
+  <p class="lede">No country is cheapest for every product. A lower tariff doesn't mean a lower cost at your door: the supplier's price, the freight and the cost of moving all sit beside the duty. This page puts the four countries in one table, shows how to do the same for your product, and how to tell whether the gap is worth a move.</p>
+  <p class="reviewed">Last reviewed: 25 November 2026. Official rates last checked: 25 November 2026. Estimates only, not legal, customs or financial advice.</p>
+  <!-- PAID LINK DISCLOSURE. Delete hidden once any paid link on this page is shown. -->
+  <p class="paid-disclosure" hidden>Some links on this page are paid links: we earn a commission if you sign up or buy through them. Each one is marked “Paid link”. Who pays us never changes a rate or a result.</p>
+</div>
+
+<div class="container">
+  <div class="section">
+    <h2>The sum</h2>
+    <p><strong>Landed cost per unit = supplier price + (supplier price × total duty rate) + freight and insurance per unit + entry fees per unit.</strong></p>
+    <p>"Total duty rate" is the part people get wrong. For goods entering the United States it is usually a stack: the ordinary rate for the product's code in the Harmonized Tariff Schedule, plus any additional duties that apply to that product, that country, or both. Two products from the same country can carry very different totals, and the same product can be covered by a trade agreement from one country and not from another.</p>
+  </div>
+  <div class="section">
+    <h2>A worked table</h2>
+    <p class="note"><strong>The duty rates in this table are made up to show the method. They are not the current rates for any product or country.</strong> The supplier prices and freight are invented too. Replace every figure with your own.</p>
+    <div class="table-wrap"><table>
+      <thead>
+        <tr><th></th><th>China</th><th>Vietnam</th><th>Mexico</th><th>India</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Supplier price per unit</td><td>$10.00</td><td>$10.80</td><td>$12.50</td><td>$10.40</td></tr>
+        <tr><td>Example total duty rate</td><td>30%</td><td>20%</td><td>5%</td><td>20%</td></tr>
+        <tr><td>Duty per unit</td><td>$3.00</td><td>$2.16</td><td>$0.63</td><td>$2.08</td></tr>
+        <tr><td>Freight and insurance per unit</td><td>$1.20</td><td>$1.30</td><td>$0.50</td><td>$1.50</td></tr>
+        <tr><td><strong>Landed cost per unit</strong></td><td><strong>$14.20</strong></td><td><strong>$14.26</strong></td><td><strong>$13.63</strong></td><td><strong>$13.98</strong></td></tr>
+        <tr><td>This column in the calculator</td><td><a href="/?from=CN&amp;to=US&amp;cost=10&amp;tariff=30&amp;shipping=1.2&amp;other=0">Open</a></td><td><a href="/?from=VN&amp;to=US&amp;cost=10.8&amp;tariff=20&amp;shipping=1.3&amp;other=0">Open</a></td><td><a href="/?from=MX&amp;to=US&amp;cost=12.5&amp;tariff=5&amp;shipping=0.5&amp;other=0">Open</a></td><td><a href="/?from=IN&amp;to=US&amp;cost=10.4&amp;tariff=20&amp;shipping=1.5&amp;other=0">Open</a></td></tr>
+      </tbody>
+    </table></div>
+    <p>Each "Open" link fills the Tariff Impact Calculator with that column. Read its first tile, "Total cost / unit": it matches the landed cost here. The selling price and volume in the calculator stay on its own example until you enter yours, and the duty rate in the link is this table's made-up one. The note under the two countries says so, and shows the site's own rate for that pair only for comparison.</p>
+    <p>Three things to notice.</p>
+    <ul>
+      <li><strong>The lowest duty rate did not produce a runaway winner.</strong> In this example the country with a 5% rate beats the one with a 30% rate by 57 cents a unit, about 4%, because its supplier price is higher.</li>
+      <li><strong>A ten-point tariff gap vanished.</strong> The second column has a rate ten points lower than the first and still lands 6 cents higher, because the supplier charges 80 cents more.</li>
+      <li><strong>Small changes reorder the table.</strong> Move any one supplier price by 5% and the ranking changes. That is the normal case, not a quirk of the example.</li>
+    </ul>
+  </div>
+  <div class="section">
+    <h2>When the gap is too small to justify moving</h2>
+    <p>Switching supplier has a one-off cost: samples, tooling or moulds, a factory visit or an inspection, new packaging and labels, your own time. Divide that cost by the saving per unit.</p>
+    <p>In the example, moving from the first country to the third saves $0.57 a unit. If the move costs $6,000, you need to buy about 10,500 units before it has paid for itself. At 500 units a month that is 21 months. U.S. tariffs changed several times within 2026 alone, so a payback that long is a bet on rates standing still.</p>
+    <p>A rule that holds up: move for a tariff gap only if it pays back inside the time you are confident about, and you would still be content with the new supplier if the gap closed.</p>
+  </div>
+  <div class="section">
+    <h2>What the table hides</h2>
+    <ul>
+      <li><strong>Origin rules.</strong> The duty follows where the product is treated as made, not where it shipped from. Goods finished in one country from another country's parts may still count as the first country's product. Trade-agreement rates, such as those under the agreement between the United States, Mexico and Canada (USMCA), apply only to goods that meet that agreement's origin rules, with paperwork to prove it. Ask a customs broker before you rely on it.</li>
+      <li><strong>Quality and defect rates.</strong> A supplier that is 4% cheaper and ships 6% more rejects is dearer.</li>
+      <li><strong>Lead time.</strong> Longer transit means more stock and more cash tied up. Shorter transit can let you hold less.</li>
+      <li><strong>Minimum order.</strong> A new supplier may want a larger first order than you can sell quickly.</li>
+      <li><strong>Extra duties on particular goods.</strong> Some products carry anti-dumping or countervailing duties from particular countries. These can be far larger than the ordinary tariff.</li>
+      <li><strong>Entry fees.</strong> See the next section.</li>
+    </ul>
+  </div>
+  <div class="section">
+    <h2>What official sources say today, for these four countries</h2>
+    <p>We don't publish a rate we haven't read at its source. On 25 November 2026 we read the following, and no more than this:</p>
+    <ul>
+      <li><strong>Additional duties under Section 301, for goods entered on or after 24 July 2026.</strong> A notice from the Office of the U.S. Trade Representative sets an added duty by country on products of many economies. For the four on this page it is <strong>12.5% for China, 12.5% for Vietnam, 10% for India and 10% for Mexico</strong>.</li>
+      <li><strong>Mexico's 10% has an exception.</strong> It does not apply to goods of Mexico that enter free of duty under USMCA.</li>
+      <li><strong>Some goods are outside this layer.</strong> Goods covered by Section 232 duties, among them steel, aluminum, copper, vehicles and parts, and wood products, pay their own Section 232 rate and not this one. <strong>Laptops (8471.30.01), mobile phones (8517.13.00) and flat-panel monitors (8528.52.00) are exempt from it too</strong>: they pay only their ordinary duty under this layer (Harmonized Tariff Schedule, chapter 99, US note 52(b), heading 9903.05.86, read 25 November 2026). Toys and furniture are not on that list. We did not read the rest of the exempt lists.</li>
+      <li><strong>This is one layer of the stack, not the total.</strong> The ordinary duty for your product's tariff code comes on top. For China, older Section 301 duties on listed products apply as well. We read them for a few goods on 25 November 2026 in the Harmonized Tariff Schedule (chapter 99, US note 20): wooden and plastic furniture, upholstered wooden seats included, are on list 3, <strong>+25%</strong>, with a few narrow exclusions until 9 January 2027; toys, laptops and monitors are only on list 4B, which is suspended, so <strong>none</strong> today; mobile phones are on no list. The 10% duty on Chinese goods of November 2025 (heading 9903.01.24) ended with the other emergency duties on 20 February 2026 (Executive Order 14389, 91 FR 9437) and does not come on top.</li>
+      <li><strong>Merchandise Processing Fee.</strong> For formal entries the fee is 0.3464% of the goods' value, with a minimum of $34.58 and a maximum of $670.86 per entry, from 1 October 2026. On a small shipment the minimum matters more than the percentage: $34.58 on 200 units is 17 cents each.</li>
+    </ul>
+    <p>This page quotes no ordinary duty rate, because that depends on your product's code. Look up your product at <a href="https://hts.usitc.gov/" target="_blank" rel="noopener">hts.usitc.gov</a>, read the footnotes on its line for additional duties, and confirm the total with a customs broker.</p>
+  </div>
+  <div class="section">
+    <h2>How to rerun it for your product</h2>
+    <ol>
+      <li><strong>Get like-for-like quotes.</strong> Same specification, same quantity, same shipping terms. A quote that includes delivery and duty is not comparable with one that stops at the factory gate.</li>
+      <li><strong>Find the product's tariff code</strong> in the Harmonized Tariff Schedule, and the ordinary rate on that line.</li>
+      <li><strong>Find the additional duties for each origin.</strong> The footnotes on the tariff line point to them. A broker can confirm the total in a few minutes.</li>
+      <li><strong>Add freight, insurance and entry fees per unit</strong> for each route.</li>
+      <li><strong>Put the four totals in the <a href="/">calculator</a>.</strong> Enter each country's unit cost, rate and shipping in turn, with your own selling price and volume, and compare total cost per unit, margin and monthly profit.</li>
+      <li><strong>Work out the payback</strong> on the cost of switching, as above.</li>
+    </ol>
+  </div>
+  <div class="section">
+    <h2>If you stay where you are</h2>
+    <p>Often the answer is to stay and deal with the cost. Then the question becomes how much of it to pass on: see <a href="/absorb-tariff-or-raise-prices">whether to absorb a tariff or raise prices</a>, the <a href="/tariff-surcharge-calculator">tariff surcharge calculator</a>, and the <a href="/tariff-price-increase-letter">price increase letter templates</a>. For one product from one country, see <a href="/tariff-on-upholstered-furniture-from-vietnam">the tariff on upholstered furniture from Vietnam</a>.</p>
+  </div>
+  <!-- PAID LINK PLACE "page-1": Alibaba.com (comparing suppliers by country).
+       To fill: put the programme's link in front of the label, as <a href="..." rel="sponsored noopener" target="_blank">..</a>,
+       delete hidden here, and delete hidden on this page's paid-disclosure line. -->
+  <p class="paid-link" data-paid-link="page-1" hidden><span class="paid-label">Paid link: we earn a commission if you sign up or buy through it.</span></p>
+  <!-- AD PLACE "page-mid". Empty: hidden, no space, nothing loads.
+       To fill: paste the ad unit code from the ad network after the label, then delete the word hidden.
+       The place then keeps 300px of height before the ad loads (set by .ad-slot). -->
+  <aside class="ad-slot" data-ad-place="page-mid" aria-label="Advertisements" hidden><span class="ad-label">Advertisements</span></aside>
+  <div class="section">
+    <h2>Questions</h2>
+    <h3>Which country is cheapest to source from after tariffs?</h3>
+    <p>There is no single answer, because the duty depends on the product&#x27;s tariff code as well as the country, and the supplier&#x27;s price and freight often matter more than the duty gap. Compare landed cost per unit for your own product: supplier price, plus duty, plus freight and fees.</p>
+    <h3>How do I compare landed cost between two countries?</h3>
+    <p>Get a quote for the same product and quantity from each country, find the total duty rate for the product&#x27;s tariff code from each origin, and add freight, insurance and entry fees per unit. Landed cost per unit is the supplier price, plus the price times the duty rate, plus freight and fees.</p>
+    <h3>When is a tariff gap big enough to switch supplier?</h3>
+    <p>Divide the one-off cost of switching by the saving per unit. That gives the number of units you must buy before the move pays for itself. If that is more than you expect to buy before rates could change again, the gap is too small.</p>
+  </div>
+  <div class="section">
+    <h2>Sources</h2>
+    <ul class="sources">
+      <li>Office of the U.S. Trade Representative, "Notice of Actions in Section 301 Investigations of Acts, Policies, and Practices of Various Economies Related to the Failure of Each Economy to Impose and Effectively Enforce a Prohibition on the Importation of Goods Produced with Forced Labor", dockets USTR-2026-0265 and USTR-2026-0266, Federal Register, 28 July 2026, 91 FR 47318. Read 25 November 2026; its lists of exempt products were not read.</li>
+      <li>U.S. International Trade Commission, Harmonized Tariff Schedule of the United States, 2026 Revision 23, headings 9903.05.31 (China), 9903.05.44 (India), 9903.05.55 and 9903.05.94 (Mexico) and 9903.05.84 (Vietnam). Read 25 November 2026. No ordinary duty rate from the schedule is quoted here.</li>
+      <li>U.S. Customs and Border Protection, CBP Dec. 26-14, "Customs User Fees To Be Adjusted for Inflation in Fiscal Year 2027", Federal Register, 31 July 2026, 91 FR 48398. Read 25 November 2026.</li>
+    </ul>
+  </div>
+  <!-- AD PLACE "page-end". Empty: hidden, no space, nothing loads.
+       To fill: paste the ad unit code from the ad network after the label, then delete the word hidden.
+       The place then keeps 300px of height before the ad loads (set by .ad-slot). -->
+  <aside class="ad-slot" data-ad-place="page-end" aria-label="Advertisements" hidden><span class="ad-label">Advertisements</span></aside>
+  <p class="disclaimer">Estimates only, not legal, customs or financial advice. The duty rates in the worked table are illustrations.</p>
+</div>
+</main>
+
+<footer class="site-footer">
+  <div class="footer-grid">
+    <div>
+      <h4>Tariff-Impact.com</h4>
+      <p>Free tools and educational content for small business owners navigating import tariffs and trade policy.</p>
+      <p><a href="/about">About</a> · <a href="/contact">Contact &amp; Advertise</a> · <a href="/privacy">Privacy</a> · <a href="/terms">Terms</a></p>
+    </div>
+    <div>
+      <h4>Tools</h4>
+      <ul>
+        <li><a href="/">Tariff Calculator</a></li>
+        <li><a href="/#live-tariff-rates">Tariff Rates</a></li>
+        <li><a href="/tariff-surcharge-calculator">Tariff Surcharge Calculator</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Learn</h4>
+      <ul>
+        <li><a href="/#understanding-tariffs">Understanding Tariffs</a></li>
+        <li><a href="/#faq">FAQ</a></li>
+        <li><a href="/absorb-tariff-or-raise-prices">Absorb a Tariff or Raise Prices?</a></li>
+        <li><a href="/tariff-price-increase-letter">Price Increase Letter Templates</a></li>
+        <li><a href="/china-vs-vietnam-vs-mexico-vs-india-landed-cost">China vs Vietnam vs Mexico vs India</a></li>
+        <li><a href="/tariff-on-upholstered-furniture-from-vietnam">Furniture from Vietnam</a></li>
+        <li><a href="/tariff-on-upholstered-furniture-from-malaysia">Furniture from Malaysia</a></li>
+        <li><a href="/tariff-on-toys-from-vietnam">Toys from Vietnam</a></li>
+        <li><a href="/tariff-on-auto-parts-from-japan">Auto Parts from Japan</a></li>
+        <li><a href="/tariff-on-auto-parts-from-mexico">Auto Parts from Mexico</a></li>
+        <li><a href="/tariff-on-steel-and-aluminum-from-canada">Steel &amp; Aluminum from Canada</a></li>
+        <li><a href="/tariff-on-upholstered-furniture-from-china">Furniture from China</a></li>
+        <li><a href="/tariff-on-toys-from-china">Toys from China</a></li>
+        <li><a href="/tariff-on-electronics-from-china">Electronics from China</a></li>
+        <li><a href="/tariff-on-clothing-from-vietnam">Clothing from Vietnam</a></li>
+        <li><a href="/tariff-on-clothing-from-india">Clothing from India</a></li>
+        <li><a href="/tariff-on-clothing-from-china">Clothing from China</a></li>
+        <li><a href="/tariff-on-clothing-from-bangladesh">Clothing from Bangladesh</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>External</h4>
+      <ul>
+        <li><a href="https://hts.usitc.gov/" target="_blank" rel="noopener">USITC HTS Lookup</a></li>
+        <li><a href="https://ustr.gov/" target="_blank" rel="noopener">USTR</a></li>
+        <li><a href="https://www.cbp.gov/trade" target="_blank" rel="noopener">CBP</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="copy">
+    © <span id="footerYear"></span> Tariff-Impact.com — Estimates only. Not legal or financial advice.
+  </div>
+</footer>
+
+<script>
+  document.getElementById('footerYear').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>

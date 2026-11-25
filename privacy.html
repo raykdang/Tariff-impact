@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3FXPSLFG9X"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-3FXPSLFG9X');
+</script>
+
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Privacy Policy | Tariff-Impact.com</title>
+<meta name="description" content="What information Tariff-Impact.com collects when you visit, which outside services it uses, and the choices you have.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://tariff-impact.com/privacy">
+
+<!-- Favicon -->
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="apple-touch-icon" href="/favicon.svg">
+<meta name="theme-color" content="#4f8cff">
+
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://tariff-impact.com/privacy">
+<meta property="og:title" content="Privacy Policy | Tariff-Impact.com">
+<meta property="og:description" content="What information Tariff-Impact.com collects when you visit, which outside services it uses, and the choices you have.">
+<meta property="og:site_name" content="Tariff-Impact.com">
+
+<style>
+  :root {
+    --bg-0: #0b0f17; --bg-1: #111826; --bg-2: #1a2233; --bg-3: #232c40;
+    --border: #2b3650; --text: #e6ecf5; --text-dim: #97a3b8; --text-muted: #6b7791;
+    --accent: #4f8cff; --accent-2: #7dd3fc;
+    --good: #34d399; --warn: #fbbf24; --bad: #f87171;
+    --purple: #a78bfa;
+    --shadow: 0 6px 24px rgba(0,0,0,0.35);
+  }
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0; padding: 0;
+    background: radial-gradient(1200px 600px at 10% -10%, #182238 0%, var(--bg-0) 60%) fixed;
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Roboto, "Helvetica Neue", Arial, sans-serif;
+    font-size: 14px; min-height: 100vh; line-height: 1.55;
+  }
+  a { color: var(--accent-2); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+
+  nav.top-nav {
+    background: rgba(11,15,23,0.85); backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    padding: 12px 28px;
+    display: flex; align-items: center; justify-content: space-between;
+    position: sticky; top: 0; z-index: 90;
+    flex-wrap: wrap; gap: 12px;
+  }
+  nav.top-nav .nav-brand { display: flex; align-items: center; gap: 10px; font-weight: 700; }
+  nav.top-nav .nav-brand .nav-mark {
+    width: 28px; height: 28px; border-radius: 7px;
+    background: linear-gradient(135deg, var(--accent), var(--purple));
+    display: grid; place-items: center; font-size: 13px;
+  }
+  nav.top-nav .nav-links { display: flex; gap: 4px; flex-wrap: wrap; }
+  nav.top-nav .nav-links a {
+    color: var(--text-dim); padding: 6px 12px; border-radius: 6px;
+    font-size: 13px; text-decoration: none; transition: all 0.15s;
+  }
+  nav.top-nav .nav-links a:hover, nav.top-nav .nav-links a.active {
+    color: var(--text); background: var(--bg-2);
+  }
+
+  .hero {
+    max-width: 880px; margin: 36px auto 22px auto; padding: 0 28px;
+  }
+  .crumbs { font-size: 12px; color: var(--text-muted); margin: 0 0 14px 0; }
+  .crumbs a { color: var(--text-dim); }
+  .hero h1 {
+    font-size: 34px; line-height: 1.2; margin: 0 0 14px 0; letter-spacing: -0.5px;
+    background: linear-gradient(135deg, var(--text), var(--accent-2));
+    -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+    color: var(--text); /* fallback */
+  }
+  .hero .lede { font-size: 16px; color: var(--text-dim); line-height: 1.7; margin: 0 0 10px 0; }
+  .hero .lede strong { color: var(--text); }
+  .hero .reviewed { font-size: 12px; color: var(--text-muted); margin: 0; }
+
+  .container { max-width: 880px; margin: 0 auto; padding: 0 28px 30px 28px; }
+
+  .btn-primary {
+    background: linear-gradient(135deg, var(--accent), #6f7bff);
+    color: white; padding: 12px 24px; border-radius: 10px;
+    text-decoration: none; font-size: 14px; font-weight: 600;
+    border: none; cursor: pointer; display: inline-block;
+    transition: filter 0.15s;
+  }
+  .btn-primary:hover { filter: brightness(1.1); text-decoration: none; }
+  .cta { margin: 0 0 22px 0; }
+  .cta .cta-note { display: block; margin-top: 8px; font-size: 12px; color: var(--text-muted); }
+
+  .section {
+    background: var(--bg-1); border: 1px solid var(--border);
+    border-radius: 12px; padding: 26px 30px;
+    margin-bottom: 22px;
+  }
+  .section h2 { font-size: 20px; margin: 0 0 12px 0; color: var(--text); }
+  .section h3 { font-size: 15px; margin: 20px 0 8px 0; color: var(--text); }
+  .section p { font-size: 14px; color: var(--text-dim); line-height: 1.75; margin: 0 0 12px 0; }
+  .section ul, .section ol { color: var(--text-dim); line-height: 1.75; padding-left: 22px; margin: 0 0 12px 0; }
+  .section li { margin-bottom: 6px; }
+  .section strong { color: var(--text); }
+  .section > :last-child { margin-bottom: 0; }
+
+  .table-wrap { overflow-x: auto; margin: 0 0 14px 0; border: 1px solid var(--border); border-radius: 10px; }
+  .table-wrap table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  .table-wrap th, .table-wrap td {
+    padding: 10px 12px; text-align: left; vertical-align: top;
+    border-bottom: 1px solid var(--border); color: var(--text-dim);
+  }
+  .table-wrap thead th {
+    background: var(--bg-2); color: var(--text); font-size: 12px; font-weight: 600;
+  }
+  .table-wrap tbody tr:last-child td { border-bottom: none; }
+  .table-wrap td:first-child { color: var(--text); }
+
+  .note {
+    background: rgba(251,191,36,0.08); border: 1px solid rgba(251,191,36,0.35);
+    border-radius: 10px; padding: 12px 16px; margin: 0 0 14px 0;
+    font-size: 13px; color: var(--text-dim); line-height: 1.7;
+  }
+  .note strong { color: var(--text); }
+
+  blockquote.letter {
+    background: var(--bg-2); border: 1px solid var(--border); border-left: 3px solid var(--accent);
+    border-radius: 8px; margin: 0 0 14px 0; padding: 16px 20px;
+  }
+  blockquote.letter p { color: var(--text); font-size: 13px; }
+  blockquote.letter p:last-child { margin-bottom: 0; }
+
+  .calc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 16px; }
+  @media (max-width: 700px) { .calc-grid { grid-template-columns: 1fr; } }
+  .calc-grid label { display: block; font-size: 13px; color: var(--text); font-weight: 600; }
+  .calc-grid .hint { display: block; font-size: 12px; color: var(--text-muted); font-weight: 400; margin: 2px 0 6px 0; }
+  .calc-grid input {
+    width: 100%; background: var(--bg-2); border: 1px solid var(--border); border-radius: 8px;
+    color: var(--text); font-size: 16px; padding: 10px 12px; font-family: inherit;
+  }
+  .calc-grid input:focus { outline: none; border-color: var(--accent); }
+  .calc-out {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 14px;
+  }
+  @media (max-width: 700px) { .calc-out { grid-template-columns: 1fr 1fr; } }
+  .calc-out .out {
+    background: var(--bg-2); border: 1px solid var(--border); border-radius: 10px; padding: 14px;
+  }
+  .calc-out .out-label { font-size: 11px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.6px; }
+  .calc-out .out-value { font-size: 22px; font-weight: 700; color: var(--accent-2); margin-top: 4px; }
+
+  .sources li { font-size: 13px; }
+  .disclaimer { font-size: 12px; color: var(--text-muted); margin: 0 0 22px 0; }
+
+  footer.site-footer {
+    border-top: 1px solid var(--border);
+    margin-top: 50px; padding: 32px 28px 24px 28px;
+    color: var(--text-muted); font-size: 12px; line-height: 1.7;
+  }
+  footer.site-footer .footer-grid {
+    max-width: 1100px; margin: 0 auto;
+    display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 30px;
+  }
+  @media (max-width: 800px) { footer.site-footer .footer-grid { grid-template-columns: 1fr 1fr; } }
+  footer.site-footer h4 { color: var(--text); font-size: 12px; text-transform: uppercase; letter-spacing: 1px; margin: 0 0 10px 0; }
+  footer.site-footer ul { list-style: none; padding: 0; margin: 0; }
+  footer.site-footer li { margin-bottom: 6px; }
+  footer.site-footer a { color: var(--text-dim); }
+  footer.site-footer .copy { text-align: center; margin-top: 24px; padding-top: 18px; border-top: 1px solid var(--border); }
+
+  @media (max-width: 600px) {
+    nav.top-nav { padding: 10px 16px; }
+    .hero { margin-top: 24px; padding: 0 16px; }
+    .hero h1 { font-size: 26px; }
+    .container { padding: 0 16px 24px 16px; }
+    .section { padding: 20px 18px; }
+    footer.site-footer { padding: 28px 16px 20px 16px; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="top-nav">
+  <a href="/" class="nav-brand" style="color: var(--text); text-decoration: none;">
+    <span class="nav-mark">T</span>
+    <span>Tariff-Impact.com</span>
+  </a>
+  <div class="nav-links">
+    <a href="/">Calculator</a>
+    <a href="/#live-tariff-rates">Tariff Rates</a>
+    <a href="/#understanding-tariffs">Guide</a>
+    <a href="/#guides">Guides</a>
+    <a href="/#faq">FAQ</a>
+    <a href="/contact">Contact</a>
+  </div>
+</nav>
+
+<main>
+<div class="hero">
+  <p class="crumbs"><a href="/">Tariff Calculator</a> › Privacy Policy</p>
+  <h1>Privacy Policy</h1>
+  <p class="lede">What the site collects when you visit, which outside services it uses, and what you can do about it.</p>
+  <p class="reviewed">Last updated: 25 November 2026.</p>
+</div>
+
+<div class="container">
+  <div class="section">
+    <h2>In short</h2>
+    <p>You can use Tariff-Impact.com ("the site", "we") without giving your name or email. The site has no account, no sign-up and no form. It counts visits with Google Analytics. It shows no advertising and carries no paid links today. The site is meant to be paid for by advertising and by commissions on some links, so this page also says how those will work when they start, and it will be updated then.</p>
+  </div>
+  <div class="section">
+    <h2>What you type into the calculators</h2>
+    <p>The numbers you enter in the calculator on the home page, and in the tariff surcharge calculator, are worked out in your browser. The site has no form that sends them to us, and its own scripts store nothing on your device.</p>
+    <p>One thing to know: some links on the site open the calculator with an example already filled in, and the figures travel in the link's address. A page address, figures included, is part of what the analytics service records. If you put your own figures in such a link, treat the link as you would the figures.</p>
+  </div>
+  <div class="section">
+    <h2>Cookies and similar technology</h2>
+    <p>A cookie is a small text file that a website, or a service the website uses, stores in your browser so that it can recognise the browser on a later visit. Similar technology does the same job in other ways, for example small images or scripts that report a page view (sometimes called web beacons or pixels), or identifiers kept in your browser's local storage.</p>
+    <p>The site's own scripts set no cookies. Today the only cookies set when you visit come from Google Analytics, described below. If advertising starts, ad networks will set cookies of their own, as described under "Advertising".</p>
+    <p>You can see, block and delete cookies in your browser's settings. Blocking them does not stop the calculators from working.</p>
+  </div>
+  <div class="section">
+    <h2>Analytics</h2>
+    <p>Every page loads Google Analytics, a service of Google, to count visits and see which pages are used. Google Analytics sets cookies in your browser to tell one visit from another, and receives technical data such as the page address, the page you came from, your browser and device type, and your approximate location, which it works out from your IP address. We see that data only as totals and reports, such as how many visits a page had; the site sends Google no name or email, since it collects none. Google processes the data under its own privacy policy, at <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">policies.google.com/privacy</a>.</p>
+    <p>You can block or delete cookies in your browser settings, and Google offers a browser add-on that turns Google Analytics off, at <a href="https://tools.google.com/dlpage/gaoptout" target="_blank" rel="noopener">tools.google.com/dlpage/gaoptout</a>. The site works the same without them.</p>
+  </div>
+  <div class="section">
+    <h2>Hosting and other services</h2>
+    <p>The site is served through Cloudflare. Like any web host, Cloudflare processes technical data such as your IP address, your browser type and the pages you request, in order to deliver the site and protect it from abuse.</p>
+    <p>The home page loads a charting library from cdnjs, a public library service run by Cloudflare, so your browser makes a request to that service too.</p>
+    <p>Nothing else from another company runs on the site today: no advertising code, no affiliate tracking and no social media buttons.</p>
+  </div>
+  <div class="section">
+    <h2>Advertising</h2>
+    <p><strong>Today:</strong> the site shows no advertising, and no advertising cookies are set. This section says how advertising will work if it starts. When it does, this page will name the ad networks used and get a new date.</p>
+    <p><strong>Third-party ad networks.</strong> Ads would be supplied by outside ad networks, such as Google AdSense, not chosen by us one by one. To show an ad, the network's code runs in your browser and receives technical data such as your IP address, browser and device type, the page you are on and the time. Ads are shown in marked places, each labelled "Advertisements", and never inside the calculators.</p>
+    <p><strong>Cookies from third parties.</strong> Third-party vendors, including Google, use cookies to serve ads based on a user's prior visits to this website or other websites. Third parties, including Google, may place and read cookies in your browser, or use web beacons and similar technology, to show ads, to limit how often you see the same ad, to measure whether ads were seen or clicked, and to detect fraud. Google's use of advertising cookies lets it and its partners show you ads based on your visits to this and other sites. How Google uses data from sites that use its advertising services is explained at <a href="https://policies.google.com/technologies/partner-sites" target="_blank" rel="noopener">policies.google.com/technologies/partner-sites</a>.</p>
+    <p><strong>Personalised ads.</strong> An ad can be personalised, meaning chosen from what a network has learned about your interests from your browsing, or not personalised, meaning chosen from the page you are reading and your general location. Visitors in some regions, such as the European Economic Area, the United Kingdom and Switzerland, would be asked for their consent before personalised ads or the cookies they rely on are used.</p>
+    <p><strong>How to opt out.</strong> You can opt out of personalised advertising from Google by visiting Ads Settings, at <a href="https://www.google.com/settings/ads" target="_blank" rel="noopener">www.google.com/settings/ads</a>. You can opt out of other third-party vendors' use of cookies for personalised advertising at <a href="https://www.aboutads.info/choices" target="_blank" rel="noopener">www.aboutads.info/choices</a> (United States) and <a href="https://www.youronlinechoices.eu/" target="_blank" rel="noopener">youronlinechoices.eu</a> (Europe). You can also block or delete cookies in your browser. Opting out does not remove ads; the ads you see are then less tailored to you.</p>
+    <p><strong>What ads never change.</strong> Who advertises on the site never changes a rate, a result or the order of anything the calculators show.</p>
+  </div>
+  <div class="section">
+    <h2>Affiliate links</h2>
+    <p><strong>Today:</strong> the site carries no affiliate links.</p>
+    <p>Some pages may later link to services that a small importer might use, such as shipping, payments to suppliers abroad, sourcing, accounting or an online shop. Some of those links may be affiliate links: if you click one and then sign up or buy, the company pays us a commission. It costs you nothing extra. Each such link will be marked "Paid link", and a page that carries one will say so near its top.</p>
+    <p>When you click an affiliate link, you leave this site, and the company you arrive at, or the affiliate network it uses, may set its own cookies to record that you came from here. That company's own privacy policy then applies. The site itself passes that company no name or contact details, since it collects none.</p>
+    <p>Who pays a commission never changes a rate, a result or the order of anything the calculators show.</p>
+  </div>
+  <div class="section">
+    <h2>Email</h2>
+    <p>The only way to send us personal information is to email the address on the <a href="/contact">contact page</a>. If you do, we receive your email address and whatever you write. There is no newsletter and no mailing list to join.</p>
+  </div>
+  <div class="section">
+    <h2>Your choices and rights</h2>
+    <p>Depending on where you live, you may have the right to ask what personal data is held about you and to have it corrected or deleted. To make a request, use the <a href="/contact">contact page</a>.</p>
+  </div>
+  <div class="section">
+    <h2>Children</h2>
+    <p>The site is meant for business users and is not directed at children under 13.</p>
+  </div>
+  <div class="section">
+    <h2>Changes</h2>
+    <p>Changes to this policy appear on this page, with a new date at the top.</p>
+  </div>
+
+</div>
+</main>
+
+<footer class="site-footer">
+  <div class="footer-grid">
+    <div>
+      <h4>Tariff-Impact.com</h4>
+      <p>Free tools and educational content for small business owners navigating import tariffs and trade policy.</p>
+      <p><a href="/about">About</a> · <a href="/contact">Contact &amp; Advertise</a> · <a href="/privacy">Privacy</a> · <a href="/terms">Terms</a></p>
+    </div>
+    <div>
+      <h4>Tools</h4>
+      <ul>
+        <li><a href="/">Tariff Calculator</a></li>
+        <li><a href="/#live-tariff-rates">Tariff Rates</a></li>
+        <li><a href="/tariff-surcharge-calculator">Tariff Surcharge Calculator</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Learn</h4>
+      <ul>
+        <li><a href="/#understanding-tariffs">Understanding Tariffs</a></li>
+        <li><a href="/#faq">FAQ</a></li>
+        <li><a href="/absorb-tariff-or-raise-prices">Absorb a Tariff or Raise Prices?</a></li>
+        <li><a href="/tariff-price-increase-letter">Price Increase Letter Templates</a></li>
+        <li><a href="/china-vs-vietnam-vs-mexico-vs-india-landed-cost">China vs Vietnam vs Mexico vs India</a></li>
+        <li><a href="/tariff-on-upholstered-furniture-from-vietnam">Furniture from Vietnam</a></li>
+        <li><a href="/tariff-on-upholstered-furniture-from-malaysia">Furniture from Malaysia</a></li>
+        <li><a href="/tariff-on-toys-from-vietnam">Toys from Vietnam</a></li>
+        <li><a href="/tariff-on-auto-parts-from-japan">Auto Parts from Japan</a></li>
+        <li><a href="/tariff-on-auto-parts-from-mexico">Auto Parts from Mexico</a></li>
+        <li><a href="/tariff-on-steel-and-aluminum-from-canada">Steel &amp; Aluminum from Canada</a></li>
+        <li><a href="/tariff-on-upholstered-furniture-from-china">Furniture from China</a></li>
+        <li><a href="/tariff-on-toys-from-china">Toys from China</a></li>
+        <li><a href="/tariff-on-electronics-from-china">Electronics from China</a></li>
+        <li><a href="/tariff-on-clothing-from-vietnam">Clothing from Vietnam</a></li>
+        <li><a href="/tariff-on-clothing-from-india">Clothing from India</a></li>
+        <li><a href="/tariff-on-clothing-from-china">Clothing from China</a></li>
+        <li><a href="/tariff-on-clothing-from-bangladesh">Clothing from Bangladesh</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>External</h4>
+      <ul>
+        <li><a href="https://hts.usitc.gov/" target="_blank" rel="noopener">USITC HTS Lookup</a></li>
+        <li><a href="https://ustr.gov/" target="_blank" rel="noopener">USTR</a></li>
+        <li><a href="https://www.cbp.gov/trade" target="_blank" rel="noopener">CBP</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="copy">
+    © <span id="footerYear"></span> Tariff-Impact.com — Estimates only. Not legal or financial advice.
+  </div>
+</footer>
+
+<script>
+  document.getElementById('footerYear').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
