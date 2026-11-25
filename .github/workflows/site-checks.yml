@@ -23,7 +23,7 @@ name: Site checks
 on:
   pull_request:
   push:
-    branches: [main]
+    branches: [main, checks-proof-comment, checks-proof-tag]
   workflow_dispatch:
 
 permissions:
