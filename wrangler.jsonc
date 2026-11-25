@@ -1,0 +1,18 @@
+// Cloudflare Workers Builds reads this file to deploy the site.
+// The site is plain files with no build step: every file in this folder is
+// served as-is, except those listed in .assetsignore.
+// "name" must be the exact name of the Worker that serves tariff-impact.com
+// in the Cloudflare dashboard, or the build fails.
+{
+  "$schema": "https://unpkg.com/wrangler@4/config-schema.json",
+  "name": "wild-mouse-60ad",
+  "compatibility_date": "2026-11-01",
+  "assets": {
+    "directory": "./",
+    "html_handling": "auto-trailing-slash",
+    "not_found_handling": "none"
+  },
+  "routes": [
+    { "pattern": "tariff-impact.com", "custom_domain": true }
+  ]
+}
