@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3FXPSLFG9X"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-3FXPSLFG9X');
+</script>
+
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Amazon FBA Tariff Calculator: Margin After Tariff and Fees</title>
+<meta name="description" content="Work out your Amazon FBA profit per unit after a tariff, with referral and fulfilment fees, and the new price that keeps your margin. Free calculator.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://tariff-impact.com/amazon-fba-tariff-calculator">
+
+<!-- Favicon -->
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="apple-touch-icon" href="/favicon.svg">
+<meta name="theme-color" content="#4f8cff">
+
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://tariff-impact.com/amazon-fba-tariff-calculator">
+<meta property="og:title" content="Amazon FBA Tariff Calculator: Margin After Tariff and Fees">
+<meta property="og:description" content="Work out your Amazon FBA profit per unit after a tariff, with referral and fulfilment fees, and the new price that keeps your margin. Free calculator.">
+<meta property="og:site_name" content="Tariff-Impact.com">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "Tariff calculator for Amazon FBA sellers",
+      "description": "Work out your Amazon FBA profit per unit after a tariff, with referral and fulfilment fees, and the new price that keeps your margin. Free calculator.",
+      "mainEntityOfPage": "https://tariff-impact.com/amazon-fba-tariff-calculator",
+      "dateModified": "2026-11-25",
+      "author": {
+        "@type": "Organization",
+        "name": "Tariff-Impact.com",
+        "url": "https://tariff-impact.com/"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Tariff-Impact.com",
+        "url": "https://tariff-impact.com/"
+      }
+    },
+    {
+      "@type": "WebApplication",
+      "name": "Amazon FBA tariff calculator",
+      "url": "https://tariff-impact.com/amazon-fba-tariff-calculator",
+      "applicationCategory": "BusinessApplication",
+      "operatingSystem": "Any",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How do I add a tariff to my Amazon FBA costs?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Multiply the price you pay the supplier by the tariff rate, and add the result to your unit cost next to freight and prep. On a $6.00 toy from China at 12.5%, that is $0.75 a unit. Amazon’s fees do not change because of the tariff, but your profit per unit falls by the full $0.75."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How much do I need to raise my Amazon price to cover a tariff?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "More than the tariff, because Amazon’s referral fee is a share of the price. To keep the same profit per unit, divide the tariff per unit by one minus your referral fee rate. With a 15% referral fee, a $0.75 tariff needs a $0.89 rise: $29.99 becomes $30.88."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the tariff on toys from China for Amazon sellers?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "12.5% in total since 24 July 2026: the ordinary duty on toys is Free, no older China list duty reaches heading 9503.00.00 today, and the 12.5% country-wide duty applies. Checked 25 November 2026. Other products have other rates."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Who pays the tariff when I ship to an Amazon warehouse?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The importer of record: the business named on the customs entry. For most FBA sellers that is you, through your freight forwarder or broker, unless your supplier ships DDP and pays the duty itself, in which case the duty is inside the supplier’s price."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Tariff Calculator",
+          "item": "https://tariff-impact.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Amazon FBA tariff calculator",
+          "item": "https://tariff-impact.com/amazon-fba-tariff-calculator"
+        }
+      ]
+    }
+  ]
+}
+</script>
+
+<style>
+  :root {
+    --bg-0: #0b0f17; --bg-1: #111826; --bg-2: #1a2233; --bg-3: #232c40;
+    --border: #2b3650; --text: #e6ecf5; --text-dim: #97a3b8; --text-muted: #6b7791;
+    --accent: #4f8cff; --accent-2: #7dd3fc;
+    --good: #34d399; --warn: #fbbf24; --bad: #f87171;
+    --purple: #a78bfa;
+    --shadow: 0 6px 24px rgba(0,0,0,0.35);
+  }
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0; padding: 0;
+    background: radial-gradient(1200px 600px at 10% -10%, #182238 0%, var(--bg-0) 60%) fixed;
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Roboto, "Helvetica Neue", Arial, sans-serif;
+    font-size: 14px; min-height: 100vh; line-height: 1.55;
+  }
+  a { color: var(--accent-2); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+
+  nav.top-nav {
+    background: rgba(11,15,23,0.85); backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    padding: 12px 28px;
+    display: flex; align-items: center; justify-content: space-between;
+    position: sticky; top: 0; z-index: 90;
+    flex-wrap: wrap; gap: 12px;
+  }
+  nav.top-nav .nav-brand { display: flex; align-items: center; gap: 10px; font-weight: 700; }
+  nav.top-nav .nav-brand .nav-mark {
+    width: 28px; height: 28px; border-radius: 7px;
+    background: linear-gradient(135deg, var(--accent), var(--purple));
+    display: grid; place-items: center; font-size: 13px;
+  }
+  nav.top-nav .nav-links { display: flex; gap: 4px; flex-wrap: wrap; }
+  nav.top-nav .nav-links a {
+    color: var(--text-dim); padding: 6px 12px; border-radius: 6px;
+    font-size: 13px; text-decoration: none; transition: all 0.15s;
+  }
+  nav.top-nav .nav-links a:hover, nav.top-nav .nav-links a.active {
+    color: var(--text); background: var(--bg-2);
+  }
+
+  .hero {
+    max-width: 880px; margin: 36px auto 22px auto; padding: 0 28px;
+  }
+  .crumbs { font-size: 12px; color: var(--text-muted); margin: 0 0 14px 0; }
+  .crumbs a { color: var(--text-dim); }
+  .hero h1 {
+    font-size: 34px; line-height: 1.2; margin: 0 0 14px 0; letter-spacing: -0.5px;
+    background: linear-gradient(135deg, var(--text), var(--accent-2));
+    -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+    color: var(--text); /* fallback */
+  }
+  .hero .lede { font-size: 16px; color: var(--text-dim); line-height: 1.7; margin: 0 0 10px 0; }
+  .hero .lede strong { color: var(--text); }
+  .hero .reviewed { font-size: 12px; color: var(--text-muted); margin: 0; }
+
+  .container { max-width: 880px; margin: 0 auto; padding: 0 28px 30px 28px; }
+
+  .btn-primary {
+    background: linear-gradient(135deg, var(--accent), #6f7bff);
+    color: white; padding: 12px 24px; border-radius: 10px;
+    text-decoration: none; font-size: 14px; font-weight: 600;
+    border: none; cursor: pointer; display: inline-block;
+    transition: filter 0.15s;
+  }
+  .btn-primary:hover { filter: brightness(1.1); text-decoration: none; }
+  .cta { margin: 0 0 22px 0; }
+  .cta .cta-note { display: block; margin-top: 8px; font-size: 12px; color: var(--text-muted); }
+
+  .section {
+    background: var(--bg-1); border: 1px solid var(--border);
+    border-radius: 12px; padding: 26px 30px;
+    margin-bottom: 22px;
+  }
+  .section h2 { font-size: 20px; margin: 0 0 12px 0; color: var(--text); }
+  .section h3 { font-size: 15px; margin: 20px 0 8px 0; color: var(--text); }
+  .section p { font-size: 14px; color: var(--text-dim); line-height: 1.75; margin: 0 0 12px 0; }
+  .section ul, .section ol { color: var(--text-dim); line-height: 1.75; padding-left: 22px; margin: 0 0 12px 0; }
+  .section li { margin-bottom: 6px; }
+  .section strong { color: var(--text); }
+  .section > :last-child { margin-bottom: 0; }
+
+  .table-wrap { overflow-x: auto; margin: 0 0 14px 0; border: 1px solid var(--border); border-radius: 10px; }
+  .table-wrap table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  .table-wrap th, .table-wrap td {
+    padding: 10px 12px; text-align: left; vertical-align: top;
+    border-bottom: 1px solid var(--border); color: var(--text-dim);
+  }
+  .table-wrap thead th {
+    background: var(--bg-2); color: var(--text); font-size: 12px; font-weight: 600;
+  }
+  .table-wrap tbody tr:last-child td { border-bottom: none; }
+  .table-wrap td:first-child { color: var(--text); }
+
+  .note {
+    background: rgba(251,191,36,0.08); border: 1px solid rgba(251,191,36,0.35);
+    border-radius: 10px; padding: 12px 16px; margin: 0 0 14px 0;
+    font-size: 13px; color: var(--text-dim); line-height: 1.7;
+  }
+  .note strong { color: var(--text); }
+
+  blockquote.letter {
+    background: var(--bg-2); border: 1px solid var(--border); border-left: 3px solid var(--accent);
+    border-radius: 8px; margin: 0 0 14px 0; padding: 16px 20px;
+  }
+  blockquote.letter p { color: var(--text); font-size: 13px; }
+  blockquote.letter p:last-child { margin-bottom: 0; }
+
+  .calc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 16px; }
+  @media (max-width: 700px) { .calc-grid { grid-template-columns: 1fr; } }
+  .calc-grid label { display: block; font-size: 13px; color: var(--text); font-weight: 600; }
+  .calc-grid .hint { display: block; font-size: 12px; color: var(--text-muted); font-weight: 400; margin: 2px 0 6px 0; }
+  .calc-grid input {
+    width: 100%; background: var(--bg-2); border: 1px solid var(--border); border-radius: 8px;
+    color: var(--text); font-size: 16px; padding: 10px 12px; font-family: inherit;
+  }
+  .calc-grid input:focus { outline: none; border-color: var(--accent); }
+  .calc-out {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 14px;
+  }
+  @media (max-width: 700px) { .calc-out { grid-template-columns: 1fr 1fr; } }
+  .calc-out .out {
+    background: var(--bg-2); border: 1px solid var(--border); border-radius: 10px; padding: 14px;
+  }
+  .calc-out .out-label { font-size: 11px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.6px; }
+  .calc-out .out-value { font-size: 22px; font-weight: 700; color: var(--accent-2); margin-top: 4px; }
+
+  .sources li { font-size: 13px; }
+  .disclaimer { font-size: 12px; color: var(--text-muted); margin: 0 0 22px 0; }
+
+  footer.site-footer {
+    border-top: 1px solid var(--border);
+    margin-top: 50px; padding: 32px 28px 24px 28px;
+    color: var(--text-muted); font-size: 12px; line-height: 1.7;
+  }
+  footer.site-footer .footer-grid {
+    max-width: 1100px; margin: 0 auto;
+    display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 30px;
+  }
+  @media (max-width: 800px) { footer.site-footer .footer-grid { grid-template-columns: 1fr 1fr; } }
+  footer.site-footer h4 { color: var(--text); font-size: 12px; text-transform: uppercase; letter-spacing: 1px; margin: 0 0 10px 0; }
+  footer.site-footer ul { list-style: none; padding: 0; margin: 0; }
+  footer.site-footer li { margin-bottom: 6px; }
+  footer.site-footer a { color: var(--text-dim); }
+  footer.site-footer .copy { text-align: center; margin-top: 24px; padding-top: 18px; border-top: 1px solid var(--border); }
+
+  @media (max-width: 600px) {
+    nav.top-nav { padding: 10px 16px; }
+    .hero { margin-top: 24px; padding: 0 16px; }
+    .hero h1 { font-size: 26px; }
+    .container { padding: 0 16px 24px 16px; }
+    .section { padding: 20px 18px; }
+    footer.site-footer { padding: 28px 16px 20px 16px; }
+  }
+
+  /* Ad and paid-link places (see README, "Ads and paid links").
+     An empty place carries the attribute hidden: it takes no space and loads nothing.
+     A filled ad place reserves its height before the ad loads, so the page does not jump. */
+  .ad-slot[hidden], .paid-link[hidden], .paid-disclosure[hidden] { display: none !important; }
+  .ad-slot {
+    display: block; box-sizing: border-box; width: 100%; max-width: 980px;
+    min-height: 300px; margin: 22px auto; padding: 0 16px;
+    text-align: center; overflow: hidden; contain: layout paint;
+  }
+  .ad-slot .ad-label {
+    display: block; font-size: 11px; color: var(--text-muted);
+    text-transform: uppercase; letter-spacing: 0.6px; margin: 0 0 6px 0;
+  }
+  .paid-link { font-size: 13px; color: var(--text-dim); margin: 10px 0 0 0; line-height: 1.6; }
+  .paid-link .paid-label { font-size: 12px; color: var(--text-muted); }
+  .paid-disclosure { font-size: 12px; color: var(--text-muted); margin: 8px 0 0 0; line-height: 1.6; }
+</style>
+</head>
+<body>
+
+<nav class="top-nav">
+  <a href="/" class="nav-brand" style="color: var(--text); text-decoration: none;">
+    <span class="nav-mark">T</span>
+    <span>Tariff-Impact.com</span>
+  </a>
+  <div class="nav-links">
+    <a href="/">Calculator</a>
+    <a href="/#live-tariff-rates">Tariff Rates</a>
+    <a href="/#guides">Guides</a>
+    <a href="/#faq">FAQ</a>
+    <a href="/contact">Contact</a>
+  </div>
+</nav>
+
+<main>
+<div class="hero">
+  <p class="crumbs"><a href="/">Tariff Calculator</a> › Amazon FBA tariff calculator</p>
+  <h1>Tariff calculator for Amazon FBA sellers</h1>
+  <p class="lede">On Amazon a tariff costs you more than the tariff: <strong>Amazon takes its referral fee on every dollar you add to the price</strong>, so passing on a $0.75 tariff takes an $0.89 rise. Enter your product below to see profit per unit before and after the tariff, and the price that gets your profit back.</p>
+  <p class="reviewed">Rates last checked: 25 November 2026. Estimates only, not legal, customs or financial advice.</p>
+  <!-- PAID LINK DISCLOSURE. Delete hidden once any paid link on this page is shown. -->
+  <p class="paid-disclosure" hidden>Some links on this page are paid links: we earn a commission if you sign up or buy through them. Each one is marked “Paid link”. Who pays us never changes a rate or a result.</p>
+</div>
+
+<div class="container">
+  <div class="section">
+    <h2>FBA profit after a tariff</h2>
+    <p>Filled in with the example below. Put in your own product: everything stays in your browser.</p>
+    <div class="calc-grid">
+      <label>Supplier price per unit, $
+        <span class="hint">What you pay the factory, the value duty is charged on</span>
+        <input id="fb-cost" type="number" inputmode="decimal" min="0" step="0.01" value="6"></label>
+      <label>Tariff rate, %
+        <span class="hint">All layers added up for your product and country</span>
+        <input id="fb-rate" type="number" inputmode="decimal" min="0" step="0.1" value="12.5"></label>
+      <label>Freight and prep to Amazon, $ per unit
+        <span class="hint">Sea or air freight, broker, delivery to the fulfilment centre</span>
+        <input id="fb-ship" type="number" inputmode="decimal" min="0" step="0.01" value="1.10"></label>
+      <label>Selling price on Amazon, $
+        <span class="hint">Your current price</span>
+        <input id="fb-price" type="number" inputmode="decimal" min="0" step="0.01" value="29.99"></label>
+      <label>Referral fee, % of price
+        <span class="hint">Your category’s rate in Seller Central</span>
+        <input id="fb-ref" type="number" inputmode="decimal" min="0" max="99" step="0.1" value="15"></label>
+      <label>FBA fulfilment fee, $ per unit
+        <span class="hint">From Amazon’s revenue calculator for your size tier</span>
+        <input id="fb-fba" type="number" inputmode="decimal" min="0" step="0.01" value="5.50"></label>
+      <label>Storage and other fees, $ per unit
+        <span class="hint">Monthly storage spread over units sold, returns, other fees</span>
+        <input id="fb-sto" type="number" inputmode="decimal" min="0" step="0.01" value="0.40"></label>
+      <label>Advertising, $ per unit sold
+        <span class="hint">Sponsored ads spend divided by units sold</span>
+        <input id="fb-ppc" type="number" inputmode="decimal" min="0" step="0.01" value="2.00"></label>
+    </div>
+    <div class="calc-out">
+      <div class="out"><div class="out-label">Tariff per unit</div><div class="out-value" id="fb-tariff">$0.75</div></div>
+      <div class="out"><div class="out-label">Profit before tariff</div><div class="out-value" id="fb-pre">$10.49</div></div>
+      <div class="out"><div class="out-label">Profit after tariff</div><div class="out-value" id="fb-post">$9.74</div></div>
+      <div class="out"><div class="out-label">Price to keep profit</div><div class="out-value" id="fb-be">$30.88</div></div>
+    </div>
+    <p id="fb-say">Margin falls from 35.0% to 32.5% of the price. To keep $10.49 a unit you need $30.88, a rise of $0.89.</p>
+    <p><a id="fb-full" href="/?from=CN&amp;to=US&amp;cost=6&amp;tariff=12.5&amp;shipping=1.1&amp;price=29.99&amp;pass=0&amp;other=12.4&amp;fixed=0">Open these numbers in the full calculator</a> to see what the new price does to units sold and monthly profit. There, Amazon’s fees go in “other variable cost” as one dollar figure, worked out at your current price.</p>
+  </div>
+  <div class="section">
+    <h2>The example: a building-block set from China</h2>
+    <p>A toy building-block set bought at <strong>$6.00</strong> from a factory in China and sold on Amazon at <strong>$29.99</strong>. Toys from China pay <strong>12.5%</strong> in total today (checked 25 November 2026; see <a href="/tariff-on-toys-from-china">toys from China</a>), so the tariff is $0.75 a set. Freight, prep and Amazon’s fees are example figures: your category, size tier and season will differ.</p>
+    <div class="table-wrap"><table>
+      <thead><tr><th>Per unit</th><th>Before the tariff</th><th>After the tariff</th></tr></thead>
+      <tbody>
+        <tr><td>Selling price</td><td>$29.99</td><td>$29.99</td></tr>
+        <tr><td>Supplier price</td><td>$6.00</td><td>$6.00</td></tr>
+        <tr><td>Tariff, 12.5% of $6.00</td><td>$0</td><td>$0.75</td></tr>
+        <tr><td>Freight and prep to Amazon</td><td>$1.10</td><td>$1.10</td></tr>
+        <tr><td>Referral fee, 15% of price (example)</td><td>$4.50</td><td>$4.50</td></tr>
+        <tr><td>FBA fulfilment fee (example)</td><td>$5.50</td><td>$5.50</td></tr>
+        <tr><td>Storage and other fees (example)</td><td>$0.40</td><td>$0.40</td></tr>
+        <tr><td>Advertising (example)</td><td>$2.00</td><td>$2.00</td></tr>
+        <tr><td><strong>Profit</strong></td><td><strong>$10.49 (35.0%)</strong></td><td><strong>$9.74 (32.5%)</strong></td></tr>
+      </tbody>
+    </table></div>
+    <p>The referral fee is shown rounded: 15% of $29.99 is $4.4985. The tariff takes 7% of the profit on each set.</p>
+  </div>
+  <div class="section">
+    <h2>Where the tariff sits in an FBA unit cost</h2>
+    <p>The tariff is charged once, when the goods enter the United States, on the value of the goods: the supplier’s price, not your Amazon price and not the freight. So it belongs in your <strong>landed cost</strong>, next to freight and prep, before any Amazon fee. Amazon’s own fees don’t change because of it.</p>
+    <p>What changes is the price you need. Amazon’s referral fee is a share of the price, so every dollar you add to the price brings you only 85 cents at a 15% fee. To pass on a tariff of $T a unit in full, the price must rise by <strong>T ÷ (1 − referral rate)</strong>: $0.75 ÷ 0.85 = $0.89.</p>
+  </div>
+  <!-- AD PLACE "page-mid". Empty: hidden, no space, nothing loads.
+       To fill: paste the ad unit code from the ad network after the label, then delete the word hidden.
+       The place then keeps 300px of height before the ad loads (set by .ad-slot). -->
+  <aside class="ad-slot" data-ad-place="page-mid" aria-label="Advertisements" hidden><span class="ad-label">Advertisements</span></aside>
+  <div class="section">
+    <h2>Three price points compared</h2>
+    <p>Same set, after the tariff, with all costs as above. Units sold are left out: on Amazon, a higher price can cost you the Buy Box or search rank, and only your own sales history can say how much.</p>
+    <div class="table-wrap"><table>
+      <thead><tr><th>Price</th><th>Referral fee</th><th>Profit per unit</th><th>Margin</th></tr></thead>
+      <tbody>
+        <tr><td>$29.99 (no change)</td><td>$4.50</td><td>$9.74</td><td>32.5%</td></tr>
+        <tr><td>$30.88 (keeps $10.49)</td><td>$4.63</td><td>$10.50</td><td>34.0%</td></tr>
+        <tr><td>$31.99</td><td>$4.80</td><td>$11.44</td><td>35.8%</td></tr>
+        <tr><td>$34.99</td><td>$5.25</td><td>$13.99</td><td>40.0%</td></tr>
+      </tbody>
+    </table></div>
+    <p>To keep the same percentage margin (35.0%) rather than the same dollars, the price would be $31.49. For the general case, see <a href="/break-even-price-after-tariff">break-even price after a tariff</a>.</p>
+  </div>
+  <div class="section">
+    <h2>When to cut the product</h2>
+    <ul>
+      <li><strong>Profit after the tariff is below what the stock costs to hold.</strong> Long-term storage fees and slow sales can wipe out a thin margin.</li>
+      <li><strong>The price that keeps your profit loses you the Buy Box,</strong> and the price that keeps the Buy Box loses money after ads.</li>
+      <li><strong>A cheaper source exists.</strong> The same product from another country may pay less. See <a href="/china-vs-vietnam-vs-mexico-vs-india-landed-cost">China vs Vietnam vs Mexico vs India</a> and <a href="/tariff-on-toys-from-vietnam">toys from Vietnam</a>.</li>
+      <li><strong>The tariff is about to change.</strong> Check <a href="/tariff-changes-january-2027">what changes in January 2027</a> before you place the next order.</li>
+    </ul>
+  </div>
+  <!-- PAID LINK PLACE "page-1": an Amazon seller tool (Helium 10, Jungle Scout or sellerboard).
+       To fill: put the programme's link in front of the label, as <a href="..." rel="sponsored noopener" target="_blank">..</a>,
+       delete hidden here, and delete hidden on this page's paid-disclosure line. -->
+  <p class="paid-link" data-paid-link="page-1" hidden><span class="paid-label">Paid link: we earn a commission if you sign up or buy through it.</span></p>
+  <div class="section">
+    <h2>Questions</h2>
+    <h3>How do I add a tariff to my Amazon FBA costs?</h3>
+    <p>Multiply the price you pay the supplier by the tariff rate, and add the result to your unit cost next to freight and prep. On a $6.00 toy from China at 12.5%, that is $0.75 a unit. Amazon’s fees do not change because of the tariff, but your profit per unit falls by the full $0.75.</p>
+    <h3>How much do I need to raise my Amazon price to cover a tariff?</h3>
+    <p>More than the tariff, because Amazon’s referral fee is a share of the price. To keep the same profit per unit, divide the tariff per unit by one minus your referral fee rate. With a 15% referral fee, a $0.75 tariff needs a $0.89 rise: $29.99 becomes $30.88.</p>
+    <h3>What is the tariff on toys from China for Amazon sellers?</h3>
+    <p>12.5% in total since 24 July 2026: the ordinary duty on toys is Free, no older China list duty reaches heading 9503.00.00 today, and the 12.5% country-wide duty applies. Checked 25 November 2026. Other products have other rates.</p>
+    <h3>Who pays the tariff when I ship to an Amazon warehouse?</h3>
+    <p>The importer of record: the business named on the customs entry. For most FBA sellers that is you, through your freight forwarder or broker, unless your supplier ships DDP and pays the duty itself, in which case the duty is inside the supplier’s price.</p>
+  </div>
+  <div class="section">
+    <h2>How the figures were worked out</h2>
+    <p>Profit per unit = price − supplier price − tariff − freight − referral fee rate × price − fulfilment fee − storage − advertising. Price to keep profit = (old profit + all costs except the referral fee) ÷ (1 − referral rate). The full calculator’s figures use the same costs, with the referral fee fixed at its $29.99 value ($12.40 of Amazon fees and ads in all).</p>
+  </div>
+  <div class="section">
+    <h2>Sources</h2>
+    <ul class="sources">
+      <li>U.S. International Trade Commission, Harmonized Tariff Schedule of the United States, 2026 Revision 23, hts.usitc.gov: heading 9503.00.00 (toys, Free); heading 9903.05.31 (China); chapter 99, US notes 20 and 31 (9503.00.00 on suspended list 4B only, no 2024 increase). Read 25 November 2026.</li>
+      <li>Office of the U.S. Trade Representative, "Notice of Actions in Section 301 Investigations … Forced Labor", Federal Register, 28 July 2026, 91 FR 47318 (document 2026-15181): China 12.5% from 24 July 2026. Read 25 November 2026.</li>
+      <li>Amazon’s fees are not an official rate and change often: the figures here are examples. Read yours in Seller Central.</li>
+    </ul>
+  </div>
+  <div class="section">
+    <h2>Related</h2>
+    <ul>
+      <li><a href="/tariff-on-toys-from-china">Tariff on toys from China</a></li>
+      <li><a href="/landed-cost-from-china">Landed cost from China to the US: every line</a></li>
+      <li><a href="/break-even-price-after-tariff">Break-even price after a tariff</a></li>
+      <li><a href="/absorb-tariff-or-raise-prices">Should you absorb a tariff or raise prices?</a></li>
+      <li><a href="/how-to-find-hts-code">How to find your HTS code and rate</a></li>
+      <li><a href="/">Tariff Impact Calculator</a></li>
+    </ul>
+  </div>
+
+  <!-- AD PLACE "page-end". Empty: hidden, no space, nothing loads.
+       To fill: paste the ad unit code from the ad network after the label, then delete the word hidden.
+       The place then keeps 300px of height before the ad loads (set by .ad-slot). -->
+  <aside class="ad-slot" data-ad-place="page-end" aria-label="Advertisements" hidden><span class="ad-label">Advertisements</span></aside>
+  <p class="disclaimer">Estimates only, not legal, customs or financial advice. Amazon fees on this page are examples, not Amazon’s fee for any product.</p>
+</div>
+</main>
+
+<footer class="site-footer">
+  <div class="footer-grid">
+    <div>
+      <h4>Tariff-Impact.com</h4>
+      <p>Free tools and educational content for small business owners navigating import tariffs and trade policy.</p>
+      <p><a href="/about">About</a> · <a href="/contact">Contact &amp; Advertise</a> · <a href="/privacy">Privacy</a> · <a href="/terms">Terms</a></p>
+    </div>
+    <div>
+      <h4>Tools</h4>
+      <ul>
+        <li><a href="/">Tariff Calculator</a></li>
+        <li><a href="/#live-tariff-rates">Tariff Rates</a></li>
+        <li><a href="/tariff-surcharge-calculator">Tariff Surcharge Calculator</a></li>
+        <li><a href="/embed">Embed the Calculator</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Learn</h4>
+      <ul>
+        <li><a href="/#understanding-tariffs">Understanding Tariffs</a></li>
+        <li><a href="/#faq">FAQ</a></li>
+        <li><a href="/absorb-tariff-or-raise-prices">Absorb a Tariff or Raise Prices?</a></li>
+        <li><a href="/tariff-price-increase-letter">Price Increase Letter Templates</a></li>
+        <li><a href="/china-vs-vietnam-vs-mexico-vs-india-landed-cost">China vs Vietnam vs Mexico vs India</a></li>
+        <li><a href="/tariff-on-upholstered-furniture-from-vietnam">Furniture from Vietnam</a></li>
+        <li><a href="/tariff-on-upholstered-furniture-from-malaysia">Furniture from Malaysia</a></li>
+        <li><a href="/tariff-on-toys-from-vietnam">Toys from Vietnam</a></li>
+        <li><a href="/tariff-on-auto-parts-from-japan">Auto Parts from Japan</a></li>
+        <li><a href="/tariff-on-auto-parts-from-mexico">Auto Parts from Mexico</a></li>
+        <li><a href="/tariff-on-steel-and-aluminum-from-canada">Steel &amp; Aluminum from Canada</a></li>
+        <li><a href="/tariff-on-upholstered-furniture-from-china">Furniture from China</a></li>
+        <li><a href="/tariff-on-toys-from-china">Toys from China</a></li>
+        <li><a href="/tariff-on-electronics-from-china">Electronics from China</a></li>
+        <li><a href="/tariff-on-clothing-from-vietnam">Clothing from Vietnam</a></li>
+        <li><a href="/tariff-on-clothing-from-india">Clothing from India</a></li>
+        <li><a href="/tariff-on-clothing-from-china">Clothing from China</a></li>
+        <li><a href="/tariff-on-clothing-from-bangladesh">Clothing from Bangladesh</a></li>
+        <li><a href="/tariff-changes-january-2027">Tariff Changes, January 2027</a></li>
+        <li><a href="/section-301-excess-capacity-tariffs">Section 301 Excess Capacity Tariffs</a></li>
+        <li><a href="/break-even-price-after-tariff">Break-Even Price After a Tariff</a></li>
+        <li><a href="/who-pays-tariff-ddp-dap-fob">Who Pays the Tariff: DDP, DAP, FOB</a></li>
+        <li><a href="/us-tariff-rates-by-country">US Tariff Rates by Country</a></li>
+        <li><a href="/tariff-vs-duty-vs-customs-fees">Tariff vs Duty vs Customs Fees</a></li>
+        <li><a href="/how-to-find-hts-code">How to Find Your HTS Code</a></li>
+        <li><a href="/landed-cost-from-china">Landed Cost From China</a></li>
+        <li><a href="/amazon-fba-tariff-calculator">Amazon FBA Tariff Calculator</a></li>
+        <li><a href="/does-a-25-percent-tariff-raise-prices-25-percent">Does a 25% Tariff Raise Prices 25%?</a></li>
+        <li><a href="/merchandise-processing-fee-calculator">MPF Calculator</a></li>
+        <li><a href="/what-is-section-232">What Is Section 232?</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>External</h4>
+      <ul>
+        <li><a href="https://hts.usitc.gov/" target="_blank" rel="noopener">USITC HTS Lookup</a></li>
+        <li><a href="https://ustr.gov/" target="_blank" rel="noopener">USTR</a></li>
+        <li><a href="https://www.cbp.gov/trade" target="_blank" rel="noopener">CBP</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="copy">
+    © <span id="footerYear"></span> Tariff-Impact.com — Estimates only. Not legal or financial advice.
+  </div>
+</footer>
+
+<script>
+  document.getElementById('footerYear').textContent = new Date().getFullYear();
+</script>
+<script>
+(function () {
+  function n(id) { var v = parseFloat(document.getElementById(id).value); return isFinite(v) && v > 0 ? v : 0; }
+  function money(x) { return (x < 0 ? '−$' : '$') + Math.abs(x).toFixed(2); }
+  function plain(x) { return String(Math.round(x * 10000) / 10000); }
+  var ids = ['fb-cost', 'fb-rate', 'fb-ship', 'fb-price', 'fb-ref', 'fb-fba', 'fb-sto', 'fb-ppc'];
+  function run() {
+    var cost = n('fb-cost'), rate = n('fb-rate'), ship = n('fb-ship'), price = n('fb-price');
+    var ref = Math.min(n('fb-ref'), 99) / 100, fba = n('fb-fba'), sto = n('fb-sto'), ppc = n('fb-ppc');
+    var tariff = cost * rate / 100;
+    var fixed = cost + ship + fba + sto + ppc;
+    var pre = price * (1 - ref) - fixed, post = pre - tariff;
+    var be = (pre + fixed + tariff) / (1 - ref);
+    be = Math.ceil(be * 100 - 1e-6) / 100;
+    document.getElementById('fb-tariff').textContent = money(tariff);
+    document.getElementById('fb-pre').textContent = money(pre);
+    document.getElementById('fb-post').textContent = money(post);
+    document.getElementById('fb-be').textContent = price > 0 ? money(be) : 'enter a price';
+    var say = '';
+    if (price > 0) {
+      say = 'Margin falls from ' + (pre / price * 100).toFixed(1) + '% to ' + (post / price * 100).toFixed(1) + '% of the price. ';
+      say += pre > 0 ? 'To keep ' + money(pre) + ' a unit you need ' + money(be) + ', a rise of ' + money(be - price) + '.' : 'At this price the product loses money even before the tariff.';
+    }
+    document.getElementById('fb-say').textContent = say;
+    var other = price * ref + fba + sto + ppc;
+    var link = '/?cost=' + plain(cost) + '&tariff=' + plain(rate) + '&shipping=' + plain(ship);
+    if (price > 0) link += '&price=' + plain(price);
+    link += '&pass=0&other=' + plain(other) + '&fixed=0';
+    document.getElementById('fb-full').setAttribute('href', link);
+  }
+  ids.forEach(function (id) { document.getElementById(id).addEventListener('input', run); });
+  run();
+})();
+</script>
+</body>
+</html>
