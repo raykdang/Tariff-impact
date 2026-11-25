@@ -52,3 +52,10 @@ The pages hold empty places for ads and for paid (affiliate) links. No ad networ
 - **Disclosure line**: `<p class="paid-disclosure" hidden>` near the top of every page that has a paid link place.
 
 While a place carries `hidden` it takes no space and loads nothing. To fill one, follow the comment beside it: paste the code or link, then delete `hidden`. A filled ad place keeps 300px of height before its ad loads, so the page doesn't jump. When a paid link is shown, also delete `hidden` on that page's disclosure line. Mark paid links `rel="sponsored noopener"`. Load an ad network's main script with `async`, after the page's own script, so the calculator never waits on it.
+
+## Shared calculator code and the embeddable calculator
+
+- `tariff-core.js` holds the rates table (`tariffData`), the calculator's opening values, its sums (`calc`, `findBreakevenPrice`) and the rules for reading a scenario from the address. The home page and `/widget` both load it, so the two calculators always agree. Rates are now edited there, not in `index.html`.
+- `widget.html` (`/widget`) is a compact calculator for other sites to show in an iframe. It loads no outside script, no analytics and sets no cookies, and is kept out of search (`noindex`). It accepts the same address values as the home page, such as `/widget?from=VN&to=US`, and posts its height to the page around it.
+- `embed.html` (`/embed`) offers the widget: a live preview and the snippet to copy, in three sizes. The snippet puts a plain "Tariff calculator by tariff-impact.com" link under the frame, on the host's own page.
+- Other sites may frame `/widget` only while the site sends no `X-Frame-Options` header and no `Content-Security-Policy` with `frame-ancestors`. Neither is set today.
