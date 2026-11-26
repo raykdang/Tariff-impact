@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3FXPSLFG9X"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-3FXPSLFG9X');
+</script>
+
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>How to Calculate Tariffs: Formula and Worked Examples</title>
+<meta name="description" content="How to calculate a US tariff: customs value × duty rate, how Section 301 and 232 duties stack, plus MPF and HMF fees. Two shipments worked line by line.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://tariff-impact.com/how-to-calculate-tariffs">
+
+<!-- Favicon -->
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="apple-touch-icon" href="/favicon.svg">
+<meta name="theme-color" content="#4f8cff">
+
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://tariff-impact.com/how-to-calculate-tariffs">
+<meta property="og:title" content="How to Calculate Tariffs: Formula and Worked Examples">
+<meta property="og:description" content="How to calculate a US tariff: customs value × duty rate, how Section 301 and 232 duties stack, plus MPF and HMF fees. Two shipments worked line by line.">
+<meta property="og:site_name" content="Tariff-Impact.com">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "How to calculate tariffs on US imports, step by step",
+      "description": "How to calculate a US tariff: customs value × duty rate, how Section 301 and 232 duties stack, plus MPF and HMF fees. Two shipments worked line by line.",
+      "mainEntityOfPage": "https://tariff-impact.com/how-to-calculate-tariffs",
+      "dateModified": "2026-11-26",
+      "author": {
+        "@type": "Organization",
+        "name": "Tariff-Impact.com",
+        "url": "https://tariff-impact.com/"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Tariff-Impact.com",
+        "url": "https://tariff-impact.com/"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How do you calculate a tariff?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Multiply the customs value of the goods by the duty rate. The duty rate is the ordinary rate for the product's HTS code plus any added duties that apply, such as a Section 301 country rate or a Section 232 rate. Then add customs fees: the Merchandise Processing Fee on a formal entry, and the Harbor Maintenance Fee if the goods arrive by ship."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is the tariff charged on the price I pay or the price I sell at?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "On the customs value, which is usually the price you paid the seller for the goods, not counting international freight and insurance to the US. It is not charged on your selling price, so a 29% duty on a $4 item adds $1.16 whatever you sell it for."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do Section 301 and Section 232 duties stack?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Section 301 and ordinary duties stack: you add the percentage points. The country-wide Section 301 duties in force since 24 July 2026 do not apply to goods that pay a Section 232 duty, so for steel, aluminum, copper, vehicles and parts or wood products you add the Section 232 rate instead. Older China Section 301 duties are set by list and can add to the country-wide rate."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What fees are added to the duty?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The Merchandise Processing Fee is 0.3464% of the value on a formal entry, at least $34.58 and at most $670.86, from 1 October 2026. The Harbor Maintenance Fee is 0.125% of the value of goods unloaded from a ship. A customs broker's fee and freight are further costs, but they are not paid to Customs."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Where do I find my product's duty rate?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "In the Harmonized Tariff Schedule of the United States, at hts.usitc.gov, under your product's HTS code: the General column gives the ordinary rate. Added duties sit in chapter 99 of the same schedule, by country or by product."
+          }
+        }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Tariff Calculator",
+          "item": "https://tariff-impact.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "How to calculate tariffs",
+          "item": "https://tariff-impact.com/how-to-calculate-tariffs"
+        }
+      ]
+    }
+  ]
+}
+</script>
+
+<style>
+  :root {
+    --bg-0: #0b0f17; --bg-1: #111826; --bg-2: #1a2233; --bg-3: #232c40;
+    --border: #2b3650; --text: #e6ecf5; --text-dim: #97a3b8; --text-muted: #6b7791;
+    --accent: #4f8cff; --accent-2: #7dd3fc;
+    --good: #34d399; --warn: #fbbf24; --bad: #f87171;
+    --purple: #a78bfa;
+    --shadow: 0 6px 24px rgba(0,0,0,0.35);
+  }
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0; padding: 0;
+    background: radial-gradient(1200px 600px at 10% -10%, #182238 0%, var(--bg-0) 60%) fixed;
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Roboto, "Helvetica Neue", Arial, sans-serif;
+    font-size: 14px; min-height: 100vh; line-height: 1.55;
+  }
+  a { color: var(--accent-2); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+
+  nav.top-nav {
+    background: rgba(11,15,23,0.85); backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    padding: 12px 28px;
+    display: flex; align-items: center; justify-content: space-between;
+    position: sticky; top: 0; z-index: 90;
+    flex-wrap: wrap; gap: 12px;
+  }
+  nav.top-nav .nav-brand { display: flex; align-items: center; gap: 10px; font-weight: 700; }
+  nav.top-nav .nav-brand .nav-mark {
+    width: 28px; height: 28px; border-radius: 7px;
+    background: linear-gradient(135deg, var(--accent), var(--purple));
+    display: grid; place-items: center; font-size: 13px;
+  }
+  nav.top-nav .nav-links { display: flex; gap: 4px; flex-wrap: wrap; }
+  nav.top-nav .nav-links a {
+    color: var(--text-dim); padding: 6px 12px; border-radius: 6px;
+    font-size: 13px; text-decoration: none; transition: all 0.15s;
+  }
+  nav.top-nav .nav-links a:hover, nav.top-nav .nav-links a.active {
+    color: var(--text); background: var(--bg-2);
+  }
+
+  .hero {
+    max-width: 880px; margin: 36px auto 22px auto; padding: 0 28px;
+  }
+  .crumbs { font-size: 12px; color: var(--text-muted); margin: 0 0 14px 0; }
+  .crumbs a { color: var(--text-dim); }
+  .hero h1 {
+    font-size: 34px; line-height: 1.2; margin: 0 0 14px 0; letter-spacing: -0.5px;
+    background: linear-gradient(135deg, var(--text), var(--accent-2));
+    -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+    color: var(--text); /* fallback */
+  }
+  .hero .lede { font-size: 16px; color: var(--text-dim); line-height: 1.7; margin: 0 0 10px 0; }
+  .hero .lede strong { color: var(--text); }
+  .hero .reviewed { font-size: 12px; color: var(--text-muted); margin: 0; }
+
+  .container { max-width: 880px; margin: 0 auto; padding: 0 28px 30px 28px; }
+
+  .btn-primary {
+    background: linear-gradient(135deg, var(--accent), #6f7bff);
+    color: white; padding: 12px 24px; border-radius: 10px;
+    text-decoration: none; font-size: 14px; font-weight: 600;
+    border: none; cursor: pointer; display: inline-block;
+    transition: filter 0.15s;
+  }
+  .btn-primary:hover { filter: brightness(1.1); text-decoration: none; }
+  .cta { margin: 0 0 22px 0; }
+  .cta .cta-note { display: block; margin-top: 8px; font-size: 12px; color: var(--text-muted); }
+
+  .section {
+    background: var(--bg-1); border: 1px solid var(--border);
+    border-radius: 12px; padding: 26px 30px;
+    margin-bottom: 22px;
+  }
+  .section h2 { font-size: 20px; margin: 0 0 12px 0; color: var(--text); }
+  .section h3 { font-size: 15px; margin: 20px 0 8px 0; color: var(--text); }
+  .section p { font-size: 14px; color: var(--text-dim); line-height: 1.75; margin: 0 0 12px 0; }
+  .section ul, .section ol { color: var(--text-dim); line-height: 1.75; padding-left: 22px; margin: 0 0 12px 0; }
+  .section li { margin-bottom: 6px; }
+  .section strong { color: var(--text); }
+  .section > :last-child { margin-bottom: 0; }
+
+  .table-wrap { overflow-x: auto; margin: 0 0 14px 0; border: 1px solid var(--border); border-radius: 10px; }
+  .table-wrap table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  .table-wrap th, .table-wrap td {
+    padding: 10px 12px; text-align: left; vertical-align: top;
+    border-bottom: 1px solid var(--border); color: var(--text-dim);
+  }
+  .table-wrap thead th {
+    background: var(--bg-2); color: var(--text); font-size: 12px; font-weight: 600;
+  }
+  .table-wrap tbody tr:last-child td { border-bottom: none; }
+  .table-wrap td:first-child { color: var(--text); }
+
+  .note {
+    background: rgba(251,191,36,0.08); border: 1px solid rgba(251,191,36,0.35);
+    border-radius: 10px; padding: 12px 16px; margin: 0 0 14px 0;
+    font-size: 13px; color: var(--text-dim); line-height: 1.7;
+  }
+  .note strong { color: var(--text); }
+
+  blockquote.letter {
+    background: var(--bg-2); border: 1px solid var(--border); border-left: 3px solid var(--accent);
+    border-radius: 8px; margin: 0 0 14px 0; padding: 16px 20px;
+  }
+  blockquote.letter p { color: var(--text); font-size: 13px; }
+  blockquote.letter p:last-child { margin-bottom: 0; }
+
+  .calc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 16px; }
+  @media (max-width: 700px) { .calc-grid { grid-template-columns: 1fr; } }
+  .calc-grid label { display: block; font-size: 13px; color: var(--text); font-weight: 600; }
+  .calc-grid .hint { display: block; font-size: 12px; color: var(--text-muted); font-weight: 400; margin: 2px 0 6px 0; }
+  .calc-grid input {
+    width: 100%; background: var(--bg-2); border: 1px solid var(--border); border-radius: 8px;
+    color: var(--text); font-size: 16px; padding: 10px 12px; font-family: inherit;
+  }
+  .calc-grid input:focus { outline: none; border-color: var(--accent); }
+  .calc-out {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 14px;
+  }
+  @media (max-width: 700px) { .calc-out { grid-template-columns: 1fr 1fr; } }
+  .calc-out .out {
+    background: var(--bg-2); border: 1px solid var(--border); border-radius: 10px; padding: 14px;
+  }
+  .calc-out .out-label { font-size: 11px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.6px; }
+  .calc-out .out-value { font-size: 22px; font-weight: 700; color: var(--accent-2); margin-top: 4px; }
+
+  .sources li { font-size: 13px; }
+  .disclaimer { font-size: 12px; color: var(--text-muted); margin: 0 0 22px 0; }
+
+  footer.site-footer {
+    border-top: 1px solid var(--border);
+    margin-top: 50px; padding: 32px 28px 24px 28px;
+    color: var(--text-muted); font-size: 12px; line-height: 1.7;
+  }
+  footer.site-footer .footer-grid {
+    max-width: 1100px; margin: 0 auto;
+    display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 30px;
+  }
+  @media (max-width: 800px) { footer.site-footer .footer-grid { grid-template-columns: 1fr 1fr; } }
+  footer.site-footer h4 { color: var(--text); font-size: 12px; text-transform: uppercase; letter-spacing: 1px; margin: 0 0 10px 0; }
+  footer.site-footer ul { list-style: none; padding: 0; margin: 0; }
+  footer.site-footer li { margin-bottom: 6px; }
+  footer.site-footer a { color: var(--text-dim); }
+  footer.site-footer .copy { text-align: center; margin-top: 24px; padding-top: 18px; border-top: 1px solid var(--border); }
+
+  @media (max-width: 600px) {
+    nav.top-nav { padding: 10px 16px; }
+    .hero { margin-top: 24px; padding: 0 16px; }
+    .hero h1 { font-size: 26px; }
+    .container { padding: 0 16px 24px 16px; }
+    .section { padding: 20px 18px; }
+    footer.site-footer { padding: 28px 16px 20px 16px; }
+  }
+
+  /* Ad and paid-link places (see README, "Ads and paid links").
+     An empty place carries the attribute hidden: it takes no space and loads nothing.
+     A filled ad place reserves its height before the ad loads, so the page does not jump. */
+  .ad-slot[hidden], .paid-link[hidden], .paid-disclosure[hidden] { display: none !important; }
+  .ad-slot {
+    display: block; box-sizing: border-box; width: 100%; max-width: 980px;
+    min-height: 300px; margin: 22px auto; padding: 0 16px;
+    text-align: center; overflow: hidden; contain: layout paint;
+  }
+  .ad-slot .ad-label {
+    display: block; font-size: 11px; color: var(--text-muted);
+    text-transform: uppercase; letter-spacing: 0.6px; margin: 0 0 6px 0;
+  }
+  .paid-link { font-size: 13px; color: var(--text-dim); margin: 10px 0 0 0; line-height: 1.6; }
+  .paid-link .paid-label { font-size: 12px; color: var(--text-muted); }
+  .paid-disclosure { font-size: 12px; color: var(--text-muted); margin: 8px 0 0 0; line-height: 1.6; }
+</style>
+</head>
+<body>
+
+<nav class="top-nav">
+  <a href="/" class="nav-brand" style="color: var(--text); text-decoration: none;">
+    <span class="nav-mark">T</span>
+    <span>Tariff-Impact.com</span>
+  </a>
+  <div class="nav-links">
+    <a href="/">Calculator</a>
+    <a href="/#live-tariff-rates">Tariff Rates</a>
+    <a href="/#guides">Guides</a>
+    <a href="/#faq">FAQ</a>
+    <a href="/contact">Contact</a>
+  </div>
+</nav>
+
+<main>
+<div class="hero">
+  <p class="crumbs"><a href="/">Tariff Calculator</a> › <a href="/#guides">Guides</a> › How to calculate tariffs</p>
+  <h1>How to calculate tariffs on US imports, step by step</h1>
+  <p class="lede">The duty on a shipment is <strong>customs value × duty rate</strong>. The duty rate is the ordinary rate for your product's code plus any added duties that apply to it, such as Section 301 or Section 232. Customs fees, the <strong>MPF</strong> and, for goods by ship, the <strong>HMF</strong>, come on top. This page explains each input, then works two shipments with every number shown.</p>
+  <p class="reviewed">Last reviewed: 26 November 2026. Estimates only, not legal or financial advice.</p>
+  <!-- PAID LINK DISCLOSURE. Delete hidden once any paid link on this page is shown. -->
+  <p class="paid-disclosure" hidden>Some links on this page are paid links: we earn a commission if you sign up or buy through them. Each one is marked “Paid link”. Who pays us never changes a rate or a result.</p>
+</div>
+
+<div class="container">
+  <p class="cta"><a class="btn-primary" href="/?from=VN&amp;to=US&amp;cost=4&amp;tariff=29&amp;shipping=0.5&amp;price=18&amp;pass=0&amp;units=1000&amp;elasticity=-1.2&amp;other=1&amp;fixed=0">Skip the sums: open the tariff calculator</a>
+    <span class="cta-note">Opens with cotton T-shirts from Vietnam at 29%, as in example 1 below. Change the cost, rate and price to yours.</span></p>
+  <div class="section">
+    <h2>The formula</h2>
+    <div class="table-wrap"><table>
+      <thead><tr><th>Line</th><th>Sum</th></tr></thead>
+      <tbody>
+        <tr><td>Duty rate</td><td>Ordinary rate + Section 301 rate + Section 232 rate + any other added duty that applies</td></tr>
+        <tr><td>Duty</td><td>Customs value × duty rate</td></tr>
+        <tr><td>Merchandise Processing Fee (MPF)</td><td>Customs value × 0.3464%, at least $34.58 and at most $670.86 per formal entry</td></tr>
+        <tr><td>Harbor Maintenance Fee (HMF)</td><td>Customs value × 0.125%, only for goods unloaded from a ship at a US port</td></tr>
+        <tr><td>Total paid to Customs</td><td>Duty + MPF + HMF</td></tr>
+        <tr><td>Per unit</td><td>Total ÷ number of units</td></tr>
+      </tbody>
+    </table></div>
+    <p>Most US duties are ad valorem: a percentage of the goods' value. Some codes charge an amount per unit or per kilo instead, or both; then the duty is quantity × that amount, and you add any percentage part on top. Your code's rate column shows which it is.</p>
+  </div>
+  <div class="section">
+    <h2>Each input, and where to find it</h2>
+    <h3>1. The HTS code</h3>
+    <p>Every product has a ten-digit code in the Harmonized Tariff Schedule of the United States. The code sets the ordinary rate and decides which added duties reach the product. Get it from your supplier, your customs broker or a past entry, and check it yourself: see <a href="/how-to-find-hts-code">how to find your product's HTS code</a>.</p>
+    <h3>2. The customs value</h3>
+    <p>Usually the price you actually paid or will pay the seller for the goods, in US dollars. International freight and insurance to the US are <strong>not</strong> part of it, so on a CIF or DDP price you take them out first. Some costs the seller doesn't bill, like moulds or materials you sent them, are added. The trade term in your quote decides what the price covers: see <a href="/who-pays-tariff-ddp-dap-fob">who pays the tariff under DDP, DAP and FOB</a>.</p>
+    <h3>3. The ordinary rate</h3>
+    <p>The "General" column of the schedule for your code, unless you claim a trade agreement (the "Special" column) that your goods qualify for. Many products are Free; others run from a fraction of a percent to over 30%.</p>
+    <h3>4. Added duties, and how they stack</h3>
+    <ul>
+      <li><strong>Section 301, country-wide.</strong> Since 24 July 2026, most goods from a long list of countries pay an added 10% or 12.5% on top of the ordinary rate, with some countries topped up to a set total instead. See <a href="/us-tariff-rates-by-country">US tariff rates by country</a> and <a href="/section-301-excess-capacity-tariffs">Section 301 excess capacity tariffs</a>.</li>
+      <li><strong>Section 301, older China lists.</strong> Goods of China may also owe the duties from 2018 on, set by list. These add to the country-wide rate.</li>
+      <li><strong>Section 232.</strong> Steel, aluminum, copper, vehicles and parts, some wood products and others pay their own Section 232 rate. Goods under Section 232 are exempt from the country-wide Section 301 rate, so you add one or the other, not both. See <a href="/what-is-section-232">what is Section 232</a>.</li>
+      <li><strong>Anti-dumping and countervailing duties.</strong> Set product by product and often maker by maker. Check before you order: they can be larger than all the rest.</li>
+    </ul>
+    <p>Rates add as percentage points: 16.5% ordinary plus 12.5% added is 29%, not 16.5% then 12.5% of the result. Each layer has exceptions, so read the layers for your own code and origin.</p>
+    <h3>5. Customs fees</h3>
+    <p>The MPF is charged on most formal entries; goods that qualify under some trade agreements, such as USMCA, are exempt. The HMF applies only to goods that arrive by ship. Neither is a tariff, and both can be owed on goods whose duty is Free: see <a href="/tariff-vs-duty-vs-customs-fees">tariff vs duty vs customs fees</a>.</p>
+  </div>
+  <!-- AD PLACE "page-mid". Empty: hidden, no space, nothing loads.
+       To fill: paste the ad unit code from the ad network after the label, then delete the word hidden.
+       The place then keeps 300px of height before the ad loads (set by .ad-slot). -->
+  <aside class="ad-slot" data-ad-place="page-mid" aria-label="Advertisements" hidden><span class="ad-label">Advertisements</span></aside>
+  <div class="section">
+    <h2>Example 1: cotton T-shirts from Vietnam, by ship</h2>
+    <p>7,500 cotton T-shirts (HTS 6109.10.00) at $4 each, FOB, so a customs value of $30,000, as one formal entry. The ordinary rate, Vietnam's added rate and the HMF were read on 26 November 2026; the MPF was read on 25 November 2026. Sources are listed below.</p>
+    <div class="table-wrap"><table>
+      <thead><tr><th>Line</th><th>How it is worked out</th><th>Amount</th><th>Per shirt</th></tr></thead>
+      <tbody>
+        <tr><td>Duty rate</td><td>16.5% ordinary (6109.10.00) + 12.5% Vietnam (9903.05.84)</td><td>29%</td><td>—</td></tr>
+        <tr><td>Duty</td><td>$30,000 × 29%</td><td>$8,700.00</td><td>$1.16</td></tr>
+        <tr><td>MPF</td><td>$30,000 × 0.3464% = $103.92, between the $34.58 minimum and the $670.86 maximum</td><td>$103.92</td><td>$0.014</td></tr>
+        <tr><td>HMF</td><td>$30,000 × 0.125%</td><td>$37.50</td><td>$0.005</td></tr>
+        <tr><td><strong>Total to Customs</strong></td><td>$8,700.00 + $103.92 + $37.50</td><td><strong>$8,841.42</strong></td><td><strong>$1.18</strong></td></tr>
+      </tbody>
+    </table></div>
+    <p>The duty is 98% of what Customs collects here. A shirt that cost $4 now costs $5.18 once Customs is paid, before freight and the broker's fee. To see what that does to your margin and price, <a href="/?from=VN&amp;to=US&amp;cost=4&amp;tariff=29&amp;shipping=0.5&amp;price=18&amp;pass=0&amp;units=1000&amp;elasticity=-1.2&amp;other=1&amp;fixed=0">open this case in the calculator</a>.</p>
+  </div>
+  <div class="section">
+    <h2>Example 2: a small air shipment from China</h2>
+    <p><strong>The 4% ordinary rate here is a made-up example</strong>, for a product we assume is on none of the older China lists and in none of the exemptions. China's added 12.5% (9903.05.31) was read on 26 November 2026. $5,000 of goods, 500 units at $10, by air as one formal entry.</p>
+    <div class="table-wrap"><table>
+      <thead><tr><th>Line</th><th>How it is worked out</th><th>Amount</th><th>Per unit</th></tr></thead>
+      <tbody>
+        <tr><td>Duty rate</td><td>4% ordinary (example) + 12.5% China</td><td>16.5%</td><td>—</td></tr>
+        <tr><td>Duty</td><td>$5,000 × 16.5%</td><td>$825.00</td><td>$1.65</td></tr>
+        <tr><td>MPF</td><td>$5,000 × 0.3464% = $17.32, below the minimum, so the minimum applies</td><td>$34.58</td><td>$0.07</td></tr>
+        <tr><td>HMF</td><td>Not owed: the goods came by air</td><td>$0.00</td><td>$0.00</td></tr>
+        <tr><td><strong>Total to Customs</strong></td><td>$825.00 + $34.58</td><td><strong>$859.58</strong></td><td><strong>$1.72</strong></td></tr>
+      </tbody>
+    </table></div>
+    <p>Two lessons from the small shipment: the MPF minimum makes the fee 0.7% of value rather than 0.35%, and the effective rate on the entry is 17.2%, not 16.5%. If your product is on an older China list, add that list's rate to the duty rate and work it again. <a href="/?from=CN&amp;to=US&amp;cost=10&amp;tariff=16.5&amp;shipping=0&amp;price=30&amp;pass=0&amp;other=0&amp;fixed=0">Open example 2 in the calculator</a>; the $30 selling price is an example too.</p>
+  </div>
+  <div class="section">
+    <h2>From duty to price</h2>
+    <p>The duty is a cost on the goods' value, not on your selling price. A 29% duty on a $4 shirt sold at $18 adds $1.16, which is 6.4% of the price, not 29%. See <a href="/does-a-25-percent-tariff-raise-prices-25-percent">does a 25% tariff raise prices by 25%?</a> for the sum, and the <a href="/break-even-price-after-tariff">break-even price after a tariff</a> for the price that keeps your margin.</p>
+  </div>
+  <!-- PAID LINK PLACE "page-1": Customs broker or customs bond provider.
+       To fill: put the programme's link in front of the label, as <a href="..." rel="sponsored noopener" target="_blank">..</a>,
+       delete hidden here, and delete hidden on this page's paid-disclosure line. -->
+  <p class="paid-link" data-paid-link="page-1" hidden><span class="paid-label">Paid link: we earn a commission if you sign up or buy through it.</span></p>
+  <div class="section">
+    <h2>Questions</h2>
+    <h3>How do you calculate a tariff?</h3>
+    <p>Multiply the customs value of the goods by the duty rate. The duty rate is the ordinary rate for the product's HTS code plus any added duties that apply, such as a Section 301 country rate or a Section 232 rate. Then add customs fees: the Merchandise Processing Fee on a formal entry, and the Harbor Maintenance Fee if the goods arrive by ship.</p>
+    <h3>Is the tariff charged on the price I pay or the price I sell at?</h3>
+    <p>On the customs value, which is usually the price you paid the seller for the goods, not counting international freight and insurance to the US. It is not charged on your selling price, so a 29% duty on a $4 item adds $1.16 whatever you sell it for.</p>
+    <h3>Do Section 301 and Section 232 duties stack?</h3>
+    <p>Section 301 and ordinary duties stack: you add the percentage points. The country-wide Section 301 duties in force since 24 July 2026 do not apply to goods that pay a Section 232 duty, so for steel, aluminum, copper, vehicles and parts or wood products you add the Section 232 rate instead. Older China Section 301 duties are set by list and can add to the country-wide rate.</p>
+    <h3>What fees are added to the duty?</h3>
+    <p>The Merchandise Processing Fee is 0.3464% of the value on a formal entry, at least $34.58 and at most $670.86, from 1 October 2026. The Harbor Maintenance Fee is 0.125% of the value of goods unloaded from a ship. A customs broker's fee and freight are further costs, but they are not paid to Customs.</p>
+    <h3>Where do I find my product's duty rate?</h3>
+    <p>In the Harmonized Tariff Schedule of the United States, at hts.usitc.gov, under your product's HTS code: the General column gives the ordinary rate. Added duties sit in chapter 99 of the same schedule, by country or by product.</p>
+  </div>
+  <div class="section">
+    <h2>Sources</h2>
+    <ul class="sources">
+      <li>U.S. International Trade Commission, Harmonized Tariff Schedule of the United States, hts.usitc.gov: 6109.10.00, general rate 16.5%; heading 9903.05.84 (Vietnam) and 9903.05.31 (China), "the duty provided in the applicable subheading + 12.5%". Read 26 November 2026.</li>
+      <li>Office of the U.S. Trade Representative, Section 301 notice of 28 July 2026, Federal Register 91 FR 47318: the country-wide duties from 24 July 2026 and the exemption of goods under Section 232.</li>
+      <li>19 CFR 24.24(a), Electronic Code of Federal Regulations, ecfr.gov: Harbor Maintenance Fee of "0.125 percent (.00125)" of the cargo's value. Read 26 November 2026.</li>
+      <li>U.S. Customs and Border Protection, CBP Dec. 26-14, Federal Register, 31 July 2026, 91 FR 48398: Merchandise Processing Fee 0.3464%, minimum $34.58, maximum $670.86, from 1 October 2026. Read 25 November 2026.</li>
+    </ul>
+  </div>
+  <div class="section">
+    <h2>Related</h2>
+    <ul>
+      <li><a href="/">Tariff Impact Calculator</a></li>
+      <li><a href="/how-to-find-hts-code">How to find your HTS code and tariff rate</a></li>
+      <li><a href="/tariff-vs-duty-vs-customs-fees">Tariff vs duty vs customs fees</a></li>
+      <li><a href="/does-a-25-percent-tariff-raise-prices-25-percent">Does a 25% tariff raise prices 25%?</a></li>
+      <li><a href="/section-301-excess-capacity-tariffs">Section 301 excess capacity tariffs</a></li>
+      <li><a href="/us-tariff-rates-by-country">US tariff rates by country</a></li>
+      <li><a href="/merchandise-processing-fee-calculator">Merchandise Processing Fee calculator</a></li>
+    </ul>
+  </div>
+
+  <!-- AD PLACE "page-end". Empty: hidden, no space, nothing loads.
+       To fill: paste the ad unit code from the ad network after the label, then delete the word hidden.
+       The place then keeps 300px of height before the ad loads (set by .ad-slot). -->
+  <aside class="ad-slot" data-ad-place="page-end" aria-label="Advertisements" hidden><span class="ad-label">Advertisements</span></aside>
+  <p class="disclaimer">Estimates only, not legal or financial advice.</p>
+</div>
+</main>
+
+
+<footer class="site-footer">
+  <div class="footer-grid">
+    <div>
+      <h4>Tariff-Impact.com</h4>
+      <p>Free tools and educational content for small business owners navigating import tariffs and trade policy.</p>
+      <p><a href="/about">About</a> · <a href="/contact">Contact &amp; Advertise</a> · <a href="/privacy">Privacy</a> · <a href="/terms">Terms</a></p>
+    </div>
+    <div>
+      <h4>Tools</h4>
+      <ul>
+        <li><a href="/">Tariff Calculator</a></li>
+        <li><a href="/#live-tariff-rates">Tariff Rates</a></li>
+        <li><a href="/tariff-surcharge-calculator">Tariff Surcharge Calculator</a></li>
+        <li><a href="/embed">Embed the Calculator</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Learn</h4>
+      <ul>
+        <li><a href="/#understanding-tariffs">Understanding Tariffs</a></li>
+        <li><a href="/#faq">FAQ</a></li>
+        <li><a href="/absorb-tariff-or-raise-prices">Absorb a Tariff or Raise Prices?</a></li>
+        <li><a href="/tariff-price-increase-letter">Price Increase Letter Templates</a></li>
+        <li><a href="/china-vs-vietnam-vs-mexico-vs-india-landed-cost">China vs Vietnam vs Mexico vs India</a></li>
+        <li><a href="/tariff-on-upholstered-furniture-from-vietnam">Furniture from Vietnam</a></li>
+        <li><a href="/tariff-on-upholstered-furniture-from-malaysia">Furniture from Malaysia</a></li>
+        <li><a href="/tariff-on-toys-from-vietnam">Toys from Vietnam</a></li>
+        <li><a href="/tariff-on-auto-parts-from-japan">Auto Parts from Japan</a></li>
+        <li><a href="/tariff-on-auto-parts-from-mexico">Auto Parts from Mexico</a></li>
+        <li><a href="/tariff-on-steel-and-aluminum-from-canada">Steel &amp; Aluminum from Canada</a></li>
+        <li><a href="/tariff-on-upholstered-furniture-from-china">Furniture from China</a></li>
+        <li><a href="/tariff-on-toys-from-china">Toys from China</a></li>
+        <li><a href="/tariff-on-electronics-from-china">Electronics from China</a></li>
+        <li><a href="/tariff-on-clothing-from-vietnam">Clothing from Vietnam</a></li>
+        <li><a href="/tariff-on-clothing-from-india">Clothing from India</a></li>
+        <li><a href="/tariff-on-clothing-from-china">Clothing from China</a></li>
+        <li><a href="/tariff-on-clothing-from-bangladesh">Clothing from Bangladesh</a></li>
+        <li><a href="/tariff-changes-january-2027">Tariff Changes, January 2027</a></li>
+        <li><a href="/section-301-excess-capacity-tariffs">Section 301 Excess Capacity Tariffs</a></li>
+        <li><a href="/break-even-price-after-tariff">Break-Even Price After a Tariff</a></li>
+        <li><a href="/who-pays-tariff-ddp-dap-fob">Who Pays the Tariff: DDP, DAP, FOB</a></li>
+        <li><a href="/us-tariff-rates-by-country">US Tariff Rates by Country</a></li>
+        <li><a href="/tariff-vs-duty-vs-customs-fees">Tariff vs Duty vs Customs Fees</a></li>
+        <li><a href="/how-to-calculate-tariffs">How to Calculate Tariffs</a></li>
+        <li><a href="/how-to-find-hts-code">How to Find Your HTS Code</a></li>
+        <li><a href="/free-tariff-calculators-compared">Free Tariff Calculators Compared</a></li>
+        <li><a href="/landed-cost-from-china">Landed Cost From China</a></li>
+        <li><a href="/amazon-fba-tariff-calculator">Amazon FBA Tariff Calculator</a></li>
+        <li><a href="/does-a-25-percent-tariff-raise-prices-25-percent">Does a 25% Tariff Raise Prices 25%?</a></li>
+        <li><a href="/merchandise-processing-fee-calculator">MPF Calculator</a></li>
+        <li><a href="/what-is-section-232">What Is Section 232?</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>External</h4>
+      <ul>
+        <li><a href="https://hts.usitc.gov/" target="_blank" rel="noopener">USITC HTS Lookup</a></li>
+        <li><a href="https://ustr.gov/" target="_blank" rel="noopener">USTR</a></li>
+        <li><a href="https://www.cbp.gov/trade" target="_blank" rel="noopener">CBP</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="copy">
+    © <span id="footerYear"></span> Tariff-Impact.com — Estimates only. Not legal or financial advice.
+  </div>
+</footer>
+
+<script>
+  document.getElementById('footerYear').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
