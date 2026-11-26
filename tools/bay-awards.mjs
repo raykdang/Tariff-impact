@@ -42,7 +42,7 @@ export function vendorOf(title) {
 }
 const num = (a, b) => { let v = parseFloat(a.replace(/,/g, '')); if (/mill/i.test(b || '') || /^\s*M\b/.test(b || '')) v *= 1e6; if (/bill/i.test(b || '')) v *= 1e9; return v; };
 export function amountOf(title) {
-  const t = sq(title), all = [...t.matchAll(/\$\s?([\d][\d,]*(?:\.\d+)?)(\s*(?:million|billion|M\b))?/gi)].map(m => ({ i: m.index, v: num(m[1], m[2]) })).filter(x => x.v >= 100);
+  const t = sq(title), all = [...t.matchAll(/\$\s?([\d][\d,]*(?:\.\d+)?)(\s*(?:million|billion|M\b))?/gi)].map(m => ({ i: m.index, v: num(m[1], num(m[1], '') >= 1e6 ? '' : m[2]) })).filter(x => x.v >= 100);
   if (all.length > 1 && all.some(x => x.v !== 74999)) for (let i = all.length - 1; i >= 0; i--) if (all[i].v === 74999 || all[i].v === 49999) all.splice(i, 1); // delegated amendment limits, not contract values
   if (!all.length) return 0;
   const key = /(?:not[- ]to[- ]exceed|(?:new|revised|total|maximum|aggregate|contract) (?:\w+ ){0,4}(?:amount|total|value|price|compensation|payment limit|cost)|payment limit|up to|in (?:an|the) (?:total |aggregate )?amount)/gi;
