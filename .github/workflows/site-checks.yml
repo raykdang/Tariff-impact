@@ -45,6 +45,8 @@ jobs:
           python-version: "3.12"
       - name: Check the site's files
         run: python3 .github/scripts/check_site.py
+      - name: Test the IndexNow wait
+        run: python3 -m unittest discover -s .github/scripts -v
 
   wrangler:
     name: Cloudflare dry run
