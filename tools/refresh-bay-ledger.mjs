@@ -86,6 +86,7 @@ await page.waitForFunction(() => typeof SIG !== 'undefined' && Object.keys(SIGPA
 for (const v of ['insights', 'anomalies', 'vendors', 'links', 'explore', 'audit', 'sources', 'ahead']) {
   await page.evaluate(v => { location.hash = v; }, v);
   await idle();
+  if (v === 'anomalies') await page.waitForFunction(() => Object.keys(DEEPPARTS).every(k => ['done', 'fail'].includes(SIG.parts[k])), null, { timeout: 200000 }).catch(() => console.warn('Some deep signals did not finish.'));
 }
 await page.click('[data-b=so]');
 await idle();
